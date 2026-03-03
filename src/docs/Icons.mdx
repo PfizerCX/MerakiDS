@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/blocks';
+import { IconGallery } from './IconGallery';
+
+<Meta title="Foundations/Icons" />
+
+# Icon Library
+
+The Meraki icon set is sourced from the **HDS-241 New Icon Set** in Figma. Icons are organized into 23 categories covering navigation, actions, medical conditions, body parts, treatments, and more.
+
+All icons render in `var(--color-on-background)` by default and scale with the `size` prop.
+
+## Usage
+
+```tsx
+import { ArrowRight } from '@meraki-ds/components/icons';
+
+<ArrowRight size={24} />
+```
+
+Override the color via inline style or parent CSS `color`:
+
+```tsx
+<ArrowRight style={{ color: 'var(--color-primary)' }} />
+```
+
+## Adding New Icons
+
+1. Export SVGs from the Figma icon file (select icons at **Weight=400**, export as SVG)
+2. Drop the `.svg` files into `src/icons/svg/`
+3. Run `npm run generate-icons`
+
+The script generates a typed React component for each SVG, plus an `index.ts` barrel and `meta.ts` metadata file.
+
+---
+
+## Gallery
+
+Icons with an **SVG** placeholder have been cataloged from Figma but don't have a generated component yet — export their SVG and re-run the generator to activate them.
+
+<IconGallery />

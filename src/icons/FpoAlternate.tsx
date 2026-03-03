@@ -1,0 +1,9 @@
+import { forwardRef } from 'react';
+import type { IconProps } from './Icon';
+const FpoAlternate = forwardRef<SVGSVGElement, IconProps>(({
+  size = 24,
+  style,
+  ...props
+}, ref) => <svg style={style} width={size} height={size} fill="currentColor" viewBox="0 0 32 32" ref={ref} {...props}><path d="M4.95508 20V11.95H10.7051V13.468H6.74908V15.308H10.4751V16.826H6.74908V20H4.95508Z" fill="currentColor" /><path d="M11.8506 20V11.95H15.3351C17.0371 11.95 18.3596 12.6515 18.3596 14.434C18.3596 16.251 16.9911 16.918 15.3351 16.918H13.6446V20H11.8506ZM15.3006 15.4345C16.1516 15.4345 16.5196 15.055 16.5196 14.434C16.5196 13.8245 16.1861 13.445 15.3006 13.445H13.6446V15.4345H15.3006Z" fill="currentColor" /><path d="M22.986 20.207C20.6745 20.207 18.961 18.689 18.961 15.975C18.961 13.3415 20.6745 11.743 22.986 11.743C25.286 11.743 27.0455 13.3875 27.0455 15.975C27.0455 18.6545 25.286 20.207 22.986 20.207ZM22.986 18.7005C24.274 18.7005 25.194 17.746 25.194 15.975C25.194 14.273 24.2855 13.2495 22.986 13.2495C21.675 13.2495 20.824 14.25 20.824 15.975C20.824 17.723 21.6865 18.7005 22.986 18.7005Z" fill="currentColor" /></svg>);
+FpoAlternate.displayName = "FpoAlternate";
+export { FpoAlternate };

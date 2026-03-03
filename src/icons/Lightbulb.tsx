@@ -1,0 +1,9 @@
+import { forwardRef } from 'react';
+import type { IconProps } from './Icon';
+const Lightbulb = forwardRef<SVGSVGElement, IconProps>(({
+  size = 24,
+  style,
+  ...props
+}, ref) => <svg style={style} width={size} height={size} fill="currentColor" viewBox="0 0 32 32" ref={ref} {...props}><path fillRule="evenodd" clipRule="evenodd" d="M16 2.875C11.521 2.875 7.875 6.54508 7.875 11.0909C7.875 13.9425 9.31062 16.4525 11.4901 17.9261L11.875 18.1863V20.125H20.125V18.1863L20.5099 17.9261C22.6894 16.4525 24.125 13.9425 24.125 11.0909C24.125 6.54508 20.479 2.875 16 2.875ZM6.125 11.0909C6.125 5.5952 10.5379 1.125 16 1.125C21.4621 1.125 25.875 5.5952 25.875 11.0909C25.875 14.3727 24.3021 17.2862 21.875 19.102V21.875H10.125V19.102C7.69786 17.2862 6.125 14.3727 6.125 11.0909ZM21.875 23.625V25.375H10.125V23.625H21.875ZM16 29.125C14.8264 29.125 13.875 28.1736 13.875 27H12.125C12.125 29.1401 13.8599 30.875 16 30.875C18.1401 30.875 19.875 29.1401 19.875 27H18.125C18.125 28.1736 17.1736 29.125 16 29.125Z" fill="#00003A" /></svg>);
+Lightbulb.displayName = "Lightbulb";
+export { Lightbulb };

@@ -1,0 +1,168 @@
+/* ==========================================================================
+   Pfizer Diatype — Primary font family
+   Weights used by the DS: Light (300), Regular (400), Medium (500), Bold (700)
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Pfizer Diatype';
+  src: url('./Pfizer Diatype/Pfizer Diatype/Pfizer Diatype Complete TTF/PfizerDiatype-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Diatype';
+  src: url('./Pfizer Diatype/Pfizer Diatype/Pfizer Diatype Complete TTF/PfizerDiatype-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Diatype';
+  src: url('./Pfizer Diatype/Pfizer Diatype/Pfizer Diatype Complete TTF/PfizerDiatype-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Diatype';
+  src: url('./Pfizer Diatype/Pfizer Diatype/Pfizer Diatype Complete TTF/PfizerDiatype-RegularItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Diatype';
+  src: url('./Pfizer Diatype/Pfizer Diatype/Pfizer Diatype Complete TTF/PfizerDiatype-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Diatype';
+  src: url('./Pfizer Diatype/Pfizer Diatype/Pfizer Diatype Complete TTF/PfizerDiatype-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Diatype';
+  src: url('./Pfizer Diatype/Pfizer Diatype/Pfizer Diatype Complete TTF/PfizerDiatype-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Diatype';
+  src: url('./Pfizer Diatype/Pfizer Diatype/Pfizer Diatype Complete TTF/PfizerDiatype-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   Pfizer Diatype Extended
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Pfizer Diatype Extended';
+  src: url('./Pfizer Diatype/Pfizer Diatype Extended/Pfizer Diatype Extended Complete TTF/PfizerDiatypeExtended-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Diatype Extended';
+  src: url('./Pfizer Diatype/Pfizer Diatype Extended/Pfizer Diatype Extended Complete TTF/PfizerDiatypeExtended-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Diatype Extended';
+  src: url('./Pfizer Diatype/Pfizer Diatype Extended/Pfizer Diatype Extended Complete TTF/PfizerDiatypeExtended-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   Pfizer Diatype Condensed
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Pfizer Diatype Condensed';
+  src: url('./Pfizer Diatype/Pfizer Diatype Condensed/Pfizer Diatype Condensed Complete TTF/PfizerDiatypeCondensed-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Diatype Condensed';
+  src: url('./Pfizer Diatype/Pfizer Diatype Condensed/Pfizer Diatype Condensed Complete TTF/PfizerDiatypeCondensed-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Diatype Condensed';
+  src: url('./Pfizer Diatype/Pfizer Diatype Condensed/Pfizer Diatype Condensed Complete TTF/PfizerDiatypeCondensed-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   Pfizer Tomorrow — Display alternate
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Pfizer Tomorrow';
+  src: url('./PfizerTomorrow_v1_011/TTF/PfizerTomorrow-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Tomorrow';
+  src: url('./PfizerTomorrow_v1_011/TTF/PfizerTomorrow-RegularItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Tomorrow';
+  src: url('./PfizerTomorrow_v1_011/TTF/PfizerTomorrow-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Tomorrow';
+  src: url('./PfizerTomorrow_v1_011/TTF/PfizerTomorrow-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pfizer Tomorrow';
+  src: url('./PfizerTomorrow_v1_011/TTF/PfizerTomorrow-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}

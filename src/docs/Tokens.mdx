@@ -1,0 +1,74 @@
+import { Meta } from '@storybook/blocks';
+import { ColorTokens, SemanticColors, TypographyScale, SpacingScale, RadiusScale, ShadowScale } from './TokensDisplay';
+
+<Meta title="Foundations/Design Tokens" />
+
+# Design Tokens
+
+Meraki Design System tokens are the foundational values that drive every component. They are authored as CSS custom properties in `tokens.css` and can be consumed directly via `var(--token-name)` or through the TypeScript token constants.
+
+```css
+/* Usage in CSS */
+.my-element {
+  color: var(--color-primary);
+  padding: var(--spacing-16);
+  border-radius: var(--radius-2);
+}
+```
+
+```tsx
+// Usage in TypeScript
+import { colors, spacing } from '@meraki-ds/react/tokens';
+
+const style = { color: colors.primary, padding: spacing['16'] };
+```
+
+---
+
+## Color Primitives
+
+The full color palette drawn from the Pfizer brand. Each hue has 10 stops from lightest (10) to darkest (100).
+
+<ColorTokens />
+
+---
+
+## Semantic Colors
+
+Role-based tokens that map to the palette above. These change between light and dark mode.
+
+<SemanticColors />
+
+---
+
+## Typography
+
+Font family: **Pfizer Diatype** (sans), **Pfizer Diatype Mono** (code), **Pfizer Tomorrow** (display alternate).
+
+All type styles use a line-height of **1.2** and letter-spacing of **0px** (regular) or **-1px** (tight, for headlines/display).
+
+<TypographyScale />
+
+---
+
+## Spacing
+
+A compact spacing scale used for padding, margins, and gaps.
+
+<SpacingScale />
+
+---
+
+## Border Radius
+
+The radius scale from subtle rounding to fully circular. Meraki supports both "round" and "sharp" modes.
+
+<RadiusScale />
+
+---
+
+## Shadows
+
+Elevation levels for layering and depth.
+
+<ShadowScale />

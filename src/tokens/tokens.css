@@ -1,0 +1,353 @@
+/* ============================================================
+   Color Primitives
+   ============================================================ */
+
+:root {
+  --ref-color-black: #000000;
+  --ref-color-white: #ffffff;
+
+  --ref-color-gray-100: #171717;
+  --ref-color-gray-90: #292929;
+  --ref-color-gray-80: #3d3d3d;
+  --ref-color-gray-70: #525252;
+  --ref-color-gray-60: #666666;
+  --ref-color-gray-50: #999999;
+  --ref-color-gray-40: #b3b3b3;
+  --ref-color-gray-30: #c9c9c9;
+  --ref-color-gray-20: #e0e0e0;
+  --ref-color-gray-10: #f0f0f0;
+
+  --ref-color-blue-100: #00003a;
+  --ref-color-blue-90: #000067;
+  --ref-color-blue-80: #00009d;
+  --ref-color-blue-70: #0000c9;
+  --ref-color-blue-60: #2e29ff;
+  --ref-color-blue-50: #3578ff;
+  --ref-color-blue-40: #6397ff;
+  --ref-color-blue-30: #9cc0ff;
+  --ref-color-blue-20: #cfdfff;
+  --ref-color-blue-10: #e8f2ff;
+
+  --ref-color-cyan-100: #001928;
+  --ref-color-cyan-90: #002942;
+  --ref-color-cyan-80: #003e65;
+  --ref-color-cyan-70: #005589;
+  --ref-color-cyan-60: #006eb2;
+  --ref-color-cyan-50: #0095ff;
+  --ref-color-cyan-40: #35b6ff;
+  --ref-color-cyan-30: #68d1ff;
+  --ref-color-cyan-20: #aee4ff;
+  --ref-color-cyan-10: #e0f5ff;
+
+  --ref-color-teal-100: #001c1b;
+  --ref-color-teal-90: #00292b;
+  --ref-color-teal-80: #003e3e;
+  --ref-color-teal-70: #005b54;
+  --ref-color-teal-60: #007c70;
+  --ref-color-teal-50: #00b7a5;
+  --ref-color-teal-40: #29ccb4;
+  --ref-color-teal-30: #69e3ce;
+  --ref-color-teal-20: #adede0;
+  --ref-color-teal-10: #d9f9f5;
+
+  --ref-color-green-100: #021c00;
+  --ref-color-green-90: #042b00;
+  --ref-color-green-80: #063f00;
+  --ref-color-green-70: #075900;
+  --ref-color-green-60: #097900;
+  --ref-color-green-50: #12b000;
+  --ref-color-green-40: #4dcc3f;
+  --ref-color-green-30: #7edb71;
+  --ref-color-green-20: #b8e8b3;
+  --ref-color-green-10: #e1f4df;
+
+  --ref-color-yellow-100: #211700;
+  --ref-color-yellow-90: #382300;
+  --ref-color-yellow-80: #593800;
+  --ref-color-yellow-70: #724800;
+  --ref-color-yellow-60: #945e00;
+  --ref-color-yellow-50: #f3a600;
+  --ref-color-yellow-40: #ffc522;
+  --ref-color-yellow-30: #ffd36e;
+  --ref-color-yellow-20: #ffe39e;
+  --ref-color-yellow-10: #fff4d4;
+
+  --ref-color-orange-100: #260c00;
+  --ref-color-orange-90: #421800;
+  --ref-color-orange-80: #662400;
+  --ref-color-orange-70: #8f2600;
+  --ref-color-orange-60: #bf3300;
+  --ref-color-orange-50: #ff6600;
+  --ref-color-orange-40: #ff8642;
+  --ref-color-orange-30: #ffae8a;
+  --ref-color-orange-20: #ffdabb;
+  --ref-color-orange-10: #ffece3;
+
+  --ref-color-red-100: #26000b;
+  --ref-color-red-90: #440010;
+  --ref-color-red-80: #6c001a;
+  --ref-color-red-70: #990025;
+  --ref-color-red-60: #c00727;
+  --ref-color-red-50: #ff3241;
+  --ref-color-red-40: #ff6969;
+  --ref-color-red-30: #ff9696;
+  --ref-color-red-20: #ffcccc;
+  --ref-color-red-10: #ffe9e9;
+
+  --ref-color-magenta-100: #2a0a18;
+  --ref-color-magenta-90: #4d0025;
+  --ref-color-magenta-80: #740937;
+  --ref-color-magenta-70: #9d0045;
+  --ref-color-magenta-60: #c50067;
+  --ref-color-magenta-50: #ff339e;
+  --ref-color-magenta-40: #ff69be;
+  --ref-color-magenta-30: #ff9cde;
+  --ref-color-magenta-20: #ffccfa;
+  --ref-color-magenta-10: #fde9ff;
+
+  --ref-color-violet-100: #1f142e;
+  --ref-color-violet-90: #321a56;
+  --ref-color-violet-80: #441c82;
+  --ref-color-violet-70: #5a21b0;
+  --ref-color-violet-60: #6d26d8;
+  --ref-color-violet-50: #9369ff;
+  --ref-color-violet-40: #a68aff;
+  --ref-color-violet-30: #bfa7ff;
+  --ref-color-violet-20: #e2cfff;
+  --ref-color-violet-10: #f3e9ff;
+}
+
+/* ============================================================
+   Spacing Primitives
+   ============================================================ */
+
+:root {
+  --spacing-0: 0px;
+  --spacing-2: 2px;
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+
+  --layout-margin: 24px;
+  --layout-section: 56px;
+  --layout-gutter: 16px;
+
+  --component-vertical-space: 24px;
+  --component-inset-padding: 24px;
+  --component-inset-padding-tb: 20px;
+  --component-horizontal-space: 16px;
+  --component-border-radius: 20px;
+
+  --breakpoint-sm: 375px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 3440px;
+}
+
+/* ============================================================
+   Radius Primitives
+   ============================================================ */
+
+:root {
+  --ref-radius-round-4: 4px;
+  --ref-radius-round-8: 8px;
+  --ref-radius-round-16: 16px;
+  --ref-radius-round-24: 24px;
+  --ref-radius-round-32: 32px;
+  --ref-radius-round-40: 40px;
+  --ref-radius-round-48: 48px;
+  --ref-radius-round-56: 56px;
+
+  --ref-radius-sharp-0: 0px;
+  --ref-radius-sharp-2: 2px;
+  --ref-radius-sharp-4: 4px;
+  --ref-radius-sharp-6: 6px;
+}
+
+/* ============================================================
+   Dynamic Radius (Round Mode)
+   ============================================================ */
+
+:root {
+  --radius-1: 8px;
+  --radius-2: 16px;
+  --radius-3: 24px;
+  --radius-4: 32px;
+  --radius-5: 40px;
+  --radius-6: 48px;
+  --radius-7: 56px;
+  --radius-full: 10000px;
+}
+
+/* ============================================================
+   Typography
+   ============================================================ */
+
+:root {
+  --font-family-sans: 'Pfizer Diatype', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'Pfizer Diatype Mono', 'Fira Code', Consolas, monospace;
+  --font-family-extended: 'Pfizer Diatype Extended', sans-serif;
+  --font-family-condensed: 'Pfizer Diatype Condensed', sans-serif;
+  --font-family-tomorrow: 'Pfizer Tomorrow', sans-serif;
+
+  --font-size-display: 64px;
+  --font-size-headline-lg: 48px;
+  --font-size-headline-m: 42px;
+  --font-size-headline-s: 34px;
+  --font-size-title-lg: 32px;
+  --font-size-title-m: 24px;
+  --font-size-title-s: 20px;
+  --font-size-body-lg: 20px;
+  --font-size-body-m: 16px;
+  --font-size-body-s: 14px;
+  --font-size-body-xs: 12px;
+  --font-size-label-lg: 20px;
+  --font-size-label-m: 16px;
+  --font-size-label-s: 12px;
+  --font-size-label-xs: 12px;
+  --font-size-button-lg: 20px;
+  --font-size-button-m: 16px;
+  --font-size-button-s: 12px;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --letter-spacing-regular: 0px;
+  --letter-spacing-tight: -1px;
+}
+
+/* ============================================================
+   Shadows
+   ============================================================ */
+
+:root {
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* ============================================================
+   Transitions
+   ============================================================ */
+
+:root {
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   Semantic Color Tokens — Light Mode
+   ============================================================ */
+
+[data-theme="light"],
+:root {
+  --color-primary: #2e29ff;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #cfdfff;
+  --color-on-primary-container: #0000c9;
+
+  --color-secondary: #006eb2;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #aee4ff;
+  --color-on-secondary-container: #005589;
+
+  --color-tertiary: #666666;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #e0e0e0;
+  --color-on-tertiary-container: #525252;
+
+  --color-background: #ffffff;
+  --color-on-background: #00003a;
+  --color-surface: #ffffff;
+  --color-on-surface: #00003a;
+  --color-surface-variant: #f0f0f0;
+  --color-on-surface-variant: #3d3d3d;
+
+  --color-inverse-surface: #525252;
+  --color-inverse-on-surface: #f0f0f0;
+  --color-inverse-primary: #cfdfff;
+
+  --color-outline: #666666;
+  --color-outline-variant: #c9c9c9;
+  --color-scrim: rgba(0, 0, 0, 0.5);
+
+  --color-layer-1: #ffffff;
+  --color-layer-2: #f0f0f0;
+  --color-layer-3: #ffffff;
+  --color-on-layer: #00003a;
+
+  --color-positive: #007c70;
+  --color-on-positive: #ffffff;
+  --color-positive-container: #adede0;
+  --color-on-positive-container: #005b54;
+
+  --color-positive-legacy: #097900;
+  --color-on-positive-legacy: #ffffff;
+  --color-positive-legacy-container: #b8e8b3;
+  --color-on-positive-legacy-container: #075900;
+
+  --color-negative: #c00727;
+  --color-on-negative: #ffffff;
+  --color-negative-container: #ffcccc;
+  --color-on-negative-container: #990025;
+
+  --color-cautionary: #945e00;
+  --color-on-cautionary: #ffffff;
+  --color-cautionary-container: #ffe39e;
+  --color-on-cautionary-container: #724800;
+
+  --color-neutral: #666666;
+  --color-on-neutral: #ffffff;
+  --color-neutral-container: #e0e0e0;
+  --color-on-neutral-container: #525252;
+
+  /* Action State — Primary */
+  --color-action-primary-bg: #2e29ff;
+  --color-action-primary-text: #ffffff;
+  --color-action-primary-inverse-bg: #ffffff;
+  --color-action-primary-inverse-text: #2e29ff;
+
+  /* Action State — Secondary */
+  --color-action-secondary-bg: transparent;
+  --color-action-secondary-text: #00003a;
+  --color-action-secondary-stroke: #c9c9c9;
+  --color-action-secondary-inverse-text: #ffffff;
+  --color-action-secondary-inverse-stroke: #c9c9c9;
+}
+
+/* ============================================================
+   Semantic Color Tokens — Dark Mode
+   ============================================================ */
+
+[data-theme="dark"] {
+  --color-primary: #9cc0ff;
+  --color-on-primary: #000067;
+  --color-primary-container: #00009d;
+  --color-on-primary-container: #e8f2ff;
+
+  --color-secondary: #68d1ff;
+  --color-on-secondary: #002942;
+  --color-secondary-container: #003e65;
+  --color-on-secondary-container: #e0f5ff;
+
+  --color-tertiary: #c9c9c9;
+  --color-on-tertiary: #292929;
+  --color-tertiary-container: #3d3d3d;
+  --color-on-tertiary-container: #f0f0f0;
+
+  --color-background: #000000;
+  --color-on-background: #e8f2ff;
+  --color-surface: #000000;
+  --color-on-surface: #e8f2ff;
+  --color-surface-variant: #171717;
+  --color-on-surface-variant: #c9c9c9;
+
+  --color-outline: #e0e0e0;
+  --color-outline-variant: #3d3d3d;
+}
