@@ -4,6 +4,6 @@ const InformationCircle = forwardRef<SVGSVGElement, IconProps>(({
   size = 24,
   style,
   ...props
-}, ref) => <svg style={style} width={size} height={size} fill="currentColor" viewBox="0 0 32 32" ref={ref} {...props}><path d="M16.8743 8H15.125V11H16.8743V8ZM16.8743 13H15.125V24H16.8743V13Z" fill="currentColor" /><path d="M16.016 30.9027C7.79604 30.9027 1.10938 24.2147 1.10938 15.996C1.10937 7.77334 7.79604 1.08667 16.016 1.08667C24.236 1.08667 30.9227 7.77334 30.9227 15.9933C30.9227 24.2133 24.236 30.9 16.016 30.9V30.9027ZM16.016 2.83734C8.76138 2.83734 2.85871 8.74 2.85871 15.9947C2.85871 23.2493 8.76138 29.152 16.016 29.152C23.2707 29.152 29.1734 23.2493 29.1734 15.9947C29.1734 8.74134 23.2707 2.83734 16.016 2.83734Z" fill="currentColor" /></svg>);
+}, ref) => <svg style={{ color: 'var(--color-on-background)', ...style }} width={size} height={size} fill="currentColor" viewBox="0 0 32 32" ref={ref} {...props}><path d="M16.8743 8H15.125V11H16.8743V8ZM16.8743 13H15.125V24H16.8743V13Z" fill="currentColor" /><path d="M16.016 30.9027C7.79604 30.9027 1.10938 24.2147 1.10938 15.996C1.10937 7.77334 7.79604 1.08667 16.016 1.08667C24.236 1.08667 30.9227 7.77334 30.9227 15.9933C30.9227 24.2133 24.236 30.9 16.016 30.9V30.9027ZM16.016 2.83734C8.76138 2.83734 2.85871 8.74 2.85871 15.9947C2.85871 23.2493 8.76138 29.152 16.016 29.152C23.2707 29.152 29.1734 23.2493 29.1734 15.9947C29.1734 8.74134 23.2707 2.83734 16.016 2.83734Z" fill="currentColor" /></svg>);
 InformationCircle.displayName = "InformationCircle";
 export { InformationCircle };

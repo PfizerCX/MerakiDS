@@ -17,7 +17,7 @@ export const Icon = forwardRef<SVGSVGElement, IconProps>(
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      style={style}
+      style={{ color: 'var(--color-on-background)', ...style }}
       {...props}
     >
       {children}

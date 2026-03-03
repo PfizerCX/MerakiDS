@@ -441,6 +441,11 @@ export const iconMeta = [
     "filename": "chevron-left.svg"
   },
   {
+    "name": "chevron-left-circle",
+    "componentName": "ChevronLeftCircle",
+    "filename": "chevron-left-circle.svg"
+  },
+  {
     "name": "chevron-right-circle",
     "componentName": "ChevronRightCircle",
     "filename": "chevron-right-circle.svg"
@@ -921,6 +926,11 @@ export const iconMeta = [
     "filename": "health.svg"
   },
   {
+    "name": "health-problem",
+    "componentName": "HealthProblem",
+    "filename": "health-problem.svg"
+  },
+  {
     "name": "heart",
     "componentName": "Heart",
     "filename": "heart.svg"
@@ -1251,6 +1261,11 @@ export const iconMeta = [
     "filename": "nutrition-low-fat.svg"
   },
   {
+    "name": "nutrition-vegetarian",
+    "componentName": "NutritionVegetarian",
+    "filename": "nutrition-vegetarian.svg"
+  },
+  {
     "name": "nutritionist",
     "componentName": "Nutritionist",
     "filename": "nutritionist.svg"
@@ -1579,6 +1594,11 @@ export const iconMeta = [
     "name": "subtract",
     "componentName": "Subtract",
     "filename": "subtract.svg"
+  },
+  {
+    "name": "subtract-circled",
+    "componentName": "SubtractCircled",
+    "filename": "subtract-circled.svg"
   },
   {
     "name": "success",
