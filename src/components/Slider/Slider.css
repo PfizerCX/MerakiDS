@@ -1,0 +1,199 @@
+/* ==========================================================================
+   Slider — Meraki Design System
+   Figma source: node 19971:1841
+   States: default | dragging | disabled
+   Orientations: horizontal | vertical
+   Modes: continuous (single thumb) | range (dual thumb)
+   ========================================================================== */
+
+.mds-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-start;
+  width: 100%;
+  font-family: var(--font-family-sans);
+  user-select: none;
+  touch-action: none;
+}
+
+/* Label */
+
+.mds-slider__label {
+  font-size: var(--font-size-label-m);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  color: var(--color-on-background);
+  white-space: nowrap;
+}
+
+/* Track container — holds inactive track, active track, and handle(s) */
+
+.mds-slider__track-container {
+  position: relative;
+  width: 100%;
+  height: 78px;
+  cursor: pointer;
+}
+
+/* Inactive track (full-width background) */
+
+.mds-slider__track-inactive {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 8px;
+  margin-top: 4px;
+  transform: translateY(-50%);
+  background: var(--color-primary-container);
+  border-radius: 8px;
+}
+
+/* Active track (filled portion) */
+
+.mds-slider__track-active {
+  position: absolute;
+  top: 50%;
+  height: 8px;
+  margin-top: 4px;
+  transform: translateY(-50%);
+  background: var(--color-primary);
+  border-radius: 8px;
+}
+
+/* Handle */
+
+.mds-slider__handle {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin-top: 4px;
+  transform: translate(-50%, -50%);
+  background: var(--color-primary);
+  border-radius: 50%;
+  cursor: grab;
+  outline: none;
+  z-index: 2;
+}
+
+.mds-slider__handle:active {
+  cursor: grabbing;
+}
+
+.mds-slider__handle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Flag (tooltip showing current value above handle) */
+
+.mds-slider__flag {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 8px 8px 6px;
+  background: var(--ref-color-blue-10);
+  border-radius: var(--radius-1);
+  font-size: var(--font-size-label-m);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  color: var(--color-on-layer);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Range labels (min/max below track) */
+
+.mds-slider__range {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: -12px;
+  font-size: var(--font-size-body-s);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  color: var(--color-on-surface-variant);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   Vertical orientation
+   ============================================================ */
+
+.mds-slider[data-orientation="vertical"] {
+  width: auto;
+  height: 100%;
+  min-height: 200px;
+}
+
+.mds-slider[data-orientation="vertical"] .mds-slider__track-container {
+  width: 84px;
+  height: 100%;
+  min-height: 200px;
+}
+
+.mds-slider[data-orientation="vertical"] .mds-slider__track-inactive {
+  top: 0;
+  left: 50%;
+  right: auto;
+  bottom: 0;
+  width: 8px;
+  height: auto;
+  margin-top: 0;
+  margin-left: 4px;
+  transform: translateX(-50%);
+}
+
+.mds-slider[data-orientation="vertical"] .mds-slider__track-active {
+  left: 50%;
+  right: auto;
+  top: auto;
+  width: 8px;
+  height: auto;
+  margin-top: 0;
+  margin-left: 4px;
+  transform: translateX(-50%);
+}
+
+.mds-slider[data-orientation="vertical"] .mds-slider__handle {
+  left: 50%;
+  top: auto;
+  margin-top: 0;
+  margin-left: 4px;
+  transform: translate(-50%, 50%);
+}
+
+.mds-slider[data-orientation="vertical"] .mds-slider__flag {
+  bottom: auto;
+  left: auto;
+  right: calc(100% + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mds-slider[data-orientation="vertical"] .mds-slider__range {
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 84px;
+  height: 100%;
+  min-height: 200px;
+  margin-top: 0;
+}
+
+/* ============================================================
+   Disabled state
+   ============================================================ */
+
+.mds-slider[data-disabled] {
+  opacity: 0.3;
+  pointer-events: none;
+}

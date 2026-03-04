@@ -1,0 +1,255 @@
+/* ==========================================================================
+   Toggle (Switch) — Meraki Design System
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   Container
+   --------------------------------------------------------------------------- */
+
+.mds-toggle {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-family: var(--font-family-sans);
+}
+
+.mds-toggle[data-disabled] {
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Label
+   --------------------------------------------------------------------------- */
+
+.mds-toggle__label-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mds-toggle__label {
+  font-size: var(--font-size-label-m);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  color: var(--color-on-background);
+  cursor: pointer;
+}
+
+.mds-toggle__context-label {
+  font-size: var(--font-size-body-s);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  color: var(--color-on-surface-variant);
+}
+
+/* ---------------------------------------------------------------------------
+   Control (switch + optional left/right labels)
+   --------------------------------------------------------------------------- */
+
+.mds-toggle__control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.mds-toggle__switch-label {
+  font-size: var(--font-size-body-s);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  color: var(--color-on-surface-variant);
+  width: 50px;
+  transition: opacity var(--transition-fast);
+}
+
+.mds-toggle__switch-label--left {
+  text-align: right;
+}
+
+/* Dim the inactive switch label based on checked state */
+
+.mds-toggle__control:has(.mds-toggle__input:not(:checked)) .mds-toggle__switch-label--right {
+  opacity: 0.3;
+}
+
+.mds-toggle__control:has(.mds-toggle__input:checked) .mds-toggle__switch-label--left {
+  opacity: 0.3;
+}
+
+/* ---------------------------------------------------------------------------
+   Switch — Track & Handle
+   --------------------------------------------------------------------------- */
+
+.mds-toggle__switch {
+  position: relative;
+  display: inline-flex;
+  width: 52px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.mds-toggle__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mds-toggle__track {
+  position: relative;
+  display: block;
+  width: 52px;
+  height: 32px;
+  border-radius: 100px;
+  background: var(--color-surface-variant);
+  border: 2px solid var(--color-outline);
+  cursor: pointer;
+  overflow: visible;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.mds-toggle__handle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 100px;
+  background: var(--color-outline);
+  top: 6px;
+  left: 6px;
+  transition:
+    width var(--transition-fast),
+    height var(--transition-fast),
+    top var(--transition-fast),
+    left var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+/* State layer (hover/focus ripple) */
+
+.mds-toggle__handle::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  transition: background-color var(--transition-fast);
+}
+
+/* ---------------------------------------------------------------------------
+   Checked State
+   --------------------------------------------------------------------------- */
+
+.mds-toggle__input:checked + .mds-toggle__track {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.mds-toggle__input:checked + .mds-toggle__track .mds-toggle__handle {
+  width: 24px;
+  height: 24px;
+  background: var(--ref-color-white, #fff);
+  left: 24px;
+  top: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   Hover
+   --------------------------------------------------------------------------- */
+
+/* Unchecked hover */
+.mds-toggle__switch:hover .mds-toggle__input:not(:disabled):not(:checked) + .mds-toggle__track .mds-toggle__handle {
+  background: var(--color-on-surface-variant);
+}
+
+.mds-toggle__switch:hover .mds-toggle__input:not(:disabled):not(:checked) + .mds-toggle__track .mds-toggle__handle::before {
+  background: rgba(61, 61, 61, 0.08);
+}
+
+/* Checked hover */
+.mds-toggle__switch:hover .mds-toggle__input:not(:disabled):checked + .mds-toggle__track .mds-toggle__handle {
+  background: var(--color-primary-container);
+}
+
+.mds-toggle__switch:hover .mds-toggle__input:not(:disabled):checked + .mds-toggle__track .mds-toggle__handle::before {
+  background: rgba(240, 240, 240, 0.08);
+}
+
+/* ---------------------------------------------------------------------------
+   Focus
+   --------------------------------------------------------------------------- */
+
+.mds-toggle__input:focus-visible + .mds-toggle__track {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Unchecked focus */
+.mds-toggle__input:focus-visible:not(:checked) + .mds-toggle__track .mds-toggle__handle {
+  background: var(--color-on-surface-variant);
+}
+
+.mds-toggle__input:focus-visible:not(:checked) + .mds-toggle__track .mds-toggle__handle::before {
+  background: rgba(61, 61, 61, 0.08);
+}
+
+/* Checked focus */
+.mds-toggle__input:focus-visible:checked + .mds-toggle__track .mds-toggle__handle {
+  background: var(--color-primary-container);
+}
+
+.mds-toggle__input:focus-visible:checked + .mds-toggle__track .mds-toggle__handle::before {
+  background: rgba(240, 240, 240, 0.08);
+}
+
+/* ---------------------------------------------------------------------------
+   Pressed / Active
+   --------------------------------------------------------------------------- */
+
+/* Unchecked pressed — handle grows to 28px */
+.mds-toggle__switch:active .mds-toggle__input:not(:disabled):not(:checked) + .mds-toggle__track .mds-toggle__handle {
+  width: 28px;
+  height: 28px;
+  top: 0;
+  left: 0;
+  background: var(--color-on-surface-variant);
+}
+
+.mds-toggle__switch:active .mds-toggle__input:not(:disabled):not(:checked) + .mds-toggle__track .mds-toggle__handle::before {
+  background: rgba(61, 61, 61, 0.08);
+}
+
+/* Checked pressed — handle grows to 28px */
+.mds-toggle__switch:active .mds-toggle__input:not(:disabled):checked + .mds-toggle__track .mds-toggle__handle {
+  width: 28px;
+  height: 28px;
+  top: 0;
+  left: 20px;
+  background: var(--color-primary-container);
+}
+
+.mds-toggle__switch:active .mds-toggle__input:not(:disabled):checked + .mds-toggle__track .mds-toggle__handle::before {
+  background: rgba(240, 240, 240, 0.08);
+}
+
+/* ---------------------------------------------------------------------------
+   Disabled
+   --------------------------------------------------------------------------- */
+
+.mds-toggle__switch:has(.mds-toggle__input:disabled) {
+  opacity: 0.3;
+}
+
+.mds-toggle__input:disabled + .mds-toggle__track {
+  cursor: not-allowed;
+}

@@ -1,0 +1,135 @@
+/* ==========================================================================
+   PinCode — Meraki Design System
+   Figma source: node 32677:5813
+   ========================================================================== */
+
+.mds-pincode {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-family-sans);
+}
+
+/* Label ------------------------------------------------------------------ */
+
+.mds-pincode-label {
+  font-size: var(--font-size-label-m);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  color: var(--color-on-background);
+}
+
+/* PIN group -------------------------------------------------------------- */
+
+.mds-pincode-group {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Individual field ------------------------------------------------------- */
+
+.mds-pincode-field {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mds-pincode-input {
+  appearance: none;
+  border: none;
+  border-bottom: 2px solid var(--color-outline);
+  border-radius: 0;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  padding: 0 0 8px;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  text-align: center;
+  color: var(--color-on-background);
+  caret-color: var(--color-primary);
+  transition:
+    border-color var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.mds-pincode-input::placeholder {
+  color: var(--color-on-surface-variant);
+}
+
+/* Focus — individual field */
+
+.mds-pincode-input:focus {
+  border-color: var(--color-primary);
+}
+
+/* Helper text ------------------------------------------------------------ */
+
+.mds-pincode-helper {
+  margin: 0;
+  font-size: var(--font-size-body-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  color: var(--color-on-surface-variant);
+}
+
+/* ========================================================================
+   State variants
+   ======================================================================== */
+
+/* Error */
+
+.mds-pincode[data-state='error'] .mds-pincode-input {
+  border-color: var(--color-negative);
+}
+
+.mds-pincode[data-state='error'] .mds-pincode-input:focus {
+  border-color: var(--color-negative);
+}
+
+.mds-pincode[data-state='error'] .mds-pincode-helper {
+  color: var(--color-negative);
+}
+
+/* Warning */
+
+.mds-pincode[data-state='warning'] .mds-pincode-input {
+  border-color: var(--color-cautionary);
+}
+
+.mds-pincode[data-state='warning'] .mds-pincode-input:focus {
+  border-color: var(--color-cautionary);
+}
+
+.mds-pincode[data-state='warning'] .mds-pincode-helper {
+  color: var(--color-cautionary);
+}
+
+/* Success */
+
+.mds-pincode[data-state='success'] .mds-pincode-input {
+  border-color: var(--color-positive);
+}
+
+.mds-pincode[data-state='success'] .mds-pincode-input:focus {
+  border-color: var(--color-positive);
+}
+
+.mds-pincode[data-state='success'] .mds-pincode-helper {
+  color: var(--color-positive);
+}
+
+/* Disabled */
+
+.mds-pincode[data-state='disabled'] {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.mds-pincode[data-state='disabled'] .mds-pincode-input {
+  border-color: var(--color-outline-variant);
+}

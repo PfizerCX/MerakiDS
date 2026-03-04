@@ -1,0 +1,155 @@
+/* ==========================================================================
+   DateSegmented — Meraki Design System
+   ========================================================================== */
+
+.mds-date-segmented {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: var(--font-family-sans);
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-inline-size: auto;
+}
+
+/* Legend / Group label */
+
+.mds-date-segmented__legend {
+  font-size: var(--font-size-label-m);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  color: var(--color-on-background);
+  padding: 0;
+  margin: 0;
+}
+
+/* Fields row */
+
+.mds-date-segmented__fields {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/* Individual field */
+
+.mds-date-segmented__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Field label */
+
+.mds-date-segmented__label {
+  font-size: var(--font-size-label-m);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  color: var(--color-on-background);
+  white-space: nowrap;
+}
+
+/* Required asterisk */
+
+.mds-date-segmented__required {
+  font-size: var(--font-size-label-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-negative);
+  position: relative;
+  top: -2px;
+  margin-left: 2px;
+}
+
+/* Select wrapper */
+
+.mds-date-segmented__select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-outline);
+  padding-bottom: 8px;
+  transition: border-color var(--transition-fast);
+}
+
+.mds-date-segmented__select-wrapper:focus-within {
+  border-bottom-color: var(--color-primary);
+}
+
+/* Native select */
+
+.mds-date-segmented__select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  color: var(--color-on-background);
+  cursor: pointer;
+  padding: 0;
+  padding-right: 28px;
+  min-height: 24px;
+}
+
+.mds-date-segmented__select::-ms-expand {
+  display: none;
+}
+
+.mds-date-segmented__select option {
+  font-family: var(--font-family-sans);
+  color: var(--color-on-background);
+  background: var(--color-surface);
+}
+
+/* Chevron icon */
+
+.mds-date-segmented__chevron {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-on-surface-variant);
+  flex-shrink: 0;
+}
+
+/* Helper text */
+
+.mds-date-segmented__helper {
+  margin: 0;
+  font-size: var(--font-size-body-s);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  color: var(--color-on-surface-variant);
+}
+
+/* Error state */
+
+.mds-date-segmented[data-error] .mds-date-segmented__select-wrapper {
+  border-bottom-color: var(--color-negative);
+}
+
+.mds-date-segmented[data-error] .mds-date-segmented__select-wrapper:focus-within {
+  border-bottom-color: var(--color-negative);
+}
+
+.mds-date-segmented[data-error] .mds-date-segmented__helper {
+  color: var(--color-negative);
+}
+
+/* Disabled state */
+
+.mds-date-segmented[data-disabled] {
+  opacity: 0.38;
+  pointer-events: none;
+}
