@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, type ReactElement } from 'react';
 import type { IconProps } from './Icon';
 
 export interface ChevronLeftCircleProps extends IconProps {
@@ -6,7 +6,7 @@ export interface ChevronLeftCircleProps extends IconProps {
   weight?: 100 | 200 | 300 | 400 | 500;
 }
 
-const paths: Record<100 | 200 | 300 | 400 | 500, JSX.Element> = {
+const paths: Record<100 | 200 | 300 | 400 | 500, ReactElement> = {
   100: (
     <>
       <path d="M16 30.4999C8.00533 30.4999 1.5 23.9959 1.5 15.9999C1.5 8.00394 8.00533 1.49994 16 1.49994C23.9947 1.49994 30.5 8.00394 30.5 15.9999C30.5 23.9959 23.9947 30.4999 16 30.4999ZM16 2.49994C8.556 2.49994 2.5 8.55594 2.5 15.9999C2.5 23.4439 8.556 29.4999 16 29.4999C23.444 29.4999 29.5 23.4439 29.5 15.9999C29.5 8.55594 23.444 2.49994 16 2.49994Z" fill="currentColor" />

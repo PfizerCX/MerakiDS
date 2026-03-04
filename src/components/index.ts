@@ -14,6 +14,7 @@ export * from './HeroCorporate';
 export * from './HeroStacked';
 export * from './HeroLegacyGraphic';
 export * from './HeroLegacyImage';
+export * from './Notification';
 export * from './PageBreak';
 export * from './Slideshow';
 export * from './PageBreakLegacy';

@@ -1,0 +1,173 @@
+/* ==========================================================================
+   Notification / Banner — Meraki Design System
+   Figma source: node 37892:14668
+   Types: informational | warning | error | success
+   Alignment: horizontal | vertical
+   ========================================================================== */
+
+.mds-notification {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  box-sizing: border-box;
+  border-radius: 0;
+  font-family: var(--font-family-sans);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+}
+
+.mds-notification__inner {
+  display: flex;
+  gap: var(--component-horizontal-space);
+  align-items: flex-start;
+  padding-block: var(--spacing-12);
+  padding-inline: var(--component-inset-padding);
+  box-sizing: border-box;
+}
+
+.mds-notification[data-alignment='horizontal'] .mds-notification__inner {
+  align-items: center;
+}
+
+.mds-notification__icon {
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.mds-notification__icon svg {
+  color: inherit;
+}
+
+/* Inverted: icons and close use white per Figma (override icon default inline color) */
+.mds-notification[data-inverted] .mds-notification__icon svg,
+.mds-notification[data-inverted] .mds-notification__close svg {
+  color: var(--ref-color-white) !important;
+}
+
+.mds-notification__content {
+  display: flex;
+  flex: 1 1 0;
+  gap: var(--component-horizontal-space);
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.mds-notification[data-alignment='vertical'] .mds-notification__content {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.mds-notification__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.mds-notification__title {
+  margin: 0;
+  font-size: var(--font-size-title-s);
+  font-weight: var(--font-weight-medium);
+}
+
+.mds-notification__body {
+  margin: 0;
+  font-size: var(--font-size-body-s);
+  font-weight: var(--font-weight-regular);
+}
+
+.mds-notification__action {
+  flex-shrink: 0;
+}
+
+.mds-notification__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--radius-7);
+  color: inherit;
+  transition:
+    background-color var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.mds-notification__close:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.mds-notification__close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.mds-notification[data-inverted] .mds-notification__close:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ---------------------------------------------------------------------------
+   Type: Informational
+   --------------------------------------------------------------------------- */
+
+.mds-notification[data-type='informational'] {
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+.mds-notification[data-type='informational'][data-inverted] {
+  background-color: var(--ref-color-blue-80);
+  color: var(--ref-color-white);
+}
+
+/* ---------------------------------------------------------------------------
+   Type: Warning
+   --------------------------------------------------------------------------- */
+
+.mds-notification[data-type='warning'] {
+  background-color: var(--color-cautionary-container);
+  color: var(--color-on-cautionary-container);
+}
+
+.mds-notification[data-type='warning'][data-inverted] {
+  background-color: var(--ref-color-yellow-70);
+  color: var(--ref-color-white);
+}
+
+/* ---------------------------------------------------------------------------
+   Type: Error
+   --------------------------------------------------------------------------- */
+
+.mds-notification[data-type='error'] {
+  background-color: var(--color-negative-container);
+  color: var(--color-on-negative-container);
+}
+
+.mds-notification[data-type='error'][data-inverted] {
+  background-color: var(--ref-color-red-70);
+  color: var(--ref-color-white);
+}
+
+/* ---------------------------------------------------------------------------
+   Type: Success
+   --------------------------------------------------------------------------- */
+
+.mds-notification[data-type='success'] {
+  background-color: var(--color-positive-container);
+  color: var(--color-on-positive-container);
+}
+
+.mds-notification[data-type='success'][data-inverted] {
+  background-color: var(--ref-color-green-70);
+  color: var(--ref-color-white);
+}
