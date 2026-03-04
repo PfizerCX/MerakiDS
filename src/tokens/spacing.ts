@@ -14,23 +14,39 @@ export const layoutSpacing = {
   gutter: 'var(--layout-gutter)',
 } as const;
 
+export const componentLayout = {
+  insetMinWidth: 'var(--component-inset-min-width)',
+  insetMaxWidth: 'var(--component-inset-max-width)',
+} as const;
+
 export const componentSpacing = {
-  verticalSpace: 'var(--component-vertical-space)',
-  insetPadding: 'var(--component-inset-padding)',
-  insetPaddingTb: 'var(--component-inset-padding-tb)',
   horizontalSpace: 'var(--component-horizontal-space)',
+  verticalSpace: 'var(--component-vertical-space)',
+  insetPaddingT: 'var(--component-inset-padding-t)',
+  insetPadding: 'var(--component-inset-padding)',
   borderRadius: 'var(--component-border-radius)',
 } as const;
 
+export const patternSpacing = {
+  insetPaddingTb: 'var(--pattern-inset-padding-tb)',
+  insetPaddingLr: 'var(--pattern-inset-padding-lr)',
+} as const;
+
 export type ComponentSpacingToken = keyof typeof componentSpacing;
+export type ComponentLayoutToken = keyof typeof componentLayout;
 
 export const breakpoints = {
   sm: 375,
+  smMax: 767,
   md: 768,
+  mdMax: 1023,
   lg: 1024,
+  lgMax: 1440,
   xl: 3440,
+  xlMax: 3440,
 } as const;
 
 export type SpacingToken = keyof typeof spacing;
 export type LayoutSpacingToken = keyof typeof layoutSpacing;
+export type PatternSpacingToken = keyof typeof patternSpacing;
 export type BreakpointToken = keyof typeof breakpoints;
