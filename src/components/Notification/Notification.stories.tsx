@@ -32,6 +32,8 @@ const meta: Meta<typeof NotificationBanner> = {
     content:
       'Lorem ipsum dolor sit amet. Qui optio dolores est animi deserunt non suscipit fuga. Et architecto eum dolorum praesentium ex et.',
     actionLabel: 'Button Label',
+    onClose: () => {},
+    onAction: () => {},
   },
 };
 

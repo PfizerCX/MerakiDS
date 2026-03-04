@@ -98,7 +98,7 @@ const NotificationBanner = forwardRef<HTMLDivElement, NotificationProps>(
             </Button>
           )}
         </div>
-        {showClose && (
+        {showClose && onClose != null && (
           <button
             type="button"
             className="mds-notification__close"
