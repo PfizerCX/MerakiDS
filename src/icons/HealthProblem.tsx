@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, type ReactElement } from 'react';
 import type { IconProps } from './Icon';
 
 export interface HealthProblemProps extends IconProps {
@@ -6,7 +6,7 @@ export interface HealthProblemProps extends IconProps {
   weight?: 100 | 200 | 300 | 400 | 500;
 }
 
-const paths: Record<100 | 200 | 300 | 400 | 500, JSX.Element> = {
+const paths: Record<100 | 200 | 300 | 400 | 500, ReactElement> = {
   100: (
     <>
       <path d="M16.2087 28.3573L15.762 29.252L16.8554 29.7986L17.302 28.9053L16.2087 28.3573ZM19.11 17.404L18.4034 18.1106L21.938 21.6466L22.6447 20.94L19.11 17.404ZM26.8887 17.404L23.3527 20.94L24.0594 21.6466L27.5954 18.1106L26.8887 17.404ZM24.0594 22.3533L23.3527 23.06L26.8887 26.596L27.5954 25.8893L24.0594 22.3533ZM21.9487 22.344L18.402 25.8893L19.11 26.596L22.6554 23.0506L21.9487 22.344Z" fill="currentColor" />

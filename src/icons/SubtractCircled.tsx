@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, type ReactElement } from 'react';
 import type { IconProps } from './Icon';
 
 export interface SubtractCircledProps extends IconProps {
@@ -6,7 +6,7 @@ export interface SubtractCircledProps extends IconProps {
   weight?: 100 | 200 | 300 | 400 | 500;
 }
 
-const paths: Record<100 | 200 | 300 | 400 | 500, JSX.Element> = {
+const paths: Record<100 | 200 | 300 | 400 | 500, ReactElement> = {
   100: (
     <>
       <path d="M25 15.5001H7V16.5001H25V15.5001Z" fill="currentColor" />

@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, type ReactElement } from 'react';
 import type { IconProps } from './Icon';
 
 export interface HomeProps extends IconProps {
@@ -6,7 +6,7 @@ export interface HomeProps extends IconProps {
   weight?: 100 | 200 | 300 | 400 | 500;
 }
 
-const paths: Record<100 | 200 | 300 | 400 | 500, JSX.Element> = {
+const paths: Record<100 | 200 | 300 | 400 | 500, ReactElement> = {
   100: (
     <>
       <path d="M20.5 28H19.5V21C19.4989 20.0721 19.1299 19.1824 18.4737 18.5263C17.8176 17.8701 16.9279 17.5011 16 17.5C15.0721 17.5011 14.1824 17.8701 13.5263 18.5263C12.8701 19.1824 12.5011 20.0721 12.5 21V27.9947H11.5V21C11.5014 19.807 11.976 18.6632 12.8196 17.8196C13.6632 16.976 14.807 16.5014 16 16.5C17.193 16.5014 18.3368 16.976 19.1804 17.8196C20.024 18.6632 20.4986 19.807 20.5 21V28Z" fill="currentColor" />
