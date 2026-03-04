@@ -1,0 +1,139 @@
+/* ==========================================================================
+   CardSimple — Meraki Design System
+   Figma source: node 40399:6089
+   A card with headline, optional body text, and optional icon slots.
+   Variants: base, solid, outline, outline-inverse
+   ========================================================================== */
+
+.mds-card-simple {
+  font-family: var(--font-family-sans);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  align-items: flex-start;
+  justify-content: flex-end;
+  min-width: 250px;
+  max-width: 464px;
+  padding: var(--component-inset-padding);
+  border-radius: var(--radius-3);
+  overflow: hidden;
+  transition:
+    box-shadow var(--transition-fast),
+    border-width var(--transition-fast),
+    padding var(--transition-fast);
+}
+
+/* ---------- Variant: Base ---------- */
+
+.mds-card-simple[data-variant='base'] {
+  background-color: var(--color-layer-1);
+  box-shadow: var(--shadow-center-md);
+  color: var(--color-on-layer);
+}
+
+.mds-card-simple[data-variant='base']:hover {
+  box-shadow: var(--shadow-center-lg);
+}
+
+/* ---------- Variant: Solid ---------- */
+
+.mds-card-simple[data-variant='solid'] {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.mds-card-simple[data-variant='solid']:hover {
+  box-shadow: var(--shadow-center-lg);
+}
+
+/* ---------- Variant: Outline ---------- */
+
+.mds-card-simple[data-variant='outline'] {
+  background-color: var(--color-layer-1);
+  border: 2px solid var(--color-primary);
+  color: var(--color-on-layer);
+}
+
+.mds-card-simple[data-variant='outline']:hover {
+  border-width: 3px;
+  padding: calc(var(--component-inset-padding) - 1px);
+}
+
+/* ---------- Variant: Outline Inverse ---------- */
+
+.mds-card-simple[data-variant='outline-inverse'] {
+  border: 2px solid var(--color-on-primary);
+  color: var(--color-on-primary);
+}
+
+.mds-card-simple[data-variant='outline-inverse']:hover {
+  border-width: 3px;
+  padding: calc(var(--component-inset-padding) - 1px);
+}
+
+/* ---------- Headline ---------- */
+
+.mds-card-simple__headline {
+  margin: 0;
+  font-size: var(--font-size-title-lg);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.mds-card-simple[data-variant='base'] .mds-card-simple__headline,
+.mds-card-simple[data-variant='outline'] .mds-card-simple__headline {
+  color: var(--color-primary);
+}
+
+.mds-card-simple[data-variant='solid'] .mds-card-simple__headline,
+.mds-card-simple[data-variant='outline-inverse'] .mds-card-simple__headline {
+  color: var(--color-on-primary);
+}
+
+/* ---------- Icons + Body Row ---------- */
+
+.mds-card-simple__content {
+  display: flex;
+  gap: var(--spacing-24);
+  align-items: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* ---------- Body ---------- */
+
+.mds-card-simple__body {
+  margin: 0;
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.mds-card-simple[data-variant='base'] .mds-card-simple__body,
+.mds-card-simple[data-variant='outline'] .mds-card-simple__body {
+  color: var(--color-on-surface);
+}
+
+.mds-card-simple[data-variant='solid'] .mds-card-simple__body,
+.mds-card-simple[data-variant='outline-inverse'] .mds-card-simple__body {
+  color: var(--color-on-primary);
+}
+
+/* ---------- Icon Slots ---------- */
+
+.mds-card-simple__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  overflow: hidden;
+  color: inherit;
+}

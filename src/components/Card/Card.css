@@ -45,6 +45,6 @@
 
 .mds-card[data-padding='lg'] {
   padding: var(--spacing-24);
-  padding-top: var(--component-inset-padding-tb);
-  padding-bottom: var(--component-inset-padding-tb);
+  padding-top: var(--component-inset-padding-t);
+  padding-bottom: var(--component-inset-padding-t);
 }

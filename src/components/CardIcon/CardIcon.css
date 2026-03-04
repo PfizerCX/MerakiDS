@@ -1,0 +1,71 @@
+/* ==========================================================================
+   CardIcon — Meraki Design System
+   Figma source: node 40399:6299 (Default), 40399:6304 (Hover)
+   A card integrating an icon to visually enhance its content.
+   ========================================================================== */
+
+.mds-card-icon {
+  font-family: var(--font-family-sans);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  min-width: 250px;
+  max-width: 464px;
+  padding: var(--component-inset-padding);
+  padding-top: var(--component-inset-padding-t);
+  background-color: var(--color-layer-1);
+  border-radius: var(--radius-3);
+  overflow: hidden;
+  box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.08);
+  transition: box-shadow var(--transition-fast);
+}
+
+.mds-card-icon:hover {
+  box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.16);
+}
+
+/* Header: Icon + Headline */
+
+.mds-card-icon__header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.mds-card-icon__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+.mds-card-icon__headline {
+  margin: 0;
+  font-size: var(--font-size-title-m);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  color: var(--color-primary);
+  width: 100%;
+}
+
+/* Actions: Button group */
+
+.mds-card-icon__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.mds-card-icon__actions .mds-btn {
+  width: 100%;
+}

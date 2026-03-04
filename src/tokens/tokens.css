@@ -129,21 +129,104 @@
   --spacing-12: 12px;
   --spacing-16: 16px;
   --spacing-24: 24px;
+}
 
+/* ============================================================
+   Layout Spacing (ref-spacing / layout) — responsive
+   ============================================================ */
+
+:root {
   --layout-margin: 24px;
   --layout-section: 56px;
   --layout-gutter: 16px;
 
-  --component-vertical-space: 24px;
-  --component-inset-padding: 24px;
-  --component-inset-padding-tb: 20px;
-  --component-horizontal-space: 16px;
-  --component-border-radius: 20px;
-
   --breakpoint-sm: 375px;
+  --breakpoint-sm-max: 767px;
   --breakpoint-md: 768px;
+  --breakpoint-md-max: 1023px;
   --breakpoint-lg: 1024px;
+  --breakpoint-lg-max: 1440px;
   --breakpoint-xl: 3440px;
+  --breakpoint-xl-max: 3440px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --layout-margin: 32px;
+    --layout-section: 64px;
+    --layout-gutter: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --layout-margin: 98px;
+    --layout-section: 96px;
+    --layout-gutter: 24px;
+  }
+}
+
+@media (min-width: 3440px) {
+  :root {
+    --layout-margin: 1098px;
+  }
+}
+
+/* ============================================================
+   Component Layout (ref-spacing / component-layout) — responsive
+   ============================================================ */
+
+:root {
+  --component-inset-min-width: 327px;
+  --component-inset-max-width: 727px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --component-inset-min-width: 704px;
+    --component-inset-max-width: 967px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --component-inset-min-width: 556px;
+    --component-inset-max-width: 1344px;
+  }
+}
+
+@media (min-width: 3440px) {
+  :root {
+    --component-inset-max-width: 1244px;
+  }
+}
+
+/* ============================================================
+   Component Spacing (sys-spacing / component-layout) — responsive
+   ============================================================ */
+
+:root {
+  --component-horizontal-space: var(--layout-gutter);
+  --component-vertical-space: 24px;
+  --component-inset-padding-t: 32px;
+  --component-inset-padding: 24px;
+  --component-border-radius: 20px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --component-inset-padding-t: 40px;
+    --component-inset-padding: 32px;
+  }
+}
+
+/* ============================================================
+   Pattern Layout (sys-spacing / pattern-layout)
+   ============================================================ */
+
+:root {
+  --pattern-inset-padding-tb: var(--layout-section);
+  --pattern-inset-padding-lr: var(--layout-margin);
 }
 
 /* ============================================================
@@ -229,6 +312,9 @@
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  --shadow-center-md: 0 0 32px 0 rgb(0 0 0 / 0.08);
+  --shadow-center-lg: 0 0 40px 0 rgb(0 0 0 / 0.16);
 }
 
 /* ============================================================

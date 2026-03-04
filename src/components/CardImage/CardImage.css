@@ -1,0 +1,231 @@
+/* ==========================================================================
+   CardImage — Meraki Design System
+   Figma source: node 41614:3698
+   Variants: base | large | overlap
+   ========================================================================== */
+
+.mds-card-image,
+.mds-card-image *,
+.mds-card-image *::before,
+.mds-card-image *::after {
+  box-sizing: border-box;
+}
+
+.mds-card-image {
+  font-family: var(--font-family-sans);
+  border-radius: var(--radius-3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  min-width: 264px;
+  max-width: 464px;
+  background-color: var(--color-layer-1);
+  box-shadow: var(--shadow-center-md);
+  transition: box-shadow var(--transition-fast);
+}
+
+.mds-card-image:hover {
+  box-shadow: var(--shadow-center-lg);
+}
+
+/* ---------------------------------------------------------------------------
+   Emphasized
+   --------------------------------------------------------------------------- */
+
+.mds-card-image[data-emphasized] {
+  background-color: var(--color-primary);
+}
+
+/* ---------------------------------------------------------------------------
+   Container
+   --------------------------------------------------------------------------- */
+
+.mds-card-image__container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-vertical-space);
+  padding: var(--component-inset-padding);
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------------------
+   Content block (image + copy) — base & large only
+   --------------------------------------------------------------------------- */
+
+.mds-card-image__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------------------
+   Image
+   --------------------------------------------------------------------------- */
+
+.mds-card-image__image {
+  width: 100%;
+  border-radius: var(--radius-1);
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.mds-card-image__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mds-card-image[data-image-variant='base'] .mds-card-image__image {
+  height: 160px;
+}
+
+.mds-card-image[data-image-variant='large'] .mds-card-image__image {
+  height: 374px;
+}
+
+/* ---------------------------------------------------------------------------
+   Copy block (headline + body)
+   --------------------------------------------------------------------------- */
+
+.mds-card-image__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Headline — base variant */
+
+.mds-card-image__headline {
+  margin: 0;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-title-m);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  color: var(--color-primary);
+}
+
+/* Headline — large & overlap: smaller size, truncated */
+
+.mds-card-image[data-image-variant='large'] .mds-card-image__headline,
+.mds-card-image[data-image-variant='overlap'] .mds-card-image__headline {
+  font-size: var(--font-size-title-s);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Emphasized headline color */
+
+.mds-card-image[data-emphasized] .mds-card-image__headline {
+  color: var(--color-on-primary);
+}
+
+/* Body text — base variant only */
+
+.mds-card-image__body {
+  margin: 0;
+  font-size: var(--font-size-body-m);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  color: var(--color-on-layer);
+}
+
+.mds-card-image[data-emphasized] .mds-card-image__body {
+  color: var(--color-on-primary);
+}
+
+/* ---------------------------------------------------------------------------
+   Footer (actions + disclaimer)
+   --------------------------------------------------------------------------- */
+
+.mds-card-image__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Actions */
+
+.mds-card-image__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mds-card-image:hover .mds-card-image__actions > .mds-btn {
+  width: 100%;
+}
+
+/* Disclaimer */
+
+.mds-card-image__disclaimer {
+  padding: 8px 0;
+}
+
+.mds-card-image__disclaimer p {
+  margin: 0;
+  font-size: var(--font-size-body-s);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  color: var(--color-on-surface-variant);
+}
+
+.mds-card-image[data-emphasized] .mds-card-image__disclaimer p {
+  color: var(--color-on-primary);
+}
+
+.mds-card-image[data-image-variant='large']:not([data-emphasized]) .mds-card-image__disclaimer p,
+.mds-card-image[data-image-variant='overlap']:not([data-emphasized]) .mds-card-image__disclaimer p {
+  color: var(--color-on-surface);
+}
+
+/* ---------------------------------------------------------------------------
+   Overlap variant
+   --------------------------------------------------------------------------- */
+
+.mds-card-image[data-image-variant='overlap'] {
+  height: 640px;
+  min-height: 640px;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 var(--component-inset-padding);
+}
+
+.mds-card-image__image--overlap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 140px;
+  border-radius: var(--radius-1) var(--radius-1) 0 0;
+  overflow: hidden;
+}
+
+.mds-card-image__image--overlap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mds-card-image[data-image-variant='overlap'] .mds-card-image__container {
+  background-color: var(--color-layer-1);
+  border-radius: var(--radius-1) var(--radius-1) 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+.mds-card-image[data-image-variant='overlap'][data-emphasized] .mds-card-image__container {
+  background-color: var(--color-primary);
+}

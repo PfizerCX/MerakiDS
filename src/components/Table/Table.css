@@ -1,0 +1,257 @@
+/* ==========================================================================
+   Table — Meraki Design System
+   Figma source: node 42713:49002
+   ========================================================================== */
+
+.mds-table-wrapper {
+  font-family: var(--font-family-sans);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------------------
+   Inline Header
+   --------------------------------------------------------------------------- */
+
+.mds-table-inline-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  padding: 9px 10px;
+  background-color: var(--color-inverse-primary);
+}
+
+.mds-table-inline-header-title {
+  flex: 1 0 0;
+  font-size: var(--font-size-label-m);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  color: var(--color-on-background);
+}
+
+.mds-table-inline-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+/* ---------------------------------------------------------------------------
+   Table
+   --------------------------------------------------------------------------- */
+
+.mds-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: auto;
+}
+
+/* ---------------------------------------------------------------------------
+   Cell Head (th)
+   --------------------------------------------------------------------------- */
+
+.mds-table-head-cell {
+  background-color: var(--color-inverse-primary);
+  padding: 9px 10px;
+  min-height: 34px;
+  height: 34px;
+  font-size: var(--font-size-label-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  color: var(--color-on-background);
+  text-align: left;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.mds-table-head-cell-content {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mds-table-head-cell-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--color-on-background);
+}
+
+.mds-table-head-cell[data-type='select-all'],
+.mds-table-head-cell[data-type='spacer'] {
+  width: 34px;
+  min-width: 34px;
+  padding: 9px 5px;
+  text-align: center;
+}
+
+.mds-table-head-cell[data-type='select-all'] .mds-table-head-cell-content,
+.mds-table-head-cell[data-type='spacer'] .mds-table-head-cell-content {
+  justify-content: center;
+}
+
+/* ---------------------------------------------------------------------------
+   Table Cell (td)
+   --------------------------------------------------------------------------- */
+
+.mds-table-cell {
+  padding: 11px 10px;
+  height: 40px;
+  font-size: var(--font-size-body-s);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  color: var(--color-on-surface-variant);
+  border-bottom: 1px solid var(--color-outline-variant);
+  background-color: var(--color-layer-1);
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.mds-table-cell[data-row-style='secondary'] {
+  background-color: var(--color-layer-2);
+}
+
+/* Cell type: checkbox / action (narrow columns) */
+
+.mds-table-cell[data-cell-type='checkbox'],
+.mds-table-cell[data-cell-type='action'] {
+  width: 34px;
+  min-width: 34px;
+  padding: 5px;
+  text-align: center;
+}
+
+.mds-table-cell[data-cell-type='checkbox'] .mds-table-cell-content,
+.mds-table-cell[data-cell-type='action'] .mds-table-cell-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cell type: profile (avatar + name) */
+
+.mds-table-cell[data-cell-type='profile'] {
+  padding: 6px 10px;
+}
+
+.mds-table-cell[data-cell-type='profile'] .mds-table-cell-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mds-table-cell-avatar {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  object-fit: cover;
+}
+
+/* Cell type: chip */
+
+.mds-table-cell[data-cell-type='chip'] {
+  padding: 8px 10px;
+}
+
+.mds-table-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  background-color: var(--color-primary-container);
+  border-radius: var(--radius-1);
+  font-size: var(--font-size-label-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  color: var(--color-on-surface);
+  white-space: nowrap;
+}
+
+/* Cell type: date */
+
+.mds-table-cell[data-cell-type='date'] .mds-table-cell-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mds-table-cell-date-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--color-on-surface-variant);
+}
+
+/* ---------------------------------------------------------------------------
+   Checkbox (internal)
+   --------------------------------------------------------------------------- */
+
+.mds-table-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--color-on-surface-variant);
+  border-radius: 2px;
+  background: var(--color-surface);
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.mds-table-checkbox:checked {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.mds-table-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid var(--color-on-primary);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.mds-table-checkbox:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   Action Button (internal)
+   --------------------------------------------------------------------------- */
+
+.mds-table-action-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-7);
+  color: var(--color-on-surface-variant);
+  padding: 0;
+}
+
+.mds-table-action-btn:hover {
+  background-color: var(--color-surface-variant);
+}
+
+.mds-table-action-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
