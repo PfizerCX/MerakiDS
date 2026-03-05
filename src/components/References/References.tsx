@@ -8,7 +8,7 @@ export interface ReferenceItem {
   text: React.ReactNode;
 }
 
-export interface ReferencesProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ReferencesProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   /** Heading rendered above the list of references */
   title?: React.ReactNode;
   /** Ordered list of citation items */

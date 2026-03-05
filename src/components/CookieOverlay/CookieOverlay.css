@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Cookie Overlay — Meraki Design System
+   Figma source: node 36943:14857 (overlay), 36943:14863 (vertical CTAs)
+   Layout: vertical (stacked) | horizontal (buttons in row)
+   Position: fixed bottom center (mobile), bottom left (desktop)
+   ========================================================================== */
+
+.mds-cookie-overlay {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 375px;
+  box-sizing: border-box;
+  font-family: var(--font-family-sans);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  border-radius: var(--radius-2) var(--radius-2) 0 0;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+}
+
+@media (min-width: 768px) {
+  .mds-cookie-overlay {
+    left: var(--component-inset-padding, 24px);
+    transform: none;
+    max-width: 767px;
+    border-radius: var(--radius-2);
+  }
+}
+
+.mds-cookie-overlay__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-vertical-space, 24px);
+  padding: var(--component-inset-padding, 24px);
+}
+
+.mds-cookie-overlay__title {
+  margin: 0;
+  font-size: var(--font-size-title-s);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-on-surface);
+}
+
+.mds-cookie-overlay__body {
+  font-size: var(--font-size-body-xs);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-on-surface);
+}
+
+.mds-cookie-overlay__body p {
+  margin: 0;
+}
+
+.mds-cookie-overlay__privacy-link {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-action-primary-bg);
+  text-decoration: underline;
+}
+
+.mds-cookie-overlay__privacy-link:hover {
+  color: var(--ref-color-blue-70);
+}
+
+/* Vertical CTAs per Figma 36943:14863: column, 12px gap, full-width buttons */
+.mds-cookie-overlay__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.mds-cookie-overlay__actions .mds-btn {
+  width: 100%;
+  min-width: 0;
+  height: 40px;
+  border-radius: var(--radius-7);
+}
+
+.mds-cookie-overlay[data-layout='horizontal'] .mds-cookie-overlay__actions {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.mds-cookie-overlay[data-layout='horizontal'] .mds-cookie-overlay__actions .mds-btn {
+  width: auto;
+}
+
+.mds-cookie-overlay[data-layout='horizontal'] .mds-cookie-overlay__actions .mds-btn:last-child {
+  margin-left: auto;
+}

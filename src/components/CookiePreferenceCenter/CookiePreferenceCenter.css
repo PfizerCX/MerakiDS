@@ -1,0 +1,209 @@
+/* ==========================================================================
+   Cookie Preference Center — Meraki Design System
+   Figma source: node 36943:15246
+   Slide-in panel from the right; scrim + cookie rows, actions, footer
+   ========================================================================== */
+
+@keyframes mds-cookie-pref-center-scrim-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mds-cookie-pref-center-panel-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.mds-cookie-pref-center {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.mds-cookie-pref-center > * {
+  pointer-events: auto;
+}
+
+.mds-cookie-pref-center__scrim {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-scrim);
+  animation: mds-cookie-pref-center-scrim-in 0.25s ease-out;
+}
+
+.mds-cookie-pref-center__panel {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  min-width: 320px;
+  height: 100%;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  border-radius: 0;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+  font-family: var(--font-family-sans);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  overflow: hidden;
+  animation: mds-cookie-pref-center-panel-in 0.3s ease-out;
+}
+
+.mds-cookie-pref-center__close {
+  position: absolute;
+  top: var(--spacing-12, 12px);
+  right: var(--spacing-12, 12px);
+  margin: 0;
+  padding: 4px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-on-surface);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mds-cookie-pref-center__close:hover {
+  opacity: 0.8;
+}
+
+.mds-cookie-pref-center__close:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.mds-cookie-pref-center__panel > .mds-cookie-pref-center__title {
+  margin: 0;
+  padding: var(--component-inset-padding, 24px);
+  padding-top: 48px;
+  padding-bottom: var(--spacing-8, 8px);
+  font-size: var(--font-size-title-s);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-on-surface);
+}
+
+.mds-cookie-pref-center__body {
+  margin: 0;
+  padding: 0 var(--component-inset-padding, 24px);
+  padding-bottom: var(--component-vertical-space, 24px);
+  font-size: var(--font-size-body-m);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-on-surface);
+}
+
+.mds-cookie-pref-center__rows {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  border-top: 1px solid var(--color-outline);
+}
+
+.mds-cookie-pref-center__row {
+  border-bottom: 1px solid var(--color-outline);
+}
+
+.mds-cookie-pref-center__row-main {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12, 12px);
+  padding: var(--spacing-12, 12px) var(--component-inset-padding, 24px);
+  cursor: pointer;
+}
+
+.mds-cookie-pref-center__row[data-essential] .mds-cookie-pref-center__row-main {
+  cursor: default;
+}
+
+.mds-cookie-pref-center__row-label {
+  flex: 1 1 auto;
+  font-size: var(--font-size-label-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-on-surface);
+}
+
+.mds-cookie-pref-center__row-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mds-cookie-pref-center__always-active {
+  font-size: var(--font-size-label-xs);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-action-primary-bg);
+}
+
+.mds-cookie-pref-center__check {
+  color: var(--color-action-primary-bg);
+  flex-shrink: 0;
+}
+
+.mds-cookie-pref-center__chevron {
+  flex-shrink: 0;
+  color: var(--color-outline);
+  transition: transform 0.2s ease;
+}
+
+.mds-cookie-pref-center__row[data-expanded] .mds-cookie-pref-center__chevron {
+  transform: rotate(180deg);
+}
+
+/* Expanded state: grey background per Figma 5405:8129 (layer-2) */
+.mds-cookie-pref-center__row[data-expanded] {
+  background-color: var(--color-layer-2);
+}
+
+.mds-cookie-pref-center__row-detail {
+  padding: 0 var(--component-inset-padding, 24px) var(--spacing-12, 12px);
+}
+
+.mds-cookie-pref-center__row-explanation {
+  margin: 0;
+  font-size: var(--font-size-body-s);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.4;
+  color: var(--color-on-surface);
+}
+
+.mds-cookie-pref-center__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16, 16px);
+  padding: var(--component-inset-padding, 24px);
+  flex-shrink: 0;
+}
+
+.mds-cookie-pref-center__btn {
+  width: 100%;
+}
+
+.mds-cookie-pref-center__footer {
+  padding: var(--spacing-12, 12px) var(--component-inset-padding, 24px);
+  font-size: var(--font-size-body-xs);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-on-surface-variant);
+  background-color: var(--color-surface-variant);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.mds-cookie-pref-center__onetrust {
+  color: var(--ref-color-green-50);
+  font-weight: var(--font-weight-medium);
+}

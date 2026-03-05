@@ -1,0 +1,71 @@
+/* ==========================================================================
+   Switch — Meraki Design System
+   Figma source: node 33695:18686 (off state), 704:11965 (Atoms/Switch)
+   Track: 52×32px; off = surface-variant + outline border; on = primary
+   Handle: off = 16px outline color; on = 24px white
+   ========================================================================== */
+
+.mds-switch {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition:
+    background-color var(--transition-fast, 0.15s ease),
+    border-color var(--transition-fast, 0.15s ease),
+    opacity 0.15s ease;
+}
+
+.mds-switch:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.mds-switch:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.mds-switch__track {
+  display: flex;
+  align-items: center;
+  width: 52px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-variant);
+  border: 2px solid var(--color-outline);
+  padding: 4px;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.mds-switch[data-checked] .mds-switch__track {
+  background-color: var(--color-action-primary-bg);
+  border-color: var(--color-action-primary-bg);
+}
+
+.mds-switch__handle {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-outline);
+  transition: transform 0.15s ease, width 0.15s ease, height 0.15s ease, background-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.mds-switch[data-checked] .mds-switch__handle {
+  width: 24px;
+  height: 24px;
+  background-color: var(--ref-color-white);
+  transform: translateX(20px);
+}
+
+.mds-switch:not([data-checked]) .mds-switch__handle {
+  transform: translateX(0);
+}
