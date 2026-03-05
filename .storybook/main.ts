@@ -11,7 +11,9 @@ const config: StorybookConfig = {
     defaultName: 'Docs',
   },
   viteFinal: (config) => {
-    config.base = '/MerakiDS/';
+    if (process.env.CI) {
+      config.base = '/MerakiDS/';
+    }
     return config;
   },
 };

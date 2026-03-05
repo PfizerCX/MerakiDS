@@ -6,5 +6,6 @@ dist/
 .env
 .env.*
 storybook-static/
+docs/
 src/icons/svg/
 *.plan.md.zip
