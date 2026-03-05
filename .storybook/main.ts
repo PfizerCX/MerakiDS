@@ -10,6 +10,10 @@ const config: StorybookConfig = {
   docs: {
     defaultName: 'Docs',
   },
+  viteFinal: (config) => {
+    config.base = '/MerakiDS/';
+    return config;
+  },
 };
 
 export default config;
