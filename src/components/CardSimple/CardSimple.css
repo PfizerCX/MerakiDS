@@ -27,12 +27,12 @@
 
 .mds-card-simple[data-variant='base'] {
   background-color: var(--color-layer-1);
-  box-shadow: var(--shadow-center-md);
+  box-shadow: var(--elevation-center-m);
   color: var(--color-on-layer);
 }
 
 .mds-card-simple[data-variant='base']:hover {
-  box-shadow: var(--shadow-center-lg);
+  box-shadow: var(--elevation-center-m-active);
 }
 
 /* ---------- Variant: Solid ---------- */
@@ -43,7 +43,7 @@
 }
 
 .mds-card-simple[data-variant='solid']:hover {
-  box-shadow: var(--shadow-center-lg);
+  box-shadow: var(--elevation-center-m-active);
 }
 
 /* ---------- Variant: Outline ---------- */

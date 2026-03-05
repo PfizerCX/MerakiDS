@@ -13,11 +13,11 @@
 
 .mds-card[data-variant='elevated'] {
   background-color: var(--color-layer-1);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--elevation-bottom-s);
 }
 
 .mds-card[data-variant='elevated']:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--elevation-bottom-m);
 }
 
 .mds-card[data-variant='filled'] {

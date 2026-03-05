@@ -346,17 +346,27 @@
 }
 
 /* ============================================================
-   Shadows
+   Elevation (shadow + fill)
+   Fill: rgba(255, 255, 255, 1). Use semantic --color-surface in themes.
    ============================================================ */
 
 :root {
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  /* Top elevation (shadow above) */
+  --elevation-top-s: 0 -8px 20px 0 rgba(0, 0, 0, 0.08);
+  --elevation-top-m: 0 -16px 40px 0 rgba(0, 0, 0, 0.08);
 
-  --shadow-center-md: 0 0 32px 0 rgb(0 0 0 / 0.08);
-  --shadow-center-lg: 0 0 40px 0 rgb(0 0 0 / 0.16);
+  /* Center elevation (shadow all around) */
+  --elevation-center-s: 0 0 20px 0 rgba(0, 0, 0, 0.08);
+  --elevation-center-m: 0 0 32px 0 rgba(0, 0, 0, 0.08);
+  --elevation-center-s-active: 0 0 24px 0 rgba(0, 0, 0, 0.16);
+  --elevation-center-m-active: 0 0 40px 0 rgba(0, 0, 0, 0.16);
+
+  /* Bottom elevation (shadow below) */
+  --elevation-bottom-s: 0 8px 20px 0 rgba(0, 0, 0, 0.08);
+  --elevation-bottom-m: 0 16px 40px 0 rgba(0, 0, 0, 0.08);
+
+  /* Elevation fill (default white; use --color-surface for theme-aware) */
+  --elevation-fill: rgba(255, 255, 255, 1);
 }
 
 /* ============================================================

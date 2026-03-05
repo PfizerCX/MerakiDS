@@ -22,12 +22,12 @@
   min-width: 264px;
   max-width: 464px;
   background-color: var(--color-layer-1);
-  box-shadow: var(--shadow-center-md);
+  box-shadow: var(--elevation-center-m);
   transition: box-shadow var(--transition-fast);
 }
 
 .mds-card-image:hover {
-  box-shadow: var(--shadow-center-lg);
+  box-shadow: var(--elevation-center-m-active);
 }
 
 /* ---------------------------------------------------------------------------

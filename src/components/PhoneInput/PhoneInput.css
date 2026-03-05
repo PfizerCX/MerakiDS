@@ -138,7 +138,7 @@
   border: 1px solid var(--color-outline-variant);
   border-radius: var(--radius-2);
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--elevation-bottom-s);
 }
 
 .mds-phone-input__country-search {
