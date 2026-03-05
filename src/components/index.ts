@@ -20,4 +20,7 @@ export * from './Slideshow';
 export * from './PageBreakLegacy';
 export * from './Video';
 export * from './References';
+export * from './Switch';
+export * from './CookieOverlay';
+export * from './CookiePreferenceCenter';
 export * from './Table';
