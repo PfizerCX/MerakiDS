@@ -1,0 +1,247 @@
+/* ==========================================================================
+   Callout — Meraki Design System
+   A floating card with beak pointer, used for guided tours / feature tips.
+   ========================================================================== */
+
+.mds-callout {
+  position: relative;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8);
+  align-items: flex-start;
+  min-width: 298px;
+  max-width: 612px;
+  padding: var(--spacing-16);
+  border-radius: var(--radius-1);
+  background-color: var(--ref-color-gray-90);
+  color: var(--ref-color-white);
+  font-family: var(--font-family-sans);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  box-shadow:
+    0 6px 10px 0 rgba(0, 0, 0, 0.15),
+    0 2px 3px 0 rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------------------------
+   Image
+   --------------------------------------------------------------------------- */
+
+.mds-callout__image {
+  flex: 1 0 0;
+  min-width: 212px;
+  max-width: 100%;
+  height: 160px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.mds-callout__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   Content
+   --------------------------------------------------------------------------- */
+
+.mds-callout__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+  flex: 1 0 0;
+  min-width: 200px;
+}
+
+.mds-callout__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.mds-callout__title-row {
+  display: flex;
+  gap: var(--spacing-8);
+  align-items: flex-start;
+}
+
+.mds-callout__title {
+  flex: 1 0 0;
+  margin: 0;
+  font-size: var(--font-size-label-m);
+  font-weight: var(--font-weight-medium);
+}
+
+.mds-callout__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--radius-7);
+  color: var(--ref-color-white);
+  transition: opacity var(--transition-fast);
+}
+
+.mds-callout__close:hover {
+  opacity: 0.7;
+}
+
+.mds-callout__close:focus-visible {
+  outline: 2px solid var(--ref-color-white);
+  outline-offset: 2px;
+}
+
+.mds-callout__caption {
+  margin: 0;
+  font-size: var(--font-size-label-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ---------------------------------------------------------------------------
+   Footer — step counter + actions
+   --------------------------------------------------------------------------- */
+
+.mds-callout__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-24);
+}
+
+.mds-callout__steps {
+  font-size: var(--font-size-label-xs);
+  font-weight: var(--font-weight-medium);
+  min-width: 70px;
+}
+
+.mds-callout__actions {
+  display: flex;
+  gap: var(--spacing-12);
+  align-items: center;
+}
+
+/* ---------------------------------------------------------------------------
+   Beak — CSS triangle pseudo-element
+   --------------------------------------------------------------------------- */
+
+.mds-callout__beak {
+  position: absolute;
+  width: 16px;
+  height: 8px;
+  pointer-events: none;
+}
+
+.mds-callout__beak::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--ref-color-gray-90);
+}
+
+/* Top beaks — triangle pointing up */
+.mds-callout[data-position^='top'] .mds-callout__beak {
+  top: -8px;
+  width: 16px;
+  height: 8px;
+}
+
+.mds-callout[data-position^='top'] .mds-callout__beak::before {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.mds-callout[data-position='top-left'] .mds-callout__beak {
+  left: 16px;
+}
+
+.mds-callout[data-position='top-center'] .mds-callout__beak {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mds-callout[data-position='top-right'] .mds-callout__beak {
+  right: 16px;
+}
+
+/* Bottom beaks — triangle pointing down */
+.mds-callout[data-position^='bottom'] .mds-callout__beak {
+  bottom: -8px;
+  width: 16px;
+  height: 8px;
+}
+
+.mds-callout[data-position^='bottom'] .mds-callout__beak::before {
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+}
+
+.mds-callout[data-position='bottom-left'] .mds-callout__beak {
+  left: 16px;
+}
+
+.mds-callout[data-position='bottom-center'] .mds-callout__beak {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mds-callout[data-position='bottom-right'] .mds-callout__beak {
+  right: 16px;
+}
+
+/* Right beaks — triangle pointing right */
+.mds-callout[data-position^='right'] .mds-callout__beak {
+  right: -8px;
+  width: 8px;
+  height: 16px;
+}
+
+.mds-callout[data-position^='right'] .mds-callout__beak::before {
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+}
+
+.mds-callout[data-position='right-top'] .mds-callout__beak {
+  top: 16px;
+}
+
+.mds-callout[data-position='right-center'] .mds-callout__beak {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mds-callout[data-position='right-bottom'] .mds-callout__beak {
+  bottom: 16px;
+}
+
+/* Left beaks — triangle pointing left */
+.mds-callout[data-position^='left'] .mds-callout__beak {
+  left: -8px;
+  width: 8px;
+  height: 16px;
+}
+
+.mds-callout[data-position^='left'] .mds-callout__beak::before {
+  clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
+}
+
+.mds-callout[data-position='left-top'] .mds-callout__beak {
+  top: 16px;
+}
+
+.mds-callout[data-position='left-center'] .mds-callout__beak {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mds-callout[data-position='left-bottom'] .mds-callout__beak {
+  bottom: 16px;
+}

@@ -1,5 +1,5 @@
 import { forwardRef, useState, useCallback, useId } from 'react';
-import { ChevronDown } from '../../icons/ChevronDown';
+import { ChevronDownWide } from '../../icons/ChevronDownWide';
 import './Accordion.css';
 
 export interface AccordionItemData {
@@ -39,7 +39,7 @@ const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
           onClick={onToggle}
         >
           <span className="mds-accordion-title">{title}</span>
-          <ChevronDown size={24} className="mds-accordion-chevron" aria-hidden />
+          <ChevronDownWide size={24} className="mds-accordion-chevron" aria-hidden />
         </button>
         <div
           id={panelId}

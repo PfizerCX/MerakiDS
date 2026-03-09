@@ -7,6 +7,8 @@ const meta: Meta<typeof Accordion> = {
   component: Accordion,
   tags: ['autodocs'],
   argTypes: {
+    items: { table: { disable: true } },
+    defaultExpandedIndex: { table: { disable: true } },
     allowMultiple: {
       control: 'boolean',
       description: 'Allow multiple panels to be expanded at once',

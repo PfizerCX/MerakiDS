@@ -266,6 +266,7 @@ export { NutritionLowCarb } from './NutritionLowCarb';
 export { NutritionLowFat } from './NutritionLowFat';
 export { NutritionVegetarian } from './NutritionVegetarian';
 export type { NutritionVegetarianProps } from './NutritionVegetarian';
+export { OpenInNew } from './OpenInNew';
 export { Originality } from './Originality';
 export { PanelCollapse } from './PanelCollapse';
 export { PanelExpand } from './PanelExpand';

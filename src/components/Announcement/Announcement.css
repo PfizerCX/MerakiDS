@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Announcement — Meraki Design System
+   Figma source: node 453:9252
+   Layouts: vertical | horizontal
+   ========================================================================== */
+
+.mds-announcement {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--layout-gutter);
+  min-width: 375px;
+  max-width: 767px;
+  padding: var(--component-inset-padding);
+  border-radius: var(--radius-1);
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-surface);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-body-m);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  box-shadow: 0 16px 40px 0 rgb(0 0 0 / 0.08);
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------------------------
+   Layout: Vertical
+   --------------------------------------------------------------------------- */
+
+.mds-announcement[data-layout='vertical'] {
+  flex-direction: column;
+}
+
+/* ---------------------------------------------------------------------------
+   Layout: Horizontal
+   --------------------------------------------------------------------------- */
+
+.mds-announcement[data-layout='horizontal'] {
+  flex-direction: row;
+}
+
+/* ---------------------------------------------------------------------------
+   Icon
+   --------------------------------------------------------------------------- */
+
+.mds-announcement__icon {
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Body
+   --------------------------------------------------------------------------- */
+
+.mds-announcement__body {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.mds-announcement__body p {
+  margin: 0;
+}

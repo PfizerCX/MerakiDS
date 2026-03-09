@@ -1,0 +1,160 @@
+/* ==========================================================================
+   Floating Action Button — Meraki Design System
+   Figma source: node 42930:4817
+   Variants: primary | tonal
+   Sizes: sm (32px) | md (40px) | lg (48px)
+   ========================================================================== */
+
+.mds-fab {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius-1);
+  transition:
+    background-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.mds-fab__state-layer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-1);
+  border: 1px solid transparent;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.mds-fab__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Sizes
+   --------------------------------------------------------------------------- */
+
+.mds-fab[data-size='sm'] {
+  width: 32px;
+  height: 32px;
+}
+
+.mds-fab[data-size='sm'] .mds-fab__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.mds-fab[data-size='md'] {
+  width: 40px;
+  height: 40px;
+}
+
+.mds-fab[data-size='md'] .mds-fab__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.mds-fab[data-size='lg'] {
+  width: 48px;
+  height: 48px;
+}
+
+.mds-fab[data-size='lg'] .mds-fab__icon {
+  width: 36px;
+  height: 36px;
+}
+
+/* ---------------------------------------------------------------------------
+   Variant: Primary
+   --------------------------------------------------------------------------- */
+
+.mds-fab[data-variant='primary'] {
+  background-color: var(--color-action-primary-bg);
+  color: var(--color-action-primary-text);
+  box-shadow: 0 0 20px 0 rgb(0 0 0 / 0.08);
+}
+
+.mds-fab[data-variant='primary']:hover:not(:disabled) {
+  box-shadow: 0 0 24px 0 rgb(0 0 0 / 0.16);
+}
+
+.mds-fab[data-variant='primary']:hover:not(:disabled) .mds-fab__state-layer {
+  background-color: var(--ref-color-blue-80);
+}
+
+.mds-fab[data-variant='primary']:active:not(:disabled) {
+  background-color: var(--ref-color-blue-90);
+  box-shadow: 0 0 24px 0 rgb(0 0 0 / 0.16);
+}
+
+.mds-fab[data-variant='primary']:active:not(:disabled) .mds-fab__state-layer {
+  border-color: white;
+}
+
+.mds-fab[data-variant='primary']:focus-visible:not(:disabled) {
+  box-shadow: 0 0 24px 0 rgb(0 0 0 / 0.16);
+  outline: 1px solid var(--color-action-primary-bg);
+  outline-offset: -1px;
+}
+
+.mds-fab[data-variant='primary']:focus-visible:not(:disabled) .mds-fab__state-layer {
+  border-color: white;
+}
+
+/* ---------------------------------------------------------------------------
+   Variant: Tonal
+   --------------------------------------------------------------------------- */
+
+.mds-fab[data-variant='tonal'] {
+  background-color: var(--ref-color-blue-20);
+  color: var(--ref-color-blue-80);
+  box-shadow: 0 0 20px 0 rgb(0 0 0 / 0.08);
+}
+
+.mds-fab[data-variant='tonal']:hover:not(:disabled) {
+  box-shadow: 0 0 24px 0 rgb(0 0 0 / 0.16);
+}
+
+.mds-fab[data-variant='tonal']:hover:not(:disabled) .mds-fab__state-layer {
+  background-color: var(--ref-color-blue-30);
+}
+
+.mds-fab[data-variant='tonal']:active:not(:disabled) {
+  background-color: var(--ref-color-blue-40);
+  box-shadow: 0 0 24px 0 rgb(0 0 0 / 0.16);
+}
+
+.mds-fab[data-variant='tonal']:active:not(:disabled) .mds-fab__state-layer {
+  border-color: var(--ref-color-blue-70);
+}
+
+.mds-fab[data-variant='tonal']:focus-visible:not(:disabled) {
+  box-shadow: 0 0 24px 0 rgb(0 0 0 / 0.16);
+}
+
+.mds-fab[data-variant='tonal']:focus-visible:not(:disabled) .mds-fab__state-layer {
+  border-color: var(--ref-color-blue-70);
+}
+
+/* ---------------------------------------------------------------------------
+   States: Disabled
+   --------------------------------------------------------------------------- */
+
+.mds-fab:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}

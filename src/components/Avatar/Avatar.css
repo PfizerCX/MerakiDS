@@ -1,0 +1,166 @@
+/* ==========================================================================
+   Avatar — Meraki Design System
+   Figma source: node 39813:14474
+   Profile forms: image | initials | profile
+   Status: online | away | do-not-disturb | offline
+   ========================================================================== */
+
+.mds-avatar {
+  position: relative;
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Ring pseudo-elements for hover / active states
+   --------------------------------------------------------------------------- */
+
+.mds-avatar::before,
+.mds-avatar::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+/* Outer ring — 56 px square, 1 px border, radius-4 (32 px) */
+.mds-avatar::before {
+  inset: -4px;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-4);
+}
+
+/* Inner border — 1.5 px overlay on the avatar */
+.mds-avatar::after {
+  inset: 0;
+  border: 1.5px solid var(--color-primary);
+  border-radius: var(--radius-3);
+  z-index: 1;
+}
+
+.mds-avatar:hover::before,
+.mds-avatar:hover::after {
+  opacity: 1;
+}
+
+.mds-avatar:active::before,
+.mds-avatar:active::after {
+  opacity: 1;
+  border-color: var(--ref-color-blue-90);
+}
+
+/* ---------------------------------------------------------------------------
+   Container
+   --------------------------------------------------------------------------- */
+
+.mds-avatar__container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-3);
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------------------------
+   Profile form: Image
+   --------------------------------------------------------------------------- */
+
+.mds-avatar[data-profile-form='image'] .mds-avatar__container {
+  background-color: var(--color-surface-variant);
+}
+
+.mds-avatar__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------------------------------------------------------------------------
+   Profile form: Initials & Profile (shared background)
+   --------------------------------------------------------------------------- */
+
+.mds-avatar[data-profile-form='initials'] .mds-avatar__container,
+.mds-avatar[data-profile-form='profile'] .mds-avatar__container {
+  background-color: var(--color-primary-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mds-avatar__initials {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body-m);
+  line-height: 1.2;
+  color: var(--color-on-layer);
+  text-align: center;
+  letter-spacing: var(--letter-spacing-regular);
+  user-select: none;
+}
+
+.mds-avatar__icon {
+  color: var(--color-on-layer);
+}
+
+/* ---------------------------------------------------------------------------
+   Status indicator
+   --------------------------------------------------------------------------- */
+
+.mds-avatar__status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.mds-avatar__status[data-status='online'] {
+  background-color: var(--ref-color-teal-50);
+}
+
+.mds-avatar__status[data-status='away'] {
+  background-color: var(--ref-color-yellow-50);
+}
+
+.mds-avatar__status[data-status='do-not-disturb'] {
+  background-color: var(--ref-color-red-50);
+  position: absolute;
+}
+
+/* Minus icon for "Do Not Disturb" */
+.mds-avatar__status[data-status='do-not-disturb']::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 20.83%;
+  right: 20.83%;
+  height: 1.5px;
+  background-color: var(--ref-color-white);
+  border-radius: 1px;
+  transform: translateY(-50%);
+}
+
+.mds-avatar__status[data-status='offline'] {
+  background-color: var(--ref-color-white);
+  color: var(--ref-color-gray-50);
+}
+
+.mds-avatar__status-icon {
+  display: block;
+}
+
+/* ---------------------------------------------------------------------------
+   Focus
+   --------------------------------------------------------------------------- */
+
+.mds-avatar:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

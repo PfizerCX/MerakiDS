@@ -1,0 +1,39 @@
+/* ==========================================================================
+   ButtonGroup — Meraki Design System
+   Figma source: node 24077:36185
+   Orientations: horizontal | vertical
+   Sizing: hug (default) | fill
+   ========================================================================== */
+
+.mds-btn-group {
+  display: flex;
+  gap: var(--spacing-12);
+}
+
+/* ---------------------------------------------------------------------------
+   Orientation
+   --------------------------------------------------------------------------- */
+
+.mds-btn-group[data-orientation='horizontal'] {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.mds-btn-group[data-orientation='vertical'] {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ---------------------------------------------------------------------------
+   Fill mode — buttons stretch to equal width
+   --------------------------------------------------------------------------- */
+
+.mds-btn-group[data-fill] > .mds-btn {
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.mds-btn-group[data-orientation='vertical'][data-fill] > .mds-btn {
+  flex: none;
+  width: 100%;
+}

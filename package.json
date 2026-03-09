@@ -1,6 +1,6 @@
 {
-  "name": "@meraki-ds/react",
-  "version": "0.1.0",
+  "name": "meraki-ds-react",
+  "version": "0.1.2",
   "description": "Meraki Design System — React component library with design tokens and icons",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -37,7 +37,7 @@
         "default": "./dist/icons/index.cjs"
       }
     },
-    "./css": "./dist/tokens.css"
+    "./css": "./dist/index.css"
   },
   "files": [
     "dist"
@@ -91,7 +91,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/PfizerCX/MerakiDS.git"
   },
   "author": ""
 }
