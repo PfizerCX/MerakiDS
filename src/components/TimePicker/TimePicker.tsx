@@ -74,13 +74,21 @@ function parseTimeValue(
   value: string | null | undefined,
   format: '12h' | '24h',
 ): ParsedTime | null {
-  if (!value) return null;
-  const parts = value.trim().split(/[\s:]+/);
+  if (value == null) return null;
+  if (typeof value !== 'string') return null;
+
+  const normalized = value.trim();
+  if (!normalized) return null;
+
+  const parts = normalized.split(/[\s:]+/);
   if (parts.length < 2) return null;
 
   let hour = parseInt(parts[0], 10);
   const minute = parseInt(parts[1], 10);
   let period: 'AM' | 'PM' = 'AM';
+
+  if (Number.isNaN(hour) || Number.isNaN(minute)) return null;
+  if (minute < 0 || minute > 59) return null;
 
   if (format === '12h') {
     if (parts[2]) {
@@ -123,6 +131,20 @@ const HOURS_12 = getHours12();
 const HOURS_24 = getHours24();
 const MINUTES = getMinutes();
 const PERIODS: ('AM' | 'PM')[] = ['AM', 'PM'];
+const CELL_HEIGHT_PX = 36;
+const VISIBLE_ROWS = 7;
+
+function getColumnOffset(
+  options: string[],
+  selected: string,
+  visibleRows: number,
+): number {
+  const selectedIndex = Math.max(0, options.indexOf(selected));
+  const maxStart = Math.max(0, options.length - visibleRows);
+  const centeredStart = Math.max(0, selectedIndex - Math.floor(visibleRows / 2));
+  const start = Math.min(maxStart, centeredStart);
+  return -start * CELL_HEIGHT_PX;
+}
 
 const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
   (
@@ -171,10 +193,15 @@ const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
     );
 
     const wrapperRef = useRef<HTMLDivElement>(null);
-    const hourColRef = useRef<HTMLDivElement>(null);
-    const minuteColRef = useRef<HTMLDivElement>(null);
-
     const hours = timeFormat === '12h' ? HOURS_12 : HOURS_24;
+    const hourOffset = useMemo(
+      () => getColumnOffset(hours, selectedHour, VISIBLE_ROWS),
+      [hours, selectedHour],
+    );
+    const minuteOffset = useMemo(
+      () => getColumnOffset(MINUTES, selectedMinute, VISIBLE_ROWS),
+      [selectedMinute],
+    );
 
     const state = useMemo(() => {
       if (disabled) return 'disabled';
@@ -212,34 +239,22 @@ const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
         document.removeEventListener('mousedown', handleClickOutside);
     }, [isOpen]);
 
-    const scrollToSelected = useCallback(() => {
-      requestAnimationFrame(() => {
-        const scrollIntoView = (
-          container: HTMLDivElement | null,
-          value: string,
-        ) => {
-          if (!container) return;
-          const el = container.querySelector(
-            `[data-value="${value}"]`,
-          ) as HTMLElement | null;
-          if (el) {
-            el.scrollIntoView({ block: 'nearest' });
-          }
-        };
-        scrollIntoView(hourColRef.current, selectedHour);
-        scrollIntoView(minuteColRef.current, selectedMinute);
-      });
-    }, [selectedHour, selectedMinute]);
+    useEffect(() => {
+      if (!isOpen) return;
+      const previousOverflow = document.body.style.overflow;
+      const previousTouchAction = document.body.style.touchAction;
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+      return () => {
+        document.body.style.overflow = previousOverflow;
+        document.body.style.touchAction = previousTouchAction;
+      };
+    }, [isOpen]);
 
     const handleToggle = useCallback(() => {
       if (disabled) return;
-      setIsOpen((prev) => {
-        if (!prev) {
-          requestAnimationFrame(() => scrollToSelected());
-        }
-        return !prev;
-      });
-    }, [disabled, scrollToSelected]);
+      setIsOpen((prev) => !prev);
+    }, [disabled]);
 
     const commitSelection = useCallback(
       (hour: string, minute: string, period: 'AM' | 'PM') => {
@@ -367,46 +382,56 @@ const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
             role="listbox"
             aria-label="Select time"
           >
-            <div className="mds-timepicker-column" ref={hourColRef}>
-              {hours.map((h) => (
-                <button
-                  key={h}
-                  type="button"
-                  className={[
-                    'mds-timepicker-cell',
-                    selectedHour === h && 'mds-timepicker-cell--selected',
-                  ]
-                    .filter(Boolean)
-                    .join(' ')}
-                  data-value={h}
-                  role="option"
-                  aria-selected={selectedHour === h}
-                  onClick={() => handleHourSelect(h)}
-                >
-                  {h}
-                </button>
-              ))}
+            <div className="mds-timepicker-column">
+              <div
+                className="mds-timepicker-column-track"
+                style={{ transform: `translateY(${hourOffset}px)` }}
+              >
+                {hours.map((h) => (
+                  <button
+                    key={h}
+                    type="button"
+                    className={[
+                      'mds-timepicker-cell',
+                      selectedHour === h && 'mds-timepicker-cell--selected',
+                    ]
+                      .filter(Boolean)
+                      .join(' ')}
+                    data-value={h}
+                    role="option"
+                    aria-selected={selectedHour === h}
+                    onClick={() => handleHourSelect(h)}
+                  >
+                    {h}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            <div className="mds-timepicker-column" ref={minuteColRef}>
-              {MINUTES.map((m) => (
-                <button
-                  key={m}
-                  type="button"
-                  className={[
-                    'mds-timepicker-cell',
-                    selectedMinute === m && 'mds-timepicker-cell--selected',
-                  ]
-                    .filter(Boolean)
-                    .join(' ')}
-                  data-value={m}
-                  role="option"
-                  aria-selected={selectedMinute === m}
-                  onClick={() => handleMinuteSelect(m)}
-                >
-                  {m}
-                </button>
-              ))}
+            <div className="mds-timepicker-column">
+              <div
+                className="mds-timepicker-column-track"
+                style={{ transform: `translateY(${minuteOffset}px)` }}
+              >
+                {MINUTES.map((m) => (
+                  <button
+                    key={m}
+                    type="button"
+                    className={[
+                      'mds-timepicker-cell',
+                      selectedMinute === m && 'mds-timepicker-cell--selected',
+                    ]
+                      .filter(Boolean)
+                      .join(' ')}
+                    data-value={m}
+                    role="option"
+                    aria-selected={selectedMinute === m}
+                    onClick={() => handleMinuteSelect(m)}
+                  >
+                    {m}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {timeFormat === '12h' && (

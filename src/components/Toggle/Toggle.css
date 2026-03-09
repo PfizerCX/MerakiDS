@@ -121,7 +121,7 @@
   height: 16px;
   border-radius: 100px;
   background: var(--color-outline);
-  top: 6px;
+  top: 8px;
   left: 6px;
   transition:
     width var(--transition-fast),
@@ -159,8 +159,8 @@
   width: 24px;
   height: 24px;
   background: var(--ref-color-white, #fff);
-  left: 24px;
-  top: 2px;
+  left: 22px;
+  top: 4px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -220,7 +220,7 @@
 .mds-toggle__switch:active .mds-toggle__input:not(:disabled):not(:checked) + .mds-toggle__track .mds-toggle__handle {
   width: 28px;
   height: 28px;
-  top: 0;
+  top: 2px;
   left: 0;
   background: var(--color-on-surface-variant);
 }
@@ -233,8 +233,8 @@
 .mds-toggle__switch:active .mds-toggle__input:not(:disabled):checked + .mds-toggle__track .mds-toggle__handle {
   width: 28px;
   height: 28px;
-  top: 0;
-  left: 20px;
+  top: 2px;
+  left: 18px;
   background: var(--color-primary-container);
 }
 

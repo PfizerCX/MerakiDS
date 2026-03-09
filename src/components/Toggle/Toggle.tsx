@@ -65,9 +65,9 @@ const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
               disabled={disabled}
               {...props}
             />
-            <span className="mds-toggle__track">
+            <label className="mds-toggle__track" htmlFor={toggleId}>
               <span className="mds-toggle__handle" />
-            </span>
+            </label>
           </div>
 
           {rightLabel && (
