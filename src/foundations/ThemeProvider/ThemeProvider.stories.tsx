@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeProvider } from './ThemeProvider';
-import { Button } from '../Button';
-import { Card } from '../Card';
+import { Button } from '../../components/Button';
+import { Card } from '../../components/Card';
 
 const meta: Meta<typeof ThemeProvider> = {
-  title: 'Components/ThemeProvider',
+  title: 'Foundations/ThemeProvider',
   component: ThemeProvider,
   parameters: {
     layout: 'padded',

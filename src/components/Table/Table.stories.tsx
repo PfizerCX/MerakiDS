@@ -13,20 +13,69 @@ const defaultColumns: TableColumn[] = [
   { key: 'date', header: 'Date', type: 'date', showSortIcon: true },
 ];
 
-const defaultData: TableRow[] = [
-  { name: { name: 'Sara', avatar: avatarUrl }, role: 'Designer', status: 'Active', address: '000 San Francis...', date: 'MM-DD-YYYY' },
-  { name: { name: 'Sara', avatar: avatarUrl }, role: 'Designer', status: 'Active', address: '000 San Francis...', date: 'MM-DD-YYYY' },
-  { name: { name: 'Sara', avatar: avatarUrl }, role: 'Designer', status: 'Active', address: '000 San Francis...', date: 'MM-DD-YYYY' },
-  { name: { name: 'Sara', avatar: avatarUrl }, role: 'Designer', status: 'Active', address: '000 San Francis...', date: 'MM-DD-YYYY' },
-  { name: { name: 'Sara', avatar: avatarUrl }, role: 'Designer', status: 'Active', address: '000 San Francis...', date: 'MM-DD-YYYY' },
-  { name: { name: 'Sara', avatar: avatarUrl }, role: 'Designer', status: 'Active', address: '000 San Francis...', date: 'MM-DD-YYYY' },
-];
+function randomItem<T>(items: T[]): T {
+  return items[Math.floor(Math.random() * items.length)];
+}
+
+function generateRandomTableData(count = 8): TableRow[] {
+  const names = [
+    'Sara',
+    'Alex',
+    'Mina',
+    'Jordan',
+    'Taylor',
+    'Priya',
+    'Lucas',
+    'Elena',
+    'Noah',
+    'Zoe',
+  ];
+  const roles = ['Designer', 'Engineer', 'Product Manager', 'Researcher', 'QA Analyst'];
+  const statuses = ['Active', 'Pending', 'Blocked', 'Reviewing', 'Offline'];
+  const cities = ['San Francisco', 'Austin', 'Seattle', 'Boston', 'Chicago', 'New York'];
+
+  return Array.from({ length: count }, (_, index) => {
+    const name = randomItem(names);
+    const role = randomItem(roles);
+    const status = randomItem(statuses);
+    const city = randomItem(cities);
+    const month = String(1 + Math.floor(Math.random() * 12)).padStart(2, '0');
+    const day = String(1 + Math.floor(Math.random() * 28)).padStart(2, '0');
+    const year = 2022 + Math.floor(Math.random() * 5);
+
+    return {
+      name: { name, avatar: avatarUrl },
+      role,
+      status,
+      address: `${100 + Math.floor(Math.random() * 900)} ${city}`,
+      date: `${month}-${day}-${year}`,
+    };
+  });
+}
+
+const defaultData: TableRow[] = generateRandomTableData();
 
 const meta: Meta<typeof Table> = {
   title: 'Components/Table',
   component: Table,
   tags: ['autodocs'],
   argTypes: {
+    columns: {
+      control: false,
+      table: { disable: true },
+    },
+    data: {
+      control: false,
+      table: { disable: true },
+    },
+    onRowAction: {
+      control: false,
+      table: { disable: true },
+    },
+    onSelectionChange: {
+      control: false,
+      table: { disable: true },
+    },
     showSelectionColumn: {
       control: 'boolean',
       description: 'Show a checkbox column for row selection',

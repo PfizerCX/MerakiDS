@@ -7,6 +7,22 @@ const meta: Meta<typeof TimePicker> = {
   component: TimePicker,
   tags: ['autodocs'],
   argTypes: {
+    id: {
+      control: false,
+      table: { disable: true },
+    },
+    className: {
+      control: false,
+      table: { disable: true },
+    },
+    name: {
+      control: false,
+      table: { disable: true },
+    },
+    onChange: {
+      control: false,
+      table: { disable: true },
+    },
     error: { control: 'boolean' },
     success: { control: 'boolean' },
     disabled: { control: 'boolean' },

@@ -1,4 +1,4 @@
-import { forwardRef, useState, useCallback } from 'react';
+import { forwardRef, useState, useCallback, useMemo } from 'react';
 import { CalendarToday } from '../../icons/CalendarToday';
 import { Info } from '../../icons/Info';
 import { MenuDotVertical } from '../../icons/MenuDotVertical';
@@ -22,7 +22,6 @@ export interface TableColumn {
 export interface TableRow {
   [key: string]: React.ReactNode;
 }
-
 export interface TableProps extends React.HTMLAttributes<HTMLDivElement> {
   columns: TableColumn[];
   data: TableRow[];
@@ -39,18 +38,20 @@ export interface TableProps extends React.HTMLAttributes<HTMLDivElement> {
    Sort Icon (inline SVG matching Figma import_export icon)
    --------------------------------------------------------------------------- */
 
-function SortIcon({ className }: { className?: string }) {
+function SortIcon({
+  className,
+  direction,
+}: {
+  className?: string;
+  direction?: 'asc' | 'desc' | null;
+}) {
   return (
-    <svg
+    <ChevronDown
+      size={16}
       className={className}
-      width={16}
-      height={16}
-      viewBox="0 0 16 16"
-      fill="currentColor"
+      data-direction={direction ?? undefined}
       aria-hidden
-    >
-      <path d="M8 2l3 4H5l3-4zM8 14l-3-4h6l-3 4z" />
-    </svg>
+    />
   );
 }
 
@@ -63,6 +64,8 @@ interface CellHeadProps extends React.ThHTMLAttributes<HTMLTableCellElement> {
   showSortIcon?: boolean;
   showInfoIcon?: boolean;
   showDropdownIcon?: boolean;
+  sortable?: boolean;
+  sortDirection?: 'asc' | 'desc' | null;
   allSelected?: boolean;
   onSelectAll?: (checked: boolean) => void;
 }
@@ -74,6 +77,8 @@ const CellHead = forwardRef<HTMLTableCellElement, CellHeadProps>(
       showSortIcon: sort = false,
       showInfoIcon: info = false,
       showDropdownIcon: dropdown = false,
+      sortable = false,
+      sortDirection = null,
       allSelected,
       onSelectAll,
       className,
@@ -87,7 +92,18 @@ const CellHead = forwardRef<HTMLTableCellElement, CellHeadProps>(
         ref={ref}
         className={['mds-table-head-cell', className].filter(Boolean).join(' ')}
         data-type={type !== 'column' ? type : undefined}
+        data-sortable={type === 'column' && sortable ? 'true' : undefined}
+        data-sort-direction={type === 'column' ? sortDirection ?? undefined : undefined}
         scope="col"
+        aria-sort={
+          type === 'column'
+            ? sortDirection === 'asc'
+              ? 'ascending'
+              : sortDirection === 'desc'
+                ? 'descending'
+                : 'none'
+            : undefined
+        }
         {...props}
       >
         <div className="mds-table-head-cell-content">
@@ -102,7 +118,12 @@ const CellHead = forwardRef<HTMLTableCellElement, CellHeadProps>(
           ) : type === 'column' ? (
             <>
               <span>{children}</span>
-              {sort && <SortIcon className="mds-table-head-cell-icon" />}
+              {sort && (
+                <SortIcon
+                  className="mds-table-head-cell-icon mds-table-sort-indicator"
+                  direction={sortDirection}
+                />
+              )}
               {info && <Info size={16} className="mds-table-head-cell-icon" />}
               {dropdown && <ChevronDown size={16} className="mds-table-head-cell-icon" />}
             </>
@@ -182,6 +203,19 @@ function renderCellContent(value: React.ReactNode, type: TableColumn['type']) {
   }
 }
 
+type SortDirection = 'asc' | 'desc';
+
+function getSortableValue(value: React.ReactNode, type: TableColumn['type']): string | number {
+  if (type === 'profile' && isProfileValue(value)) {
+    return value.name;
+  }
+  if (typeof value === 'number') return value;
+  if (typeof value === 'string') return value;
+  if (typeof value === 'boolean') return value ? 1 : 0;
+  if (value == null) return '';
+  return String(value);
+}
+
 /* ---------------------------------------------------------------------------
    Table
    --------------------------------------------------------------------------- */
@@ -204,6 +238,10 @@ const Table = forwardRef<HTMLDivElement, TableProps>(
     ref,
   ) => {
     const [selected, setSelected] = useState<Set<number>>(new Set());
+    const [sortState, setSortState] = useState<{
+      key: string | null;
+      direction: SortDirection | null;
+    }>({ key: null, direction: null });
 
     const handleSelectAll = useCallback(
       (checked: boolean) => {
@@ -228,6 +266,37 @@ const Table = forwardRef<HTMLDivElement, TableProps>(
     );
 
     const allSelected = data.length > 0 && selected.size === data.length;
+    const sortedRows = useMemo(() => {
+      const mapped = data.map((row, sourceIndex) => ({ row, sourceIndex }));
+      if (!sortState.key || !sortState.direction) return mapped;
+
+      const col = columns.find((c) => c.key === sortState.key);
+      if (!col) return mapped;
+
+      const dir = sortState.direction === 'asc' ? 1 : -1;
+      return [...mapped].sort((a, b) => {
+        const av = getSortableValue(a.row[col.key], col.type);
+        const bv = getSortableValue(b.row[col.key], col.type);
+
+        if (typeof av === 'number' && typeof bv === 'number') {
+          return (av - bv) * dir;
+        }
+
+        return String(av).localeCompare(String(bv), undefined, {
+          numeric: true,
+          sensitivity: 'base',
+        }) * dir;
+      });
+    }, [data, columns, sortState]);
+
+    const handleSortColumn = useCallback((columnKey: string) => {
+      setSortState((prev) => {
+        if (prev.key !== columnKey) return { key: columnKey, direction: 'asc' };
+        if (prev.direction === 'asc') return { key: columnKey, direction: 'desc' };
+        if (prev.direction === 'desc') return { key: null, direction: null };
+        return { key: columnKey, direction: 'asc' };
+      });
+    }, []);
 
     return (
       <div
@@ -254,10 +323,21 @@ const Table = forwardRef<HTMLDivElement, TableProps>(
               {columns.map((col) => (
                 <CellHead
                   key={col.key}
+                  sortable
+                  sortDirection={sortState.key === col.key ? sortState.direction : null}
                   showSortIcon={col.showSortIcon}
                   showInfoIcon={col.showInfoIcon}
                   showDropdownIcon={col.showDropdownIcon}
                   style={col.width != null ? { width: col.width } : undefined}
+                  onClick={() => handleSortColumn(col.key)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleSortColumn(col.key);
+                    }
+                  }}
                 >
                   {col.header}
                 </CellHead>
@@ -266,18 +346,18 @@ const Table = forwardRef<HTMLDivElement, TableProps>(
             </tr>
           </thead>
           <tbody>
-            {data.map((row, rowIndex) => {
+            {sortedRows.map(({ row, sourceIndex }, rowIndex) => {
               const rowStyle =
                 zebraStriped && rowIndex % 2 === 1 ? 'secondary' : 'normal';
               return (
-                <tr key={rowIndex}>
+                <tr key={sourceIndex}>
                   {showSelectionColumn && (
                     <TableCell cellType="checkbox" rowStyle={rowStyle}>
                       <input
                         type="checkbox"
                         className="mds-table-checkbox"
-                        checked={selected.has(rowIndex)}
-                        onChange={(e) => handleSelectRow(rowIndex, e.target.checked)}
+                        checked={selected.has(sourceIndex)}
+                        onChange={(e) => handleSelectRow(sourceIndex, e.target.checked)}
                         aria-label={`Select row ${rowIndex + 1}`}
                       />
                     </TableCell>
@@ -296,7 +376,7 @@ const Table = forwardRef<HTMLDivElement, TableProps>(
                       <button
                         type="button"
                         className="mds-table-action-btn"
-                        onClick={() => onRowAction?.(rowIndex)}
+                        onClick={() => onRowAction?.(sourceIndex)}
                         aria-label={`Actions for row ${rowIndex + 1}`}
                       >
                         <MenuDotVertical size={24} />
@@ -314,5 +394,19 @@ const Table = forwardRef<HTMLDivElement, TableProps>(
 );
 
 Table.displayName = 'Table';
+
+export interface TableColumn {
+  key: string;
+  header: string;
+  type?: 'text' | 'profile' | 'chip' | 'date';
+  showSortIcon?: boolean;
+  showInfoIcon?: boolean;
+  showDropdownIcon?: boolean;
+  width?: string | number;
+}
+
+export interface TableRow {
+  [key: string]: React.ReactNode;
+}
 
 export { Table, CellHead, TableCell };

@@ -16,7 +16,10 @@ const meta: Meta<typeof Video> = {
     title: { control: 'text' },
     thumbnailSrc: { control: 'text' },
     thumbnailAlt: { control: 'text' },
-    onPlay: { action: 'play' },
+    onPlay: {
+      control: false,
+      table: { disable: true },
+    },
   },
   args: {
     thumbnailSrc: sampleThumbnail,

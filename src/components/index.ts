@@ -41,7 +41,6 @@ export * from './Switch';
 export * from './Table';
 export * from './TextArea';
 export * from './TextInput';
-export * from './ThemeProvider';
 export * from './TimePicker';
 export * from './Toggle';
 export * from './Video';
