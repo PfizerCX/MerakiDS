@@ -67,9 +67,9 @@ const meta: Meta<typeof Slideshow> = {
       control: 'select',
       options: ['after', 'before'],
     },
-    slides: { control: false },
+    slides: { table: { disable: true } },
     activeIndex: { control: 'number' },
-    onSlideChange: { action: 'slideChange' },
+    onSlideChange: { action: 'slideChange', table: { disable: true } },
   },
   args: {
     slides,

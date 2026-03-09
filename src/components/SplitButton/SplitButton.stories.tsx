@@ -30,6 +30,9 @@ const meta: Meta<typeof SplitButton> = {
   component: SplitButton,
   tags: ['autodocs'],
   argTypes: {
+    options: { table: { disable: true } },
+    onClick: { table: { disable: true } },
+    onOptionSelect: { table: { disable: true } },
     size: {
       control: 'select',
       options: ['md', 'lg'],

@@ -13,6 +13,10 @@ const meta: Meta<typeof Slider> = {
     step: { control: 'number' },
     disabled: { control: 'boolean' },
     showFlag: { control: 'boolean' },
+    showFlagOnDragOnly: {
+      control: 'boolean',
+      description: 'When true, flag is only visible while dragging the handle',
+    },
     showRange: { control: 'boolean' },
     orientation: { control: 'radio', options: ['horizontal', 'vertical'] },
   },
@@ -21,6 +25,7 @@ const meta: Meta<typeof Slider> = {
     max: 100,
     step: 1,
     showFlag: true,
+    showFlagOnDragOnly: true,
     showRange: true,
     orientation: 'horizontal',
   },
@@ -67,6 +72,16 @@ export const WithLabel: Story = {
 export const RangeSlider: Story = {
   render: (args) => <RangeControlled {...args} />,
   args: { value: [20, 80], label: 'Range slider' },
+};
+
+export const FlagOnDragOnly: Story = {
+  render: (args) => <ContinuousControlled {...args} />,
+  args: {
+    value: 50,
+    label: 'Flag visible only while dragging',
+    showFlag: true,
+    showFlagOnDragOnly: true,
+  },
 };
 
 export const Vertical: Story = {

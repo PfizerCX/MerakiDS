@@ -6,6 +6,7 @@ const meta: Meta<typeof SegmentedControl> = {
   component: SegmentedControl,
   tags: ['autodocs'],
   argTypes: {
+    onChange: { table: { disable: true } },
     mode: {
       control: 'select',
       options: ['single', 'multi'],

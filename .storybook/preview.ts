@@ -109,6 +109,11 @@ const preview: Preview = {
     },
   ],
   parameters: {
+    options: {
+      storySort: {
+        method: 'alphabetical',
+      },
+    },
     docs: {
       theme: merakiTheme,
     },

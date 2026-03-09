@@ -1,4 +1,4 @@
-import { forwardRef, useCallback, useId, useRef, useEffect } from 'react';
+import { forwardRef, useCallback, useId, useRef, useEffect, useState } from 'react';
 import './Slider.css';
 
 export interface SliderProps
@@ -17,6 +17,8 @@ export interface SliderProps
   disabled?: boolean;
   /** Show value flag tooltip above the handle(s) */
   showFlag?: boolean;
+  /** When true, flag is only visible while dragging; when false, flag follows showFlag */
+  showFlagOnDragOnly?: boolean;
   /** Show min/max labels below the track */
   showRange?: boolean;
   /** Slider orientation */
@@ -49,6 +51,7 @@ const Slider = forwardRef<HTMLDivElement, SliderProps>(
       label,
       disabled = false,
       showFlag = true,
+      showFlagOnDragOnly = true,
       showRange = true,
       orientation = 'horizontal',
       className,
@@ -67,6 +70,7 @@ const Slider = forwardRef<HTMLDivElement, SliderProps>(
 
     const trackRef = useRef<HTMLDivElement>(null);
     const draggingRef = useRef<'low' | 'high' | null>(null);
+    const [draggingHandle, setDraggingHandle] = useState<'low' | 'high' | null>(null);
 
     const getValueFromPosition = useCallback(
       (clientX: number, clientY: number) => {
@@ -92,6 +96,7 @@ const Slider = forwardRef<HTMLDivElement, SliderProps>(
         e.preventDefault();
         (e.target as HTMLElement).setPointerCapture(e.pointerId);
         draggingRef.current = which;
+        setDraggingHandle(which);
       },
       [disabled]
     );
@@ -116,6 +121,7 @@ const Slider = forwardRef<HTMLDivElement, SliderProps>(
 
     const handlePointerUp = useCallback(() => {
       draggingRef.current = null;
+      setDraggingHandle(null);
     }, []);
 
     const handleTrackClick = useCallback(
@@ -208,10 +214,29 @@ const Slider = forwardRef<HTMLDivElement, SliderProps>(
     useEffect(() => {
       const onUp = () => {
         draggingRef.current = null;
+        setDraggingHandle(null);
       };
       window.addEventListener('pointerup', onUp);
       return () => window.removeEventListener('pointerup', onUp);
     }, []);
+
+    const lowFlagScale = showFlagOnDragOnly ? (draggingHandle === 'low' ? 1 : 0) : 1;
+    const lowFlagOpacity = lowFlagScale;
+    const highFlagScale = showFlagOnDragOnly ? (draggingHandle === 'high' ? 1 : 0) : 1;
+    const highFlagOpacity = highFlagScale;
+
+    const lowFlagStyle: React.CSSProperties =
+      showFlag && isVertical
+        ? { transform: `translateY(-50%) scale(${lowFlagScale})`, opacity: lowFlagOpacity, transformOrigin: '50% 100%' }
+        : showFlag
+          ? { transform: `translateX(-50%) scale(${lowFlagScale})`, opacity: lowFlagOpacity, transformOrigin: '50% 100%' }
+          : {};
+    const highFlagStyle: React.CSSProperties =
+      showFlag && isVertical
+        ? { transform: `translateY(-50%) scale(${highFlagScale})`, opacity: highFlagOpacity, transformOrigin: '50% 100%' }
+        : showFlag
+          ? { transform: `translateX(-50%) scale(${highFlagScale})`, opacity: highFlagOpacity, transformOrigin: '50% 100%' }
+          : {};
 
     const lowPct = pct(lowVal, min, max);
     const highPct = pct(highVal, min, max);
@@ -273,7 +298,7 @@ const Slider = forwardRef<HTMLDivElement, SliderProps>(
               onKeyDown={(e) => handleKeyDown(e, 'low')}
             >
               {showFlag && (
-                <span className="mds-slider__flag">
+                <span className="mds-slider__flag" style={lowFlagStyle}>
                   {(value as [number, number])[0]}
                 </span>
               )}
@@ -290,11 +315,11 @@ const Slider = forwardRef<HTMLDivElement, SliderProps>(
             aria-orientation={orientation}
             aria-label={isRange ? 'Range end' : 'Value'}
             style={isRange ? highHandleStyle : lowHandleStyle}
-            onPointerDown={(e) => handlePointerDown(e, isRange ? 'high' : 'low')}
+            onPointerDown={(e) => handlePointerDown(e, 'high')}
             onKeyDown={(e) => handleKeyDown(e, isRange ? 'high' : 'low')}
           >
             {showFlag && (
-              <span className="mds-slider__flag">
+              <span className="mds-slider__flag" style={highFlagStyle}>
                 {isRange ? (value as [number, number])[1] : (value as number)}
               </span>
             )}
