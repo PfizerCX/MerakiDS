@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Stepper } from './Stepper';
+import { Counter } from './Counter';
 
-const meta: Meta<typeof Stepper> = {
-  title: 'Components/Stepper',
-  component: Stepper,
+const meta: Meta<typeof Counter> = {
+  title: 'Components/Counter',
+  component: Counter,
   tags: ['autodocs'],
   argTypes: {
+    onChange: {
+      control: false,
+      table: { disable: true },
+    },
     value: { control: 'number' },
     min: { control: 'number' },
     max: { control: 'number' },
@@ -26,19 +30,19 @@ const meta: Meta<typeof Stepper> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Stepper>;
+type Story = StoryObj<typeof Counter>;
 
-const StepperControlled = (args: React.ComponentProps<typeof Stepper>) => {
+const CounterControlled = (args: React.ComponentProps<typeof Counter>) => {
   const [value, setValue] = useState(args.value ?? 1);
-  return <Stepper {...args} value={value} onChange={setValue} />;
+  return <Counter {...args} value={value} onChange={setValue} />;
 };
 
 export const Default: Story = {
-  render: (args) => <StepperControlled {...args} />,
+  render: (args) => <CounterControlled {...args} />,
 };
 
 export const WithHelperText: Story = {
-  render: (args) => <StepperControlled {...args} />,
+  render: (args) => <CounterControlled {...args} />,
   args: {
     helperText: 'Caption Label',
   },
@@ -57,7 +61,7 @@ export const AllStates: Story = {
     const [val2, setVal2] = useState(3);
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 48 }}>
-        <Stepper
+        <Counter
           label="Input Label"
           required
           value={val1}
@@ -65,7 +69,7 @@ export const AllStates: Story = {
           max={10}
           onChange={setVal1}
         />
-        <Stepper
+        <Counter
           label="Input Label"
           required
           helperText="Caption Label"
@@ -74,7 +78,7 @@ export const AllStates: Story = {
           max={10}
           onChange={setVal2}
         />
-        <Stepper
+        <Counter
           label="Input Label"
           required
           disabled

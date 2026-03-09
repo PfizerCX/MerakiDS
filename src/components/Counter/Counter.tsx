@@ -1,9 +1,9 @@
 import { forwardRef, useCallback, useId } from 'react';
 import { Add } from '../../icons/Add';
 import { Subtract } from '../../icons/Subtract';
-import './Stepper.css';
+import './Counter.css';
 
-export interface StepperProps
+export interface CounterProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** Current numeric value */
   value?: number;
@@ -13,19 +13,19 @@ export interface StepperProps
   max?: number;
   /** Increment/decrement step size */
   step?: number;
-  /** Label displayed above the stepper */
+  /** Label displayed above the counter */
   label?: string;
-  /** Helper text displayed below the stepper */
+  /** Helper text displayed below the counter */
   helperText?: string;
   /** Whether the field is required (shows asterisk) */
   required?: boolean;
-  /** Whether the stepper is disabled */
+  /** Whether the counter is disabled */
   disabled?: boolean;
   /** Callback fired when the value changes */
   onChange?: (value: number) => void;
 }
 
-const Stepper = forwardRef<HTMLDivElement, StepperProps>(
+const Counter = forwardRef<HTMLDivElement, CounterProps>(
   (
     {
       value = 0,
@@ -62,7 +62,7 @@ const Stepper = forwardRef<HTMLDivElement, StepperProps>(
     return (
       <div
         ref={ref}
-        className={['mds-stepper', className].filter(Boolean).join(' ')}
+        className={['mds-counter', className].filter(Boolean).join(' ')}
         data-disabled={disabled || undefined}
         role="group"
         aria-labelledby={label ? labelId : undefined}
@@ -70,15 +70,15 @@ const Stepper = forwardRef<HTMLDivElement, StepperProps>(
         {...props}
       >
         {label && (
-          <div className="mds-stepper__label" id={labelId}>
+          <div className="mds-counter__label" id={labelId}>
             <span>{label}</span>
-            {required && <span className="mds-stepper__required">*</span>}
+            {required && <span className="mds-counter__required">*</span>}
           </div>
         )}
-        <div className="mds-stepper__controls">
+        <div className="mds-counter__controls">
           <button
             type="button"
-            className="mds-stepper__btn"
+            className="mds-counter__btn"
             onClick={decrement}
             disabled={disabled || atMin}
             aria-label="Decrease value"
@@ -86,10 +86,10 @@ const Stepper = forwardRef<HTMLDivElement, StepperProps>(
           >
             <Subtract size={24} />
           </button>
-          <output className="mds-stepper__value">{value}</output>
+          <output className="mds-counter__value">{value}</output>
           <button
             type="button"
-            className="mds-stepper__btn"
+            className="mds-counter__btn"
             onClick={increment}
             disabled={disabled || atMax}
             aria-label="Increase value"
@@ -99,7 +99,7 @@ const Stepper = forwardRef<HTMLDivElement, StepperProps>(
           </button>
         </div>
         {helperText && (
-          <p className="mds-stepper__helper" id={helperId}>
+          <p className="mds-counter__helper" id={helperId}>
             {helperText}
           </p>
         )}
@@ -108,6 +108,6 @@ const Stepper = forwardRef<HTMLDivElement, StepperProps>(
   }
 );
 
-Stepper.displayName = 'Stepper';
+Counter.displayName = 'Counter';
 
-export { Stepper };
+export { Counter };

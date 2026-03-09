@@ -4,11 +4,14 @@ import './Switch.css';
 export interface SwitchProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> {
   checked: boolean;
   onChange: (checked: boolean) => void;
-  'aria-label': string;
+  /** Accessible name for the switch (required for screen readers). Defaults to "Toggle" if not provided. */
+  'aria-label'?: string;
 }
 
+const DEFAULT_ARIA_LABEL = 'Toggle';
+
 const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
-  ({ checked, onChange, disabled, 'aria-label': ariaLabel, className, onClick, ...props }, ref) => {
+  ({ checked, onChange, disabled, 'aria-label': ariaLabel = DEFAULT_ARIA_LABEL, className, onClick, ...props }, ref) => {
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       if (!disabled) onChange(!checked);
       onClick?.(e);
@@ -27,7 +30,7 @@ const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
         type="button"
         role="switch"
         aria-checked={checked}
-        aria-label={ariaLabel}
+        aria-label={ariaLabel ?? DEFAULT_ARIA_LABEL}
         disabled={disabled}
         className={['mds-switch', className].filter(Boolean).join(' ')}
         data-checked={checked || undefined}

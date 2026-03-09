@@ -159,7 +159,7 @@
   width: 24px;
   height: 24px;
   background: var(--ref-color-white, #fff);
-  left: 22px;
+  left: 24px;
   top: 4px;
 }
 
@@ -229,12 +229,12 @@
   background: rgba(61, 61, 61, 0.08);
 }
 
-/* Checked pressed — handle grows to 28px */
+/* Checked pressed — handle grows to 28px, keep ~4px right padding */
 .mds-toggle__switch:active .mds-toggle__input:not(:disabled):checked + .mds-toggle__track .mds-toggle__handle {
   width: 28px;
   height: 28px;
   top: 2px;
-  left: 18px;
+  left: 20px;
   background: var(--color-primary-container);
 }
 

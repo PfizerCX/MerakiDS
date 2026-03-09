@@ -1,10 +1,10 @@
 /* ==========================================================================
-   Stepper — Meraki Design System
+   Counter — Meraki Design System
    Figma source: node 20540:5802
    States: default | active (focus-within) | disabled
    ========================================================================== */
 
-.mds-stepper {
+.mds-counter {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -15,7 +15,7 @@
 
 /* Label */
 
-.mds-stepper__label {
+.mds-counter__label {
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -27,7 +27,7 @@
   white-space: nowrap;
 }
 
-.mds-stepper__required {
+.mds-counter__required {
   position: absolute;
   left: -9px;
   top: 0;
@@ -38,7 +38,7 @@
 
 /* Controls row */
 
-.mds-stepper__controls {
+.mds-counter__controls {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -48,15 +48,15 @@
   transition: border-color var(--transition-fast);
 }
 
-.mds-stepper__controls:focus-within {
+.mds-counter__controls:focus-within {
   border-bottom-width: 2px;
   border-bottom-color: var(--color-primary);
   padding-bottom: 7px;
 }
 
-/* Stepper buttons */
+/* Counter buttons */
 
-.mds-stepper__btn {
+.mds-counter__btn {
   appearance: none;
   margin: 0;
   padding: 0;
@@ -73,16 +73,16 @@
   transition: color var(--transition-fast);
 }
 
-.mds-stepper__btn:hover:not(:disabled) {
+.mds-counter__btn:hover:not(:disabled) {
   color: var(--color-primary);
 }
 
-.mds-stepper__btn:disabled {
+.mds-counter__btn:disabled {
   cursor: default;
   opacity: 0.38;
 }
 
-.mds-stepper__btn:focus-visible {
+.mds-counter__btn:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
   border-radius: 2px;
@@ -90,7 +90,7 @@
 
 /* Value display */
 
-.mds-stepper__value {
+.mds-counter__value {
   flex: 1 0 0;
   min-width: 0;
   text-align: center;
@@ -102,7 +102,7 @@
 
 /* Helper text */
 
-.mds-stepper__helper {
+.mds-counter__helper {
   margin: 0;
   font-size: var(--font-size-body-s);
   font-weight: var(--font-weight-regular);
@@ -113,7 +113,7 @@
 
 /* Disabled state */
 
-.mds-stepper[data-disabled] {
+.mds-counter[data-disabled] {
   opacity: 0.3;
   pointer-events: none;
 }
