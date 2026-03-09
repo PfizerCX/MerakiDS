@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Loading Spinner — Meraki Design System
+   Figma source: node 22517:33495
+   Sizes: sm (24px) | lg (48px)
+   Modes: light | dark
+   ========================================================================== */
+
+.mds-loading-spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------------------------------------------------------------------------
+   Sizes
+   --------------------------------------------------------------------------- */
+
+.mds-loading-spinner[data-size='sm'] {
+  width: 24px;
+  height: 24px;
+}
+
+.mds-loading-spinner[data-size='lg'] {
+  width: 48px;
+  height: 48px;
+}
+
+/* ---------------------------------------------------------------------------
+   SVG
+   --------------------------------------------------------------------------- */
+
+.mds-loading-spinner__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: mds-spinner-rotate 1s linear infinite;
+}
+
+.mds-loading-spinner__track {
+  fill: none;
+}
+
+.mds-loading-spinner__arc {
+  fill: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Light mode (for light backgrounds) — blue arc on light track
+   --------------------------------------------------------------------------- */
+
+.mds-loading-spinner[data-mode='light'] .mds-loading-spinner__track {
+  stroke: var(--color-primary-container);
+}
+
+.mds-loading-spinner[data-mode='light'] .mds-loading-spinner__arc {
+  stroke: var(--color-primary);
+}
+
+/* ---------------------------------------------------------------------------
+   Dark mode (for dark backgrounds) — light arc on translucent track
+   --------------------------------------------------------------------------- */
+
+.mds-loading-spinner[data-mode='dark'] .mds-loading-spinner__track {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+.mds-loading-spinner[data-mode='dark'] .mds-loading-spinner__arc {
+  stroke: var(--ref-color-white);
+}
+
+/* ---------------------------------------------------------------------------
+   Animation
+   --------------------------------------------------------------------------- */
+
+@keyframes mds-spinner-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}

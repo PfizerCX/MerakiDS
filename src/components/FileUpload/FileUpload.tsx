@@ -31,6 +31,8 @@ export interface FileUploadProps
   onFileSelect?: (file: File) => void;
   /** Callback when the uploaded file is removed */
   onFileRemove?: () => void;
+  /** Alias for onFileRemove */
+  onRemove?: () => void;
   /** Whether the component is disabled */
   disabled?: boolean;
 }
@@ -50,6 +52,7 @@ const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(
       errorMessage = 'File size exceeds allowable maximum',
       onFileSelect,
       onFileRemove,
+      onRemove,
       disabled = false,
       className,
       ...props
@@ -164,7 +167,7 @@ const FileUpload = forwardRef<HTMLDivElement, FileUploadProps>(
                 <button
                   type="button"
                   className="mds-file-upload__remove"
-                  onClick={onFileRemove}
+                  onClick={onFileRemove ?? onRemove}
                   aria-label="Remove file"
                 >
                   <Close size={24} />
