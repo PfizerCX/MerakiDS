@@ -1,0 +1,111 @@
+/* ==========================================================================
+   Stepper — Meraki Design System
+   Figma: Atoms/Step 40291:11837, Atoms/Divider 40320:24518, Stepper 40291:12033
+   States: default (pending), active, completed (check + positive)
+   ========================================================================== */
+
+.mds-stepper {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  font-family: var(--font-family-sans);
+}
+
+/* ---------------------------------------------------------------------------
+   Step (circle + optional label)
+   --------------------------------------------------------------------------- */
+
+.mds-stepper__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  width: 88px;
+  min-height: 54px;
+}
+
+/* Step circle — 32px, full radius */
+
+.mds-stepper__circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  transition:
+    background-color var(--transition-fast, 0.15s ease),
+    color var(--transition-fast, 0.15s ease);
+}
+
+/* Default: primary-container bg, on-primary-container text */
+.mds-stepper__circle[data-state="default"] {
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+/* Active: primary bg, on-primary text */
+.mds-stepper__circle[data-state="active"] {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+/* Completed: positive bg, check icon */
+.mds-stepper__circle[data-state="completed"] {
+  background-color: var(--color-positive);
+  color: var(--color-on-positive);
+}
+
+.mds-stepper__number {
+  font-size: var(--font-size-label-m);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-regular);
+  text-align: center;
+}
+
+.mds-stepper__check {
+  flex-shrink: 0;
+  color: #ffffff;
+}
+
+/* Step label (label-xs) */
+.mds-stepper__label {
+  font-size: var(--font-size-label-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  color: var(--color-on-background);
+  text-align: center;
+  min-width: 100%;
+}
+
+/* ---------------------------------------------------------------------------
+   Divider between steps — 2px line, state colors
+   --------------------------------------------------------------------------- */
+
+.mds-stepper__divider {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  min-width: 0;
+  min-height: 1px;
+  padding-top: 14px;
+}
+
+.mds-stepper__divider-line {
+  display: block;
+  height: 0;
+  border-bottom: 2px solid var(--color-outline);
+  transition: border-color var(--transition-fast, 0.15s ease);
+}
+
+.mds-stepper__divider[data-state="active"] .mds-stepper__divider-line {
+  border-color: var(--color-primary);
+}
+
+.mds-stepper__divider[data-state="completed"] .mds-stepper__divider-line {
+  border-color: var(--color-positive);
+}
