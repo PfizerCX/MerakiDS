@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeProvider } from './ThemeProvider';
 import { Button } from '../../components/Button';
-import { Card } from '../../components/Card';
 
 const meta: Meta<typeof ThemeProvider> = {
   title: 'Foundations/ThemeProvider',
@@ -26,10 +25,10 @@ export const Default: Story = {
   args: {},
   render: () => (
     <ThemeProvider>
-      <Card>
-        <p style={{ margin: 0 }}>Uses default theme (light), rounded corners, blue primary.</p>
+      <div style={{ padding: 24, background: 'var(--color-surface)', borderRadius: 'var(--radius-2)' }}>
+        <p style={{ margin: 0, color: 'var(--color-on-surface)' }}>Uses default theme (light), rounded corners, blue primary.</p>
         <Button style={{ marginTop: 16 }}>Primary button</Button>
-      </Card>
+      </div>
     </ThemeProvider>
   ),
 };
@@ -38,10 +37,10 @@ export const DarkMode: Story = {
   args: { theme: 'dark' },
   render: (args) => (
     <ThemeProvider {...args}>
-      <Card>
-        <p style={{ margin: 0 }}>Dark mode with default colors.</p>
+      <div style={{ padding: 24, background: 'var(--color-surface)', borderRadius: 'var(--radius-2)' }}>
+        <p style={{ margin: 0, color: 'var(--color-on-surface)' }}>Dark mode with default colors.</p>
         <Button style={{ marginTop: 16 }}>Primary button</Button>
-      </Card>
+      </div>
     </ThemeProvider>
   ),
 };
@@ -50,10 +49,10 @@ export const SharpCorners: Story = {
   args: { cornerMode: 'sharp' },
   render: (args) => (
     <ThemeProvider {...args}>
-      <Card>
-        <p style={{ margin: 0 }}>Sharp corners (0–6px radius tokens).</p>
+      <div style={{ padding: 24, background: 'var(--color-surface)', borderRadius: 'var(--radius-2)' }}>
+        <p style={{ margin: 0, color: 'var(--color-on-surface)' }}>Sharp corners (0–6px radius tokens).</p>
         <Button style={{ marginTop: 16 }}>Primary button</Button>
-      </Card>
+      </div>
     </ThemeProvider>
   ),
 };
@@ -66,10 +65,10 @@ export const CustomColorSets: Story = {
   },
   render: (args) => (
     <ThemeProvider {...args}>
-      <Card>
-        <p style={{ margin: 0 }}>Primary: Teal, Secondary: Green, Tertiary: Orange.</p>
+      <div style={{ padding: 24, background: 'var(--color-surface)', borderRadius: 'var(--radius-2)' }}>
+        <p style={{ margin: 0, color: 'var(--color-on-surface)' }}>Primary: Teal, Secondary: Green, Tertiary: Orange.</p>
         <Button style={{ marginTop: 16 }}>Primary button</Button>
-      </Card>
+      </div>
     </ThemeProvider>
   ),
 };
@@ -81,10 +80,10 @@ export const DarkWithVioletPrimary: Story = {
   },
   render: (args) => (
     <ThemeProvider {...args}>
-      <Card>
-        <p style={{ margin: 0 }}>Dark mode with violet primary.</p>
+      <div style={{ padding: 24, background: 'var(--color-surface)', borderRadius: 'var(--radius-2)' }}>
+        <p style={{ margin: 0, color: 'var(--color-on-surface)' }}>Dark mode with violet primary.</p>
         <Button style={{ marginTop: 16 }}>Primary button</Button>
-      </Card>
+      </div>
     </ThemeProvider>
   ),
 };

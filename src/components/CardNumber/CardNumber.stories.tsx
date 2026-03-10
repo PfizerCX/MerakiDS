@@ -12,6 +12,8 @@ const meta: Meta<typeof CardNumber> = {
     },
     headlineLead: { control: 'boolean' },
     showTooltip: { control: 'boolean' },
+    style: { table: { disable: true } },
+    onTooltipClick: { table: { disable: true } },
   },
   args: {
     variant: 'base',

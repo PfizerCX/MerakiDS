@@ -7,7 +7,6 @@ export * from './Breadcrumbs';
 export * from './Button';
 export * from './ButtonGroup';
 export * from './Callout';
-export * from './Card';
 export * from './CardIcon';
 export * from './CardImage';
 export * from './CardNumber';

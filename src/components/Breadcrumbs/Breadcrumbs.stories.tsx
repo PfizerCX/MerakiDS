@@ -1,63 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Breadcrumbs } from './Breadcrumbs';
+import { Breadcrumbs, BreadcrumbsProps } from './Breadcrumbs';
 
-const meta: Meta<typeof Breadcrumbs> = {
-  title: 'Components/Breadcrumbs',
-  component: Breadcrumbs,
-  tags: ['autodocs'],
-  argTypes: {
-    showBack: {
-      control: 'boolean',
-      description: 'Render a "Back" return link instead of the full path',
-    },
-    backLabel: {
-      control: 'text',
-      description: 'Label for the back button',
-    },
-    maxItems: {
-      control: { type: 'number', min: 0, max: 10 },
-      description:
-        'Maximum visible items before collapsing behind "…". Set 0 to disable.',
-    },
-  },
-  args: {
-    showBack: false,
-    maxItems: 4,
-  },
-};
+type Levels = 'Return' | '1 Level' | '2 Level' | '3 Level' | '3+ Levels';
 
-export default meta;
-
-type Story = StoryObj<typeof Breadcrumbs>;
-
-export const Return: Story = {
-  args: {
+const levelPresets: Record<Levels, BreadcrumbsProps> = {
+  Return: {
     showBack: true,
     backLabel: 'Back',
   },
-};
-
-export const OneLevel: Story = {
-  args: {
+  '1 Level': {
     items: [
       { label: 'First Level', href: '#' },
       { label: 'Current Page' },
     ],
   },
-};
-
-export const TwoLevel: Story = {
-  args: {
+  '2 Level': {
     items: [
       { label: 'First Level', href: '#' },
       { label: 'Second Level', href: '#' },
       { label: 'Current Page' },
     ],
   },
-};
-
-export const ThreeLevel: Story = {
-  args: {
+  '3 Level': {
     items: [
       { label: 'First Level', href: '#' },
       { label: 'Second Level', href: '#' },
@@ -65,11 +29,7 @@ export const ThreeLevel: Story = {
       { label: 'Current Page' },
     ],
   },
-};
-
-export const Collapsed: Story = {
-  name: '3+ Levels (collapsed)',
-  args: {
+  '3+ Levels': {
     items: [
       { label: 'First Level', href: '#' },
       { label: 'Second Level', href: '#' },
@@ -79,6 +39,61 @@ export const Collapsed: Story = {
     ],
     maxItems: 4,
   },
+};
+
+type StoryArgs = BreadcrumbsProps & { levels: Levels };
+
+const meta: Meta<StoryArgs> = {
+  title: 'Components/Breadcrumbs',
+  component: Breadcrumbs,
+  tags: ['autodocs'],
+  argTypes: {
+    levels: {
+      control: 'select',
+      options: ['Return', '1 Level', '2 Level', '3 Level', '3+ Levels'],
+      description: 'Preconfigured breadcrumb depth matching the Figma variants',
+    },
+    showBack: { table: { disable: true } },
+    backLabel: { table: { disable: true } },
+    backHref: { table: { disable: true } },
+    onBack: { table: { disable: true } },
+    items: { table: { disable: true } },
+    maxItems: { table: { disable: true } },
+  },
+  args: {
+    levels: '2 Level',
+  },
+  render: ({ levels, ...rest }) => {
+    const preset = levelPresets[levels] ?? {};
+    return <Breadcrumbs {...preset} {...rest} />;
+  },
+};
+
+export default meta;
+
+type Story = StoryObj<StoryArgs>;
+
+export const Default: Story = {};
+
+export const Return: Story = {
+  args: { levels: 'Return' },
+};
+
+export const OneLevel: Story = {
+  args: { levels: '1 Level' },
+};
+
+export const TwoLevel: Story = {
+  args: { levels: '2 Level' },
+};
+
+export const ThreeLevel: Story = {
+  args: { levels: '3 Level' },
+};
+
+export const ThreePlusLevels: Story = {
+  name: '3+ Levels',
+  args: { levels: '3+ Levels' },
 };
 
 export const AllVariants: Story = {

@@ -46,6 +46,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  color: currentColor;
+}
+
+.mds-btn__icon svg {
+  color: inherit !important;
 }
 
 .mds-btn__label {

@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { Children, cloneElement, forwardRef, isValidElement } from 'react';
 import './CardImage.css';
 
 export interface CardImageProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -38,6 +38,14 @@ const CardImage = forwardRef<HTMLDivElement, CardImageProps>(
   ) => {
     const isOverlap = imageVariant === 'overlap';
 
+    const renderedActions = emphasized && actions
+      ? Children.map(actions, (child) =>
+          isValidElement<{ inverted?: boolean }>(child)
+            ? cloneElement(child, { inverted: true })
+            : child
+        )
+      : actions;
+
     return (
       <div
         ref={ref}
@@ -74,8 +82,8 @@ const CardImage = forwardRef<HTMLDivElement, CardImageProps>(
           )}
 
           <div className="mds-card-image__footer">
-            {actions && (
-              <div className="mds-card-image__actions">{actions}</div>
+            {renderedActions && (
+              <div className="mds-card-image__actions">{renderedActions}</div>
             )}
             {disclaimer && (
               <div className="mds-card-image__disclaimer">

@@ -25,6 +25,7 @@ const meta: Meta<typeof CardImage> = {
   args: {
     imageSrc: sampleImage,
     imageAlt: 'Sample image',
+    emphasized: false,
     headline: 'Headline Here',
     body: "Write a helpful and concise body copy 3-4 lines of text maximum. We're in relentless pursuit of breakthroughs.",
     disclaimer: '*Disclaimer Text',
@@ -53,11 +54,7 @@ export const BaseEmphasized: Story = {
   args: {
     imageVariant: 'base',
     emphasized: true,
-    actions: (
-      <Button variant="secondary" inverted>
-        Button Label
-      </Button>
-    ),
+    actions: <Button variant="secondary">Button Label</Button>,
   },
 };
 
@@ -78,11 +75,7 @@ export const LargeEmphasized: Story = {
     headline:
       'Write a helpful and concise body copy with 4 lines of text maximum. If you go over 4 lines it will be truncated like this here',
     body: undefined,
-    actions: (
-      <Button variant="secondary" inverted>
-        Button Label
-      </Button>
-    ),
+    actions: <Button variant="secondary">Button Label</Button>,
   },
 };
 
@@ -103,11 +96,7 @@ export const OverlapEmphasized: Story = {
     headline:
       'Write a helpful and concise body copy with 4 lines of text maximum. If you go over 4 lines it will be truncated like this',
     body: undefined,
-    actions: (
-      <Button variant="secondary" inverted>
-        Button Label
-      </Button>
-    ),
+    actions: <Button variant="secondary">Button Label</Button>,
   },
 };
 
@@ -132,11 +121,7 @@ export const AllVariants: Story = {
           emphasized
           headline="Headline Here"
           body="Write a helpful and concise body copy 3-4 lines of text maximum."
-          actions={
-            <Button variant="secondary" inverted>
-              Button Label
-            </Button>
-          }
+          actions={<Button variant="secondary">Button Label</Button>}
           disclaimer="*Disclaimer Text"
           style={{ width: 325 }}
         />

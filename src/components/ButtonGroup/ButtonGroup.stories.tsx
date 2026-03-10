@@ -84,7 +84,7 @@ export const AllOrientationsAndSizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
       <div>
-        <p style={{ marginBottom: 8, fontWeight: 600 }}>
+        <p style={{ marginBottom: 8, fontWeight: 600, fontFamily: 'sans-serif' }}>
           Horizontal — Hug
         </p>
         <ButtonGroup orientation="horizontal">
@@ -93,7 +93,7 @@ export const AllOrientationsAndSizes: Story = {
         </ButtonGroup>
       </div>
       <div>
-        <p style={{ marginBottom: 8, fontWeight: 600 }}>
+        <p style={{ marginBottom: 8, fontWeight: 600, fontFamily: 'sans-serif' }}>
           Horizontal — Fill
         </p>
         <ButtonGroup orientation="horizontal" fill>
@@ -102,7 +102,7 @@ export const AllOrientationsAndSizes: Story = {
         </ButtonGroup>
       </div>
       <div>
-        <p style={{ marginBottom: 8, fontWeight: 600 }}>
+        <p style={{ marginBottom: 8, fontWeight: 600, fontFamily: 'sans-serif' }}>
           Vertical — Hug
         </p>
         <ButtonGroup orientation="vertical">
@@ -111,7 +111,7 @@ export const AllOrientationsAndSizes: Story = {
         </ButtonGroup>
       </div>
       <div style={{ width: 400 }}>
-        <p style={{ marginBottom: 8, fontWeight: 600 }}>
+        <p style={{ marginBottom: 8, fontWeight: 600, fontFamily: 'sans-serif' }}>
           Vertical — Fill
         </p>
         <ButtonGroup orientation="vertical" fill>
