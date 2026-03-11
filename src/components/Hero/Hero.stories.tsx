@@ -47,7 +47,7 @@ type Story = StoryObj<typeof Hero>;
    Vertical variants
    --------------------------------------------------------------------------- */
 
-export const Default: Story = {
+export const Vertical: Story = {
   args: {
     orientation: 'vertical',
     imagePosition: 'after',
@@ -72,7 +72,7 @@ export const Default: Story = {
   ],
 };
 
-export const VerticalBeforeTop: Story = {
+export const VerticalImageLeft: Story = {
   args: {
     orientation: 'vertical',
     imagePosition: 'before',
@@ -97,7 +97,7 @@ export const VerticalBeforeTop: Story = {
   ],
 };
 
-export const VerticalAfterBottom: Story = {
+export const VerticalContentBottom: Story = {
   args: {
     orientation: 'vertical',
     imagePosition: 'after',
@@ -122,7 +122,7 @@ export const VerticalAfterBottom: Story = {
   ],
 };
 
-export const VerticalBeforeBottom: Story = {
+export const VerticalContentBottomImageLeft: Story = {
   args: {
     orientation: 'vertical',
     imagePosition: 'before',
@@ -151,7 +151,7 @@ export const VerticalBeforeBottom: Story = {
    Horizontal variants
    --------------------------------------------------------------------------- */
 
-export const HorizontalAfterTop: Story = {
+export const Horizontal: Story = {
   args: {
     orientation: 'horizontal',
     imagePosition: 'after',
@@ -170,7 +170,7 @@ export const HorizontalAfterTop: Story = {
   },
 };
 
-export const HorizontalAfterBottom: Story = {
+export const HorizontalContentBottom: Story = {
   args: {
     orientation: 'horizontal',
     imagePosition: 'after',
@@ -189,7 +189,7 @@ export const HorizontalAfterBottom: Story = {
   },
 };
 
-export const HorizontalBeforeTop: Story = {
+export const HorizontalImageLeft: Story = {
   args: {
     orientation: 'horizontal',
     imagePosition: 'before',
@@ -208,7 +208,7 @@ export const HorizontalBeforeTop: Story = {
   },
 };
 
-export const HorizontalBeforeBottom: Story = {
+export const HorizontalImageLeftContentBottom: Story = {
   args: {
     orientation: 'horizontal',
     imagePosition: 'before',
@@ -235,7 +235,7 @@ export const AllVariants: Story = {
   decorators: [
     () => (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 48 }}>
-        <h3 style={{ margin: 0 }}>Vertical — Image After, Content Top</h3>
+        <h3 style={{ margin: 0 }}>Vertical</h3>
         <div style={{ maxWidth: 375 }}>
           <Hero
             orientation="vertical"
@@ -259,7 +259,7 @@ export const AllVariants: Story = {
           />
         </div>
 
-        <h3 style={{ margin: 0 }}>Vertical — Image Before, Content Bottom</h3>
+        <h3 style={{ margin: 0 }}>Vertical — Content Bottom, Image Left</h3>
         <div style={{ maxWidth: 375 }}>
           <Hero
             orientation="vertical"
@@ -283,7 +283,7 @@ export const AllVariants: Story = {
           />
         </div>
 
-        <h3 style={{ margin: 0 }}>Horizontal — Image After, Content Top</h3>
+        <h3 style={{ margin: 0 }}>Horizontal</h3>
         <Hero
           orientation="horizontal"
           imagePosition="after"
@@ -305,7 +305,7 @@ export const AllVariants: Story = {
           disclaimer="*Disclaimer Text"
         />
 
-        <h3 style={{ margin: 0 }}>Horizontal — Image Before, Content Bottom</h3>
+        <h3 style={{ margin: 0 }}>Horizontal — Image Left, Content Bottom</h3>
         <Hero
           orientation="horizontal"
           imagePosition="before"

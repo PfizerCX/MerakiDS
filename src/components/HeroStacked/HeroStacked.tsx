@@ -4,8 +4,8 @@ import './HeroStacked.css';
 export interface HeroStackedProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Layout direction: side-by-side content or fully stacked */
   orientation?: 'horizontal' | 'vertical';
-  /** Where the text content block appears relative to the image */
-  textPosition?: 'left' | 'right';
+  /** Whether the image appears before or after the text content */
+  imagePosition?: 'after' | 'before';
   /** Hero image source URL */
   imageSrc: string;
   /** Alt text for the hero image */
@@ -26,7 +26,7 @@ const HeroStacked = forwardRef<HTMLDivElement, HeroStackedProps>(
   (
     {
       orientation = 'horizontal',
-      textPosition = 'right',
+      imagePosition = 'before',
       imageSrc,
       imageAlt = '',
       headline,
@@ -44,7 +44,7 @@ const HeroStacked = forwardRef<HTMLDivElement, HeroStackedProps>(
         ref={ref}
         className={['mds-hero-stacked', className].filter(Boolean).join(' ')}
         data-orientation={orientation}
-        data-text-position={textPosition}
+        data-image-position={imagePosition}
         {...props}
       >
         <div className="mds-hero-stacked__image">

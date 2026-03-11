@@ -1,5 +1,5 @@
 import { forwardRef, useId } from 'react';
-import { ChevronDown } from '../../icons/ChevronDown';
+import { ChevronDownWide } from '../../icons/ChevronDownWide';
 import './DateSegmented.css';
 
 const MONTHS = [
@@ -155,7 +155,7 @@ const DateSegmented = forwardRef<HTMLFieldSetElement, DateSegmentedProps>(
               </option>
             ))}
           </select>
-          <ChevronDown size={20} className="mds-date-segmented__chevron" aria-hidden="true" />
+          <ChevronDownWide size={20} className="mds-date-segmented__chevron" aria-hidden="true" />
         </div>
       </div>
     );
@@ -182,7 +182,7 @@ const DateSegmented = forwardRef<HTMLFieldSetElement, DateSegmentedProps>(
               </option>
             ))}
           </select>
-          <ChevronDown size={20} className="mds-date-segmented__chevron" aria-hidden="true" />
+          <ChevronDownWide size={20} className="mds-date-segmented__chevron" aria-hidden="true" />
         </div>
       </div>
     );
@@ -209,7 +209,7 @@ const DateSegmented = forwardRef<HTMLFieldSetElement, DateSegmentedProps>(
               </option>
             ))}
           </select>
-          <ChevronDown size={20} className="mds-date-segmented__chevron" aria-hidden="true" />
+          <ChevronDownWide size={20} className="mds-date-segmented__chevron" aria-hidden="true" />
         </div>
       </div>
     );

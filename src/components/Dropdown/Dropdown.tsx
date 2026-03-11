@@ -1,6 +1,6 @@
 import { forwardRef, useCallback, useEffect, useId, useRef, useState } from 'react';
-import { ChevronDown } from '../../icons/ChevronDown';
-import { ChevronUp } from '../../icons/ChevronUp';
+import { ChevronDownWide } from '../../icons/ChevronDownWide';
+import { ChevronUpWide } from '../../icons/ChevronUpWide';
 import { ErrorCircle } from '../../icons/ErrorCircle';
 import './Dropdown.css';
 
@@ -180,76 +180,64 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
           </div>
         )}
 
-        <button
-          ref={triggerRef}
-          type="button"
-          className="mds-dropdown__trigger"
-          aria-haspopup="listbox"
-          aria-expanded={open}
-          aria-labelledby={label ? `${dropdownId}-label` : undefined}
-          disabled={disabled}
-          onClick={() => (open ? closeMenu() : openMenu())}
-          onKeyDown={handleTriggerKeyDown}
-        >
-          <span
-            className={[
-              'mds-dropdown__trigger-text',
-              !hasValue && 'mds-dropdown__trigger-text--placeholder',
-            ]
-              .filter(Boolean)
-              .join(' ')}
+        <div className="mds-dropdown__control">
+          <button
+            ref={triggerRef}
+            type="button"
+            className="mds-dropdown__trigger"
+            aria-haspopup="listbox"
+            aria-expanded={open}
+            aria-labelledby={label ? `${dropdownId}-label` : undefined}
+            disabled={disabled}
+            onClick={() => (open ? closeMenu() : openMenu())}
+            onKeyDown={handleTriggerKeyDown}
           >
-            {hasValue ? (selectedOption?.label ?? selectedValue) : (label ?? placeholder)}
-          </span>
-          <span className="mds-dropdown__trigger-icon">
-            <ChevronDown size={24} />
-          </span>
-          {error && (
-            <span className="mds-dropdown__error-icon">
-              <ErrorCircle size={24} style={{ color: 'var(--color-negative)' }} />
+            <span
+              className={[
+                'mds-dropdown__trigger-text',
+                !hasValue && 'mds-dropdown__trigger-text--placeholder',
+              ]
+                .filter(Boolean)
+                .join(' ')}
+            >
+              {hasValue ? (selectedOption?.label ?? selectedValue) : (label ?? placeholder)}
             </span>
-          )}
-        </button>
-
-        {open && (
-          <div ref={panelRef} className="mds-dropdown__panel" role="presentation">
-            <div className="mds-dropdown__panel-header">
-              <span className="mds-dropdown__panel-header-text">
-                {hasValue ? (selectedOption?.label ?? selectedValue) : placeholder}
+            <span className="mds-dropdown__trigger-icon">
+              {open ? <ChevronUpWide size={24} /> : <ChevronDownWide size={24} />}
+            </span>
+            {error && (
+              <span className="mds-dropdown__error-icon">
+                <ErrorCircle size={24} style={{ color: 'var(--color-negative)' }} />
               </span>
-              <button
-                type="button"
-                className="mds-dropdown__panel-icon"
-                tabIndex={-1}
-                onClick={closeMenu}
-                aria-label="Close dropdown"
-              >
-                <ChevronUp size={24} />
-              </button>
+            )}
+          </button>
+
+          {open && (
+            <div ref={panelRef} className="mds-dropdown__panel" role="presentation">
+              <ul id={listboxId} className="mds-dropdown__options" role="listbox">
+                {options.map((option, index) => (
+                  <li key={option.value} role="presentation">
+                    <button
+                      ref={(el) => {
+                        optionRefs.current[index] = el;
+                      }}
+                      type="button"
+                      role="option"
+                      className="mds-dropdown__option"
+                      aria-selected={option.value === selectedValue}
+                      data-selected={option.value === selectedValue || undefined}
+                      data-highlighted={index === highlightedIndex || undefined}
+                      onClick={() => selectOption(option)}
+                      onKeyDown={(e) => handleOptionKeyDown(e, index)}
+                    >
+                      {option.label ?? option.value}
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul id={listboxId} className="mds-dropdown__options" role="listbox">
-              {options.map((option, index) => (
-                <li key={option.value} role="presentation">
-                  <button
-                    ref={(el) => {
-                      optionRefs.current[index] = el;
-                    }}
-                    type="button"
-                    role="option"
-                    className="mds-dropdown__option"
-                    aria-selected={option.value === selectedValue}
-                    data-selected={option.value === selectedValue || undefined}
-                    data-highlighted={index === highlightedIndex || undefined}
-                    onClick={() => selectOption(option)}
-                    onKeyDown={(e) => handleOptionKeyDown(e, index)}
-                  >
-                    {option.label ?? option.value}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+          )}
+        </div>
 
         {(helperText || showError) && (
           <p className="mds-dropdown__caption">{showError ? errorText : helperText}</p>

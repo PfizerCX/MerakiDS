@@ -1,15 +1,79 @@
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { HeroLegacyImage } from './HeroLegacyImage';
+import { ChevronDownWide } from '../../icons/ChevronDownWide';
 
 const sampleImage =
-  'https://images.unsplash.com/photo-1490750967868-88aa4f44baee?w=1200&q=80';
+  'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80';
 
-const SidebarNav = ({ collapsed }: { collapsed?: boolean }) => (
+const sectionLinks = ['Section Title 1', 'Section Title 2', 'Section Title 3'];
+
+const SidebarNavDropdown = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <nav
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 4,
+        width: '100%',
+        lineHeight: 1.2,
+      }}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          all: 'unset',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          width: '100%',
+          fontSize: 'var(--font-size-title-s)',
+          fontWeight: 'var(--font-weight-medium)' as unknown as number,
+          color: 'var(--color-on-surface)',
+          letterSpacing: 'var(--letter-spacing-regular)',
+        }}
+        aria-expanded={open}
+      >
+        On This Page:
+        <ChevronDownWide
+          size={24}
+          style={{
+            transition: 'transform 200ms ease',
+            transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+          }}
+        />
+      </button>
+      {open && (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 4,
+            fontSize: 'var(--font-size-body-lg)',
+            fontWeight: 'var(--font-weight-regular)' as unknown as number,
+            color: 'var(--ref-color-blue-80)',
+          }}
+        >
+          {sectionLinks.map((title) => (
+            <p key={title} style={{ margin: 0 }}>
+              {title}
+            </p>
+          ))}
+        </div>
+      )}
+    </nav>
+  );
+};
+
+const SidebarNavExpanded = () => (
   <nav
     style={{
       display: 'flex',
       flexDirection: 'column',
-      gap: collapsed ? 4 : 8,
+      gap: 8,
       width: '100%',
       lineHeight: 1.2,
     }}
@@ -25,22 +89,22 @@ const SidebarNav = ({ collapsed }: { collapsed?: boolean }) => (
     >
       On This Page:
     </p>
-    {!collapsed && (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 4,
-          fontSize: 'var(--font-size-body-lg)',
-          fontWeight: 'var(--font-weight-regular)' as unknown as number,
-          color: 'var(--ref-color-blue-80)',
-        }}
-      >
-        <p style={{ margin: 0 }}>Section Title 1</p>
-        <p style={{ margin: 0 }}>Section Title 2</p>
-        <p style={{ margin: 0 }}>Section Title 3</p>
-      </div>
-    )}
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 4,
+        fontSize: 'var(--font-size-body-lg)',
+        fontWeight: 'var(--font-weight-regular)' as unknown as number,
+        color: 'var(--ref-color-blue-80)',
+      }}
+    >
+      {sectionLinks.map((title) => (
+        <p key={title} style={{ margin: 0 }}>
+          {title}
+        </p>
+      ))}
+    </div>
   </nav>
 );
 
@@ -73,7 +137,7 @@ type Story = StoryObj<typeof HeroLegacyImage>;
 export const Vertical: Story = {
   args: {
     layout: 'vertical',
-    sidebar: <SidebarNav collapsed />,
+    sidebar: <SidebarNavDropdown />,
     style: { maxWidth: 375 },
   },
 };
@@ -81,7 +145,7 @@ export const Vertical: Story = {
 export const Horizontal: Story = {
   args: {
     layout: 'horizontal',
-    sidebar: <SidebarNav />,
+    sidebar: <SidebarNavExpanded />,
     style: { maxWidth: 767 },
   },
 };
@@ -104,7 +168,7 @@ export const AllVariants: Story = {
           imageAlt="Hero image"
           headline="Write a clear and eye-catching headline."
           body="Write a helpful and concise body copy 2-3 lines of text maximum. We're in relentless pursuit of."
-          sidebar={<SidebarNav collapsed />}
+          sidebar={<SidebarNavDropdown />}
           style={{ maxWidth: 375 }}
         />
       </div>
@@ -116,7 +180,7 @@ export const AllVariants: Story = {
           imageAlt="Hero image"
           headline="Write a clear and eye-catching headline."
           body="Write a helpful and concise body copy 2-3 lines of text maximum. We're in relentless pursuit of breakthroughs."
-          sidebar={<SidebarNav />}
+          sidebar={<SidebarNavExpanded />}
           style={{ maxWidth: 767 }}
         />
       </div>

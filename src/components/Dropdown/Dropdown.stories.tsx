@@ -13,7 +13,15 @@ const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown',
   component: Dropdown,
   tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <div style={{ maxWidth: 496, paddingBottom: 190 }}>
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
+    options: { table: { disable: true } },
     error: { control: 'boolean' },
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },

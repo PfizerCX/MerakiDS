@@ -21,7 +21,7 @@
   line-height: 1.2;
   letter-spacing: var(--letter-spacing-regular);
   color: var(--color-on-background);
-  padding: 0;
+  padding: 0 0 16px;
   margin: 0;
 }
 

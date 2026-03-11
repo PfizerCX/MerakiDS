@@ -60,9 +60,9 @@ const meta: Meta<typeof HeroStacked> = {
       control: 'select',
       options: ['horizontal', 'vertical'],
     },
-    textPosition: {
+    imagePosition: {
       control: 'select',
-      options: ['left', 'right'],
+      options: ['after', 'before'],
     },
     headline: { control: 'text' },
     body: { control: 'text' },
@@ -89,10 +89,10 @@ type Story = StoryObj<typeof HeroStacked>;
    Horizontal variants
    --------------------------------------------------------------------------- */
 
-export const HorizontalRight: Story = {
+export const HorizontalBefore: Story = {
   args: {
     orientation: 'horizontal',
-    textPosition: 'right',
+    imagePosition: 'before',
     videoControls: videoControlsHorizontal,
     actions: (
       <>
@@ -107,10 +107,10 @@ export const HorizontalRight: Story = {
   },
 };
 
-export const HorizontalLeft: Story = {
+export const HorizontalAfter: Story = {
   args: {
     orientation: 'horizontal',
-    textPosition: 'left',
+    imagePosition: 'after',
     videoControls: videoControlsHorizontal,
     actions: (
       <>
@@ -129,10 +129,10 @@ export const HorizontalLeft: Story = {
    Vertical variants
    --------------------------------------------------------------------------- */
 
-export const VerticalRight: Story = {
+export const VerticalBefore: Story = {
   args: {
     orientation: 'vertical',
-    textPosition: 'right',
+    imagePosition: 'before',
     headline: 'Hero display text here',
     body: 'Write a helpful and concise body copy with 4 lines of text maximum. If you go over 4 lines it will truncate your copy so that if you try and type in 5 or 6 lines then it will cut it off at 4 and add ...',
     videoControls: videoControlsVertical,
@@ -156,10 +156,10 @@ export const VerticalRight: Story = {
   ],
 };
 
-export const VerticalLeft: Story = {
+export const VerticalAfter: Story = {
   args: {
     orientation: 'vertical',
-    textPosition: 'left',
+    imagePosition: 'after',
     headline: 'Hero display text here',
     body: 'Write a helpful and concise body copy with 4 lines of text maximum. If you go over 4 lines it will truncate your copy so that if you try and type in 5 or 6 lines then it will cut it off at 4 and add ...',
     videoControls: videoControlsVertical,
@@ -190,7 +190,7 @@ export const VerticalLeft: Story = {
 export const WithoutVideoControls: Story = {
   args: {
     orientation: 'horizontal',
-    textPosition: 'right',
+    imagePosition: 'before',
     actions: (
       <>
         <Button variant="primary" inverted>
@@ -211,7 +211,7 @@ export const WithoutVideoControls: Story = {
 export const WithoutDisclaimer: Story = {
   args: {
     orientation: 'horizontal',
-    textPosition: 'right',
+    imagePosition: 'before',
     disclaimer: undefined,
     videoControls: videoControlsHorizontal,
     actions: (
@@ -235,10 +235,10 @@ export const AllVariants: Story = {
   decorators: [
     () => (
       <div style={{ display: 'flex', flexDirection: 'column', gap: 48 }}>
-        <h3 style={{ margin: 0 }}>Horizontal — Text Right</h3>
+        <h3 style={{ margin: 0 }}>Horizontal — Image Before</h3>
         <HeroStacked
           orientation="horizontal"
-          textPosition="right"
+          imagePosition="before"
           imageSrc={sampleImage}
           imageAlt="Hero"
           headline="Hero headline text here"
@@ -257,10 +257,10 @@ export const AllVariants: Story = {
           disclaimer="*Disclaimer Text"
         />
 
-        <h3 style={{ margin: 0 }}>Horizontal — Text Left</h3>
+        <h3 style={{ margin: 0 }}>Horizontal — Image After</h3>
         <HeroStacked
           orientation="horizontal"
-          textPosition="left"
+          imagePosition="after"
           imageSrc={sampleImage}
           imageAlt="Hero"
           headline="Hero headline text here"
@@ -279,11 +279,11 @@ export const AllVariants: Story = {
           disclaimer="*Disclaimer Text"
         />
 
-        <h3 style={{ margin: 0 }}>Vertical — Text Right</h3>
+        <h3 style={{ margin: 0 }}>Vertical — Image Before</h3>
         <div style={{ maxWidth: 375 }}>
           <HeroStacked
             orientation="vertical"
-            textPosition="right"
+            imagePosition="before"
             imageSrc={sampleImage}
             imageAlt="Hero"
             headline="Hero display text here"
@@ -303,11 +303,11 @@ export const AllVariants: Story = {
           />
         </div>
 
-        <h3 style={{ margin: 0 }}>Vertical — Text Left</h3>
+        <h3 style={{ margin: 0 }}>Vertical — Image After</h3>
         <div style={{ maxWidth: 375 }}>
           <HeroStacked
             orientation="vertical"
-            textPosition="left"
+            imagePosition="after"
             imageSrc={sampleImage}
             imageAlt="Hero"
             headline="Hero display text here"

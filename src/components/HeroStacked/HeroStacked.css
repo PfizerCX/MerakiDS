@@ -2,7 +2,7 @@
    HeroStacked — Meraki Design System
    Figma source: node 41638:40925
    Variants: horizontal | vertical
-   Text position: left | right
+   Image position: after | before
    ========================================================================== */
 
 .mds-hero-stacked,
@@ -181,23 +181,23 @@
   left: 32px;
 }
 
-/* --- Text position: right (content aligns right) --- */
+/* --- Image position: before (image before content, content aligns right) --- */
 
-.mds-hero-stacked[data-orientation='horizontal'][data-text-position='right'] {
+.mds-hero-stacked[data-orientation='horizontal'][data-image-position='before'] {
   align-items: flex-end;
 }
 
-.mds-hero-stacked[data-orientation='horizontal'][data-text-position='right'] .mds-hero-stacked__image {
+.mds-hero-stacked[data-orientation='horizontal'][data-image-position='before'] .mds-hero-stacked__image {
   border-radius: var(--radius-3) 0 0 var(--radius-3);
 }
 
-/* --- Text position: left (content aligns left) --- */
+/* --- Image position: after (image after content, content aligns left) --- */
 
-.mds-hero-stacked[data-orientation='horizontal'][data-text-position='left'] {
+.mds-hero-stacked[data-orientation='horizontal'][data-image-position='after'] {
   align-items: flex-start;
 }
 
-.mds-hero-stacked[data-orientation='horizontal'][data-text-position='left'] .mds-hero-stacked__image {
+.mds-hero-stacked[data-orientation='horizontal'][data-image-position='after'] .mds-hero-stacked__image {
   border-radius: 0 var(--radius-3) var(--radius-3) 0;
 }
 
@@ -259,19 +259,19 @@
   right: 24px;
 }
 
-/* --- Text position: right (image on top, content below) --- */
+/* --- Image position: before (image on top, content below) --- */
 
-.mds-hero-stacked[data-orientation='vertical'][data-text-position='right'] .mds-hero-stacked__image {
+.mds-hero-stacked[data-orientation='vertical'][data-image-position='before'] .mds-hero-stacked__image {
   border-radius: var(--radius-3) var(--radius-3) 0 0;
 }
 
-/* --- Text position: left (content on top, image below) --- */
+/* --- Image position: after (content on top, image below) --- */
 
-.mds-hero-stacked[data-orientation='vertical'][data-text-position='left'] .mds-hero-stacked__content {
+.mds-hero-stacked[data-orientation='vertical'][data-image-position='after'] .mds-hero-stacked__content {
   order: 1;
 }
 
-.mds-hero-stacked[data-orientation='vertical'][data-text-position='left'] .mds-hero-stacked__image {
+.mds-hero-stacked[data-orientation='vertical'][data-image-position='after'] .mds-hero-stacked__image {
   order: 2;
   border-radius: 0 0 var(--radius-3) var(--radius-3);
 }
