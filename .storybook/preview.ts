@@ -3,6 +3,7 @@ import type { Preview } from '@storybook/react';
 import merakiTheme from './theme';
 import '../src/fonts/fonts.css';
 import '../src/tokens/tokens.css';
+import './storybook-overrides.css';
 
 const colorSetOptions = [
   { value: '', title: 'Default' },
@@ -118,6 +119,7 @@ const preview: Preview = {
       theme: merakiTheme,
     },
     controls: {
+      expanded: true,
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,

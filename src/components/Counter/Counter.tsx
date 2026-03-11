@@ -1,4 +1,4 @@
-import { forwardRef, useCallback, useId } from 'react';
+import { forwardRef, useCallback, useId, type ChangeEvent } from 'react';
 import { Add } from '../../icons/Add';
 import { Subtract } from '../../icons/Subtract';
 import './Counter.css';
@@ -59,6 +59,21 @@ const Counter = forwardRef<HTMLDivElement, CounterProps>(
     const atMin = value <= min;
     const atMax = value >= max;
 
+    const handleInputChange = useCallback(
+      (e: ChangeEvent<HTMLInputElement>) => {
+        const raw = e.target.value;
+        if (raw === '' || raw === '-') return;
+        const parsed = Number(raw);
+        if (!Number.isNaN(parsed)) {
+          const clamped = Math.min(max, Math.max(min, parsed));
+          onChange?.(clamped);
+        }
+      },
+      [min, max, onChange]
+    );
+
+    const inputId = `${generatedId}-input`;
+
     return (
       <div
         ref={ref}
@@ -70,10 +85,10 @@ const Counter = forwardRef<HTMLDivElement, CounterProps>(
         {...props}
       >
         {label && (
-          <div className="mds-counter__label" id={labelId}>
+          <label className="mds-counter__label" id={labelId} htmlFor={inputId}>
             <span>{label}</span>
             {required && <span className="mds-counter__required">*</span>}
-          </div>
+          </label>
         )}
         <div className="mds-counter__controls">
           <button
@@ -86,7 +101,16 @@ const Counter = forwardRef<HTMLDivElement, CounterProps>(
           >
             <Subtract size={24} />
           </button>
-          <output className="mds-counter__value">{value}</output>
+          <input
+            id={inputId}
+            type="text"
+            inputMode="numeric"
+            className="mds-counter__value"
+            value={value}
+            onChange={handleInputChange}
+            disabled={disabled}
+            aria-labelledby={label ? labelId : undefined}
+          />
           <button
             type="button"
             className="mds-counter__btn"

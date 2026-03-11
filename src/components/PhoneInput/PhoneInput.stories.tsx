@@ -15,6 +15,8 @@ const meta: Meta<typeof PhoneInput> = {
   args: {
     label: 'Phone Number',
     placeholder: 'Enter phone number',
+    error: false,
+    disabled: false,
     required: true,
   },
 };

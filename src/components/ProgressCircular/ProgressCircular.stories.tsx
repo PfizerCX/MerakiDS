@@ -31,6 +31,8 @@ const meta: Meta<typeof ProgressCircular> = {
   args: {
     value: 50,
     size: 'lg',
+    indeterminate: false,
+    complete: false,
     showPercentage: true,
   },
 };

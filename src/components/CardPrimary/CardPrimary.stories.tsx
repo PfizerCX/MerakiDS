@@ -15,6 +15,7 @@ const meta: Meta<typeof CardPrimary> = {
     body: { control: 'text' },
     disclaimer: { control: 'text' },
     actionLabel: { control: 'text' },
+    onAction: { table: { disable: true } },
   },
   args: {
     imageSrc: sampleImage,
@@ -45,9 +46,15 @@ export const WithoutImage: Story = {
 };
 
 export const CustomWidth: Story = {
-  args: {
-    style: { width: 350 },
+  argTypes: {
+    width: { control: 'text' },
   },
+  args: {
+    width: '350px',
+  } as Record<string, unknown>,
+  render: ({ width, ...args }) => (
+    <CardPrimary {...args} style={{ width }} />
+  ),
 };
 
 export const AllVariants: Story = {

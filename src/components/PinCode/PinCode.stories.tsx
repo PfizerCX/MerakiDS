@@ -18,6 +18,12 @@ const meta: Meta<typeof PinCode> = {
   args: {
     label: 'Label',
     fields: 4,
+    error: false,
+    warning: false,
+    success: false,
+    disabled: false,
+    mask: false,
+    autoFocus: false,
   },
 };
 

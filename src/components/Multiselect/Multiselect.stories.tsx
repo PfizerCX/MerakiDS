@@ -23,7 +23,10 @@ const meta: Meta<typeof Multiselect> = {
     label: 'Multiselect Label',
     placeholder: 'Choose Option...',
     helperText: 'Caption Label',
+    error: false,
+    disabled: false,
     required: true,
+    chips: false,
     options: sampleOptions,
   },
 };

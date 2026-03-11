@@ -6,16 +6,41 @@ const meta: Meta<typeof DatePicker> = {
   title: 'Components/DatePicker',
   component: DatePicker,
   tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <div style={{ paddingBottom: 320 }}>
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
+    label: { control: 'text' },
+    placeholder: { control: 'text' },
     error: { control: 'boolean' },
+    errorText: { control: 'text' },
     success: { control: 'boolean' },
+    helperText: { control: 'text' },
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
+    id: { table: { disable: true } },
+    name: { table: { disable: true } },
+    className: { table: { disable: true } },
+    value: { table: { disable: true } },
+    defaultValue: { table: { disable: true } },
+    onChange: { table: { disable: true } },
   },
   args: {
     label: 'Input Label',
     placeholder: 'mm/dd/yyyy',
+    error: false,
+    errorText: '',
+    success: false,
+    helperText: '',
+    disabled: false,
     required: true,
+    id: '',
+    name: '',
+    className: '',
   },
 };
 

@@ -24,6 +24,7 @@ const meta: Meta<typeof Slider> = {
     min: 0,
     max: 100,
     step: 1,
+    disabled: false,
     showFlag: true,
     showFlagOnDragOnly: true,
     showRange: true,

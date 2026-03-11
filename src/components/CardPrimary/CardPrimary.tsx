@@ -55,22 +55,26 @@ const CardPrimary = forwardRef<HTMLDivElement, CardPrimaryProps>(
             {body && <p className="mds-card-primary__body">{body}</p>}
           </div>
 
-          <div className="mds-card-primary__actions">
-            <div className="mds-card-primary__cta-row">
-              <button
-                type="button"
-                className="mds-card-primary__cta"
-                onClick={onAction}
-                aria-label={actionLabel}
-              >
-                <ChevronRightWide size={20} />
-              </button>
-            </div>
+          {(onAction || disclaimer) && (
+            <div className="mds-card-primary__actions">
+              {onAction && (
+                <div className="mds-card-primary__cta-row">
+                  <button
+                    type="button"
+                    className="mds-card-primary__cta"
+                    onClick={onAction}
+                    aria-label={actionLabel}
+                  >
+                    <ChevronRightWide size={20} />
+                  </button>
+                </div>
+              )}
 
-            {disclaimer && (
-              <p className="mds-card-primary__disclaimer">{disclaimer}</p>
-            )}
-          </div>
+              {disclaimer && (
+                <p className="mds-card-primary__disclaimer">{disclaimer}</p>
+              )}
+            </div>
+          )}
 
           {children}
         </div>

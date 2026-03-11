@@ -11,6 +11,8 @@ const radioMeta: Meta<typeof Radio> = {
   },
   args: {
     label: 'Radio',
+    disabled: false,
+    checked: false,
   },
 };
 

@@ -26,6 +26,8 @@ const meta: Meta<typeof Switch> = {
   },
   args: {
     'aria-label': 'Toggle option',
+    checked: false,
+    disabled: false,
   },
 };
 

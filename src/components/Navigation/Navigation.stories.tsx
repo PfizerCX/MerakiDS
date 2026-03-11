@@ -119,6 +119,7 @@ const meta: Meta<typeof Navigation> = {
   },
   args: {
     colorway: 'default',
+    open: false,
     logo: <SampleLogo />,
     categories: sampleCategories,
   },

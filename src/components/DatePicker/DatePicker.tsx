@@ -8,9 +8,8 @@ import {
   useState,
 } from 'react';
 import { CalendarToday } from '../../icons/CalendarToday';
-import { ChevronDown } from '../../icons/ChevronDown';
-import { ArrowUp } from '../../icons/ArrowUp';
-import { ArrowDown } from '../../icons/ArrowDown';
+import { ChevronDownWide } from '../../icons/ChevronDownWide';
+import { ChevronUpWide } from '../../icons/ChevronUpWide';
 import { CheckCircle } from '../../icons/CheckCircle';
 import './DatePicker.css';
 
@@ -392,7 +391,7 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
                 <span>
                   {MONTH_NAMES[viewMonth]} {viewYear}
                 </span>
-                <ChevronDown size={24} />
+                <ChevronDownWide size={16} />
               </button>
 
               <div className="mds-datepicker-arrows">
@@ -402,7 +401,7 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
                   onClick={handlePrevMonth}
                   aria-label="Previous month"
                 >
-                  <ArrowUp size={16} />
+                  <ChevronUpWide size={16} />
                 </button>
                 <button
                   type="button"
@@ -410,7 +409,7 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
                   onClick={handleNextMonth}
                   aria-label="Next month"
                 >
-                  <ArrowDown size={16} />
+                  <ChevronDownWide size={16} />
                 </button>
               </div>
             </div>

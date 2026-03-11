@@ -21,6 +21,7 @@ const meta: Meta<typeof RatingNumberScore> = {
     leftLabel: 'Left Label',
     middleLabel: 'Middle Label',
     rightLabel: 'Right Label',
+    showLabels: true,
     disabled: false,
   },
 };

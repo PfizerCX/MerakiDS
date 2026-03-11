@@ -17,13 +17,17 @@ const meta: Meta<typeof Counter> = {
     step: { control: 'number' },
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
+    label: { control: 'text' },
+    helperText: { control: 'text' },
   },
   args: {
     label: 'Input Label',
+    helperText: '',
     value: 1,
     min: 0,
     max: 10,
     step: 1,
+    disabled: false,
     required: true,
   },
 };

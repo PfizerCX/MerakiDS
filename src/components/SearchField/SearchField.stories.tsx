@@ -25,6 +25,7 @@ const meta: Meta<typeof SearchField> = {
     variant: 'search',
     size: 'base',
     placeholder: 'Search',
+    disabled: false,
     showSearchIcon: true,
     showMicrophoneButton: true,
     showFilterButton: true,

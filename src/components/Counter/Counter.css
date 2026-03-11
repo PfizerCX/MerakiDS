@@ -88,15 +88,25 @@
   border-radius: 2px;
 }
 
-/* Value display */
+/* Value input */
 
 .mds-counter__value {
+  appearance: none;
+  border: none;
+  background: transparent;
+  outline: none;
   flex: 1 0 0;
   min-width: 0;
   text-align: center;
+  font-family: var(--font-family-sans);
   font-size: var(--font-size-body-lg);
   font-weight: var(--font-weight-regular);
   line-height: 1.2;
+  color: var(--color-on-surface);
+  padding: 0;
+}
+
+.mds-counter__value:disabled {
   color: var(--color-on-surface);
 }
 

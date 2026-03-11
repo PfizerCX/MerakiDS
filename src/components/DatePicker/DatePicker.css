@@ -165,6 +165,7 @@
 .mds-datepicker-month-btn {
   display: flex;
   align-items: center;
+  gap: var(--spacing-8);
   padding: 0;
   border: none;
   background: transparent;
@@ -175,11 +176,6 @@
   line-height: 1.2;
   color: var(--color-on-surface);
   white-space: nowrap;
-}
-
-.mds-datepicker-month-btn svg {
-  width: 24px;
-  height: 24px;
 }
 
 .mds-datepicker-arrows {
@@ -272,7 +268,7 @@
 }
 
 .mds-datepicker-day--outside {
-  color: var(--color-on-surface-variant);
+  color: var(--color-outline-variant);
 }
 
 .mds-datepicker-day--today {

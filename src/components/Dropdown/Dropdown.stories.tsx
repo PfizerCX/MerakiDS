@@ -22,6 +22,8 @@ const meta: Meta<typeof Dropdown> = {
     label: 'Dropdown Label',
     placeholder: 'Choose Option...',
     helperText: 'Caption Label',
+    error: false,
+    disabled: false,
     required: true,
     options: sampleOptions,
   },

@@ -28,6 +28,8 @@ const meta: Meta<typeof HeroLegacyGraphic> = {
     actions: { control: false },
   },
   args: {
+    graphic: true,
+    sidebar: true,
     imageSrc: sampleImage,
     imageAlt: 'Hero background',
     headline: 'Write a clear and eye-catching headline.',

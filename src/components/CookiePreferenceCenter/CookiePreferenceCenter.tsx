@@ -11,7 +11,7 @@ import { Button } from '../Button';
 import { Switch } from '../Switch';
 import { Close } from '../../icons/Close';
 import { CheckCircle } from '../../icons/CheckCircle';
-import { ChevronDown } from '../../icons/ChevronDown';
+import { ChevronDownWide } from '../../icons/ChevronDownWide';
 import './CookiePreferenceCenter.css';
 
 const DEFAULT_TITLE = 'We Care About Your Privacy';
@@ -202,6 +202,7 @@ const CookiePreferenceCenter = forwardRef<HTMLDivElement, CookiePreferenceCenter
             <Close size={24} />
           </button>
 
+          <div className="mds-cookie-pref-center__scrollable">
           <h2 id={`${baseId}-title`} className="mds-cookie-pref-center__title">
             {title}
           </h2>
@@ -239,7 +240,7 @@ const CookiePreferenceCenter = forwardRef<HTMLDivElement, CookiePreferenceCenter
                   </span>
                   <CheckCircle size={20} className="mds-cookie-pref-center__check" aria-hidden />
                 </span>
-                <ChevronDown size={24} className="mds-cookie-pref-center__chevron" aria-hidden />
+                <ChevronDownWide size={24} className="mds-cookie-pref-center__chevron" aria-hidden />
               </div>
               <div
                 id={`${baseId}-row-0-detail`}
@@ -278,7 +279,7 @@ const CookiePreferenceCenter = forwardRef<HTMLDivElement, CookiePreferenceCenter
                   aria-label={`Toggle ${marketingLabel}`}
                   onClick={(e) => e.stopPropagation()}
                 />
-                <ChevronDown size={24} className="mds-cookie-pref-center__chevron" aria-hidden />
+                <ChevronDownWide size={24} className="mds-cookie-pref-center__chevron" aria-hidden />
               </div>
               <div
                 id={`${baseId}-row-1-detail`}
@@ -317,7 +318,7 @@ const CookiePreferenceCenter = forwardRef<HTMLDivElement, CookiePreferenceCenter
                   aria-label={`Toggle ${analyticsLabel}`}
                   onClick={(e) => e.stopPropagation()}
                 />
-                <ChevronDown size={24} className="mds-cookie-pref-center__chevron" aria-hidden />
+                <ChevronDownWide size={24} className="mds-cookie-pref-center__chevron" aria-hidden />
               </div>
               <div
                 id={`${baseId}-row-2-detail`}
@@ -356,7 +357,7 @@ const CookiePreferenceCenter = forwardRef<HTMLDivElement, CookiePreferenceCenter
                   aria-label={`Toggle ${personalizationLabel}`}
                   onClick={(e) => e.stopPropagation()}
                 />
-                <ChevronDown size={24} className="mds-cookie-pref-center__chevron" aria-hidden />
+                <ChevronDownWide size={24} className="mds-cookie-pref-center__chevron" aria-hidden />
               </div>
               <div
                 id={`${baseId}-row-3-detail`}
@@ -366,6 +367,7 @@ const CookiePreferenceCenter = forwardRef<HTMLDivElement, CookiePreferenceCenter
                 <p className="mds-cookie-pref-center__row-explanation">{personalizationExplanation}</p>
               </div>
             </div>
+          </div>
           </div>
 
           <div className="mds-cookie-pref-center__actions">

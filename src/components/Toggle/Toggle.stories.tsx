@@ -15,6 +15,7 @@ const meta: Meta<typeof Toggle> = {
   },
   args: {
     label: 'Switch label',
+    disabled: false,
   },
 };
 

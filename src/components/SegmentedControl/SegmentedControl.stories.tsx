@@ -20,6 +20,9 @@ const meta: Meta<typeof SegmentedControl> = {
       control: 'boolean',
     },
   },
+  args: {
+    disabled: false,
+  },
 };
 
 export default meta;

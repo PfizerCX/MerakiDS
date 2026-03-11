@@ -13,6 +13,8 @@ const meta: Meta<typeof TextArea> = {
   args: {
     label: 'Textarea Label',
     caption: 'Optional Caption Label',
+    error: false,
+    disabled: false,
     required: true,
   },
 };

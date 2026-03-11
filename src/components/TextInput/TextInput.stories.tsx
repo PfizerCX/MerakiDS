@@ -17,6 +17,10 @@ const meta: Meta<typeof TextInput> = {
   args: {
     label: 'Input Label',
     caption: 'Optional Caption Label',
+    error: false,
+    warning: false,
+    success: false,
+    disabled: false,
     required: true,
   },
   decorators: [

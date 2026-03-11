@@ -29,6 +29,8 @@ const meta: Meta<typeof ProgressLinear> = {
   },
   args: {
     value: 50,
+    indeterminate: false,
+    complete: false,
     progressLabel: 'Uploading…',
     contextLabel: '50% complete',
   },

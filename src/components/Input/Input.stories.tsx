@@ -18,6 +18,8 @@ const meta: Meta<typeof Input> = {
     label: 'Label',
     placeholder: 'Placeholder text',
     size: 'md',
+    error: false,
+    disabled: false,
   },
 };
 

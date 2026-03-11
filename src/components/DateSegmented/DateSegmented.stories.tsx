@@ -24,6 +24,9 @@ const meta: Meta<typeof DateSegmented> = {
     showMonth: true,
     showDate: true,
     showYear: true,
+    required: false,
+    disabled: false,
+    error: false,
   },
 };
 

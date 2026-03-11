@@ -35,6 +35,9 @@ const meta: Meta<typeof TimePicker> = {
   args: {
     label: 'Input Label',
     placeholder: '--:--',
+    error: false,
+    success: false,
+    disabled: false,
     required: true,
     timeFormat: '12h',
   },
