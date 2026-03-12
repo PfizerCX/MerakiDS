@@ -1,7 +1,7 @@
 import { forwardRef, useState, useCallback, useId } from 'react';
 import { Menu } from '../../icons/Menu';
 import { Close } from '../../icons/Close';
-import { ChevronDown } from '../../icons/ChevronDown';
+import { ChevronDownWide } from '../../icons/ChevronDownWide';
 import { Launch } from '../../icons/Launch';
 import './Navigation.css';
 
@@ -42,6 +42,8 @@ export interface NavigationProps extends React.HTMLAttributes<HTMLElement> {
   defaultOpen?: boolean;
   /** Callback when open state changes */
   onOpenChange?: (open: boolean) => void;
+  /** When true, the categories section is not rendered in the panel */
+  hideCategories?: boolean;
 }
 
 const NavItem = ({
@@ -99,7 +101,7 @@ const NavCategory = ({
         onClick={onToggle}
       >
         <span className="mds-nav__category-title">{category.title}</span>
-        <ChevronDown size={24} className="mds-nav__category-chevron" aria-hidden />
+        <ChevronDownWide size={24} className="mds-nav__category-chevron" aria-hidden />
       </button>
       <div
         id={panelId}
@@ -140,6 +142,7 @@ const Navigation = forwardRef<HTMLElement, NavigationProps>(
       open: controlledOpen,
       defaultOpen = false,
       onOpenChange,
+      hideCategories = false,
       className,
       ...props
     },
@@ -213,18 +216,20 @@ const Navigation = forwardRef<HTMLElement, NavigationProps>(
           aria-hidden={!isOpen}
           hidden={!isOpen}
         >
-          <div className="mds-nav__categories">
-            {categories.map((cat, i) => (
-              <NavCategory
-                key={i}
-                category={cat}
-                isExpanded={expandedCategories.has(i)}
-                onToggle={() => handleCategoryToggle(i)}
-                triggerId={`${baseId}-cat-trigger-${i}`}
-                panelId={`${baseId}-cat-panel-${i}`}
-              />
-            ))}
-          </div>
+          {!hideCategories && (
+            <div className="mds-nav__categories">
+              {categories.map((cat, i) => (
+                <NavCategory
+                  key={i}
+                  category={cat}
+                  isExpanded={expandedCategories.has(i)}
+                  onToggle={() => handleCategoryToggle(i)}
+                  triggerId={`${baseId}-cat-trigger-${i}`}
+                  panelId={`${baseId}-cat-panel-${i}`}
+                />
+              ))}
+            </div>
+          )}
 
           {hvaAction && <div className="mds-nav__hva">{hvaAction}</div>}
 

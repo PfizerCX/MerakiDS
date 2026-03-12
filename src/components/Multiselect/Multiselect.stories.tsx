@@ -18,6 +18,7 @@ const meta: Meta<typeof Multiselect> = {
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
     chips: { control: 'boolean' },
+    options: { table: { disable: true } },
   },
   args: {
     label: 'Multiselect Label',

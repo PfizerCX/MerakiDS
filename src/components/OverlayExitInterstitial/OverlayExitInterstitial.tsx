@@ -92,9 +92,12 @@ const OverlayExitInterstitial = forwardRef<HTMLDivElement, OverlayExitInterstiti
 
     if (!open) return null;
 
+    const isInline = container === null;
+
     const overlay = (
       <div
         className={['mds-overlay-exit', showScrim && 'mds-overlay-exit--scrim'].filter(Boolean).join(' ')}
+        data-inline={isInline || undefined}
         onClick={handleScrimClick}
         aria-hidden={!open}
       >
@@ -154,7 +157,7 @@ const OverlayExitInterstitial = forwardRef<HTMLDivElement, OverlayExitInterstiti
       </div>
     );
 
-    if (container === null) return overlay;
+    if (isInline) return overlay;
 
     return createPortal(overlay, container ?? document.body);
   }

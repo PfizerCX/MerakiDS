@@ -28,7 +28,6 @@ export * from './HeroLegacyImage';
 export * from './HeroStacked';
 export * from './ISI';
 export * from './IconButton';
-export * from './Input';
 export * from './LoadingSpinner';
 export * from './Multiselect';
 export * from './Navigation';

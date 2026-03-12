@@ -7,8 +7,8 @@ import {
   useRef,
   useState,
 } from 'react';
-import { ChevronDown } from '../../icons/ChevronDown';
-import { ChevronUp } from '../../icons/ChevronUp';
+import { ChevronDownWide } from '../../icons/ChevronDownWide';
+import { ChevronUpWide } from '../../icons/ChevronUpWide';
 import { ErrorCircle } from '../../icons/ErrorCircle';
 import './PhoneInput.css';
 
@@ -309,7 +309,10 @@ const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(
         )}
 
         <div className="mds-phone-input__fields">
-          <div className="mds-phone-input__country">
+          <div
+            className="mds-phone-input__country"
+            data-open={open || undefined}
+          >
             <button
               ref={triggerRef}
               type="button"
@@ -328,7 +331,7 @@ const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(
                 {selectedCountry.dialCode}
               </span>
               <span className="mds-phone-input__country-chevron">
-                <ChevronDown size={24} />
+                <ChevronDownWide size={24} />
               </span>
               {error && (
                 <span className="mds-phone-input__error-icon">
@@ -370,7 +373,7 @@ const PhoneInput = forwardRef<HTMLInputElement, PhoneInputProps>(
                     onClick={closeMenu}
                     aria-label="Close dropdown"
                   >
-                    <ChevronUp size={24} />
+                    <ChevronUpWide size={24} />
                   </button>
                 </div>
                 <ul

@@ -116,6 +116,18 @@ const meta: Meta<typeof Navigation> = {
       control: 'boolean',
       description: 'Controlled open state of the navigation panel',
     },
+    logo: {
+      control: false,
+      description: 'Logo element displayed in the header',
+    },
+    categories: {
+      control: false,
+      description: 'Navigation categories with their items',
+    },
+    hideCategories: {
+      control: 'boolean',
+      description: 'When true, the categories section is not rendered in the panel',
+    },
   },
   args: {
     colorway: 'default',
@@ -140,7 +152,8 @@ export const DefaultClosed: Story = {
 
 export const DefaultOpen: Story = {
   args: {
-    open: true,
+    open: undefined,
+    defaultOpen: true,
     hvaAction: (
       <Button variant="primary" style={{ width: '100%' }}>
         High Value Action
@@ -154,7 +167,8 @@ export const DefaultOpen: Story = {
 
 export const WithHeaderCta: Story = {
   args: {
-    open: true,
+    open: undefined,
+    defaultOpen: true,
     hvaCta: (
       <Button variant="secondary" size="md">
         HVA Button
@@ -184,7 +198,8 @@ export const DarkClosed: Story = {
 export const DarkOpen: Story = {
   args: {
     colorway: 'dark',
-    open: true,
+    open: undefined,
+    defaultOpen: true,
     hvaAction: (
       <Button variant="primary" style={{ width: '100%' }}>
         High Value Action
@@ -209,7 +224,8 @@ export const TransparentClosed: Story = {
 export const TransparentOpen: Story = {
   args: {
     colorway: 'transparent',
-    open: true,
+    open: undefined,
+    defaultOpen: true,
     hvaAction: (
       <Button variant="primary" style={{ width: '100%' }}>
         High Value Action
@@ -260,7 +276,8 @@ export const AllColorways: Story = {
 
 export const Responsive: Story = {
   args: {
-    open: true,
+    open: undefined,
+    defaultOpen: true,
     hvaAction: (
       <Button variant="primary" style={{ width: '100%' }}>
         High Value Action

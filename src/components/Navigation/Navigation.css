@@ -12,6 +12,14 @@
   align-items: stretch;
   isolation: isolate;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.mds-nav *,
+.mds-nav *::before,
+.mds-nav *::after {
+  box-sizing: border-box;
 }
 
 /* ---------------------------------------------------------------------------
@@ -26,6 +34,8 @@
   gap: var(--layout-gutter);
   height: 80px;
   padding: 16px var(--pattern-inset-padding-lr);
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .mds-nav__logo {
@@ -96,6 +106,11 @@
   border-radius: var(--radius-7);
 }
 
+/* Icons ship with an inline color override; force them to inherit the toggle color */
+.mds-nav__toggle-layer svg {
+  color: inherit !important;
+}
+
 /* ---------------------------------------------------------------------------
    Panel
    --------------------------------------------------------------------------- */
@@ -108,6 +123,8 @@
   gap: var(--component-vertical-space);
   padding: var(--component-inset-padding) var(--pattern-inset-padding-lr);
   width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .mds-nav__panel[hidden] {
@@ -123,6 +140,7 @@
   flex-direction: column;
   gap: 16px;
   width: 100%;
+  max-width: 100%;
 }
 
 .mds-nav__category {
@@ -130,6 +148,7 @@
   flex-direction: column;
   gap: 2px;
   width: 100%;
+  max-width: 100%;
 }
 
 /* Accordion trigger (vertical layout) */
@@ -160,13 +179,17 @@
 }
 
 .mds-nav__category-title {
-  flex: 1 0 0;
+  flex: 1 1 0;
   min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .mds-nav__category-chevron {
   flex-shrink: 0;
   transition: transform var(--transition-normal);
+  /* Override the SVG's inline color so it inherits from the trigger */
+  color: inherit !important;
 }
 
 .mds-nav__category[data-expanded] .mds-nav__category-chevron {
@@ -239,12 +262,15 @@
 }
 
 .mds-nav__item-label {
-  flex: 1 0 0;
+  flex: 1 1 0;
   min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .mds-nav__item-external {
   flex-shrink: 0;
+  color: inherit !important;
 }
 
 /* ---------------------------------------------------------------------------
@@ -260,7 +286,7 @@
 
 .mds-nav__regulatory-link .mds-nav__item-label {
   border-bottom: 1.5px solid currentColor;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
 }
 
 /* ---------------------------------------------------------------------------
@@ -302,6 +328,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
   width: 100%;
 }
 
@@ -368,6 +396,28 @@
   background-color: var(--ref-color-gray-100);
 }
 
+.mds-nav[data-colorway='dark'] .mds-nav__logo,
+.mds-nav[data-colorway='dark'] .mds-nav__logo * {
+  color: var(--ref-color-white) !important;
+}
+
+.mds-nav[data-colorway='dark'] .mds-nav__logo svg,
+.mds-nav[data-colorway='dark'] .mds-nav__logo svg * {
+  fill: var(--ref-color-white) !important;
+  color: var(--ref-color-white) !important;
+}
+
+.mds-nav[data-colorway='dark'] .mds-nav__footer-logo,
+.mds-nav[data-colorway='dark'] .mds-nav__footer-logo * {
+  color: var(--ref-color-white) !important;
+}
+
+.mds-nav[data-colorway='dark'] .mds-nav__footer-logo svg,
+.mds-nav[data-colorway='dark'] .mds-nav__footer-logo svg * {
+  fill: var(--ref-color-white) !important;
+  color: var(--ref-color-white) !important;
+}
+
 .mds-nav[data-colorway='dark'][data-open] .mds-nav__header {
   background-color: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(12px);
@@ -381,10 +431,6 @@
 .mds-nav[data-colorway='dark'] .mds-nav__category-trigger {
   color: var(--ref-color-white);
   border-bottom-color: var(--ref-color-gray-60);
-}
-
-.mds-nav[data-colorway='dark'] .mds-nav__category-chevron {
-  color: var(--ref-color-white);
 }
 
 .mds-nav[data-colorway='dark'] .mds-nav__item {
@@ -403,9 +449,26 @@
   border-top-color: var(--ref-color-gray-30);
 }
 
+/* All primary buttons in dark mode: Utility/Action-State/Primary/Enabled/background (#9CC0FF) */
 .mds-nav[data-colorway='dark'] .mds-nav__toggle {
-  background-color: var(--color-action-primary-bg);
-  color: var(--color-action-primary-text);
+  background-color: var(--ref-color-blue-30);
+  color: var(--ref-color-blue-90);
+}
+
+.mds-nav[data-colorway='dark'] .mds-nav__panel .mds-btn[data-variant='primary'],
+.mds-nav[data-colorway='dark'] .mds-nav__header-cta .mds-btn[data-variant='primary'] {
+  background-color: var(--ref-color-blue-30);
+  color: var(--ref-color-blue-90);
+}
+
+.mds-nav[data-colorway='dark'] .mds-nav__panel .mds-btn[data-variant='primary']:hover:not(:disabled),
+.mds-nav[data-colorway='dark'] .mds-nav__header-cta .mds-btn[data-variant='primary']:hover:not(:disabled) {
+  background-color: var(--ref-color-blue-40);
+}
+
+.mds-nav[data-colorway='dark'] .mds-nav__panel .mds-btn[data-variant='primary']:active:not(:disabled),
+.mds-nav[data-colorway='dark'] .mds-nav__header-cta .mds-btn[data-variant='primary']:active:not(:disabled) {
+  background-color: var(--ref-color-blue-50);
 }
 
 /* ===========================================================================

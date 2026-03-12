@@ -110,6 +110,27 @@ function ModalContainerDemo({ onClose }: { onClose?: () => void }) {
 }
 
 /* ---------------------------------------------------------------------------
+   Shared story container — keeps the overlay visible inside Storybook's
+   preview pane by using position: absolute within a relative wrapper.
+   --------------------------------------------------------------------------- */
+
+const storyContainer: React.CSSProperties = {
+  position: 'relative',
+  width: '100%',
+  height: '60vh',
+  minHeight: 420,
+  overflow: 'hidden',
+};
+
+const overlayContained: React.CSSProperties = { position: 'absolute' };
+
+const triggerArea: React.CSSProperties = {
+  position: 'relative',
+  zIndex: 1,
+  padding: 32,
+};
+
+/* ---------------------------------------------------------------------------
    Stories
    --------------------------------------------------------------------------- */
 
@@ -117,9 +138,11 @@ export const Default: Story = {
   render: function Render() {
     const [open, setOpen] = useState(false);
     return (
-      <div style={{ padding: 32 }}>
-        <Button onClick={() => setOpen(true)}>Open Overlay</Button>
-        <Overlay open={open} onClose={() => setOpen(false)}>
+      <div style={storyContainer}>
+        <div style={triggerArea}>
+          <Button onClick={() => setOpen(true)}>Open Overlay</Button>
+        </div>
+        <Overlay open={open} onClose={() => setOpen(false)} style={overlayContained}>
           <StackedModalDemo onClose={() => setOpen(false)} />
         </Overlay>
       </div>
@@ -131,9 +154,11 @@ export const WithStackedModal: Story = {
   render: function Render() {
     const [open, setOpen] = useState(false);
     return (
-      <div style={{ padding: 32 }}>
-        <Button onClick={() => setOpen(true)}>Open Stacked Modal</Button>
-        <Overlay open={open} onClose={() => setOpen(false)}>
+      <div style={storyContainer}>
+        <div style={triggerArea}>
+          <Button onClick={() => setOpen(true)}>Open Stacked Modal</Button>
+        </div>
+        <Overlay open={open} onClose={() => setOpen(false)} style={overlayContained}>
           <StackedModalDemo onClose={() => setOpen(false)} />
         </Overlay>
       </div>
@@ -145,9 +170,11 @@ export const WithModalContainer: Story = {
   render: function Render() {
     const [open, setOpen] = useState(false);
     return (
-      <div style={{ padding: 32 }}>
-        <Button onClick={() => setOpen(true)}>Open Modal Container</Button>
-        <Overlay open={open} onClose={() => setOpen(false)}>
+      <div style={storyContainer}>
+        <div style={triggerArea}>
+          <Button onClick={() => setOpen(true)}>Open Modal Container</Button>
+        </div>
+        <Overlay open={open} onClose={() => setOpen(false)} style={overlayContained}>
           <ModalContainerDemo onClose={() => setOpen(false)} />
         </Overlay>
       </div>
@@ -158,32 +185,10 @@ export const WithModalContainer: Story = {
 export const Preview: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 64 }}>
-      <div
-        style={{
-          position: 'relative',
-          height: 600,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: 'var(--color-scrim)',
-          borderRadius: 'var(--radius-1)',
-          overflow: 'hidden',
-        }}
-      >
+      <div style={{ ...storyContainer, height: 360, minHeight: 360, background: 'var(--color-scrim)', borderRadius: 'var(--radius-1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <StackedModalDemo />
       </div>
-      <div
-        style={{
-          position: 'relative',
-          height: 600,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: 'var(--color-scrim)',
-          borderRadius: 'var(--radius-1)',
-          overflow: 'hidden',
-        }}
-      >
+      <div style={{ ...storyContainer, height: 360, minHeight: 360, background: 'var(--color-scrim)', borderRadius: 'var(--radius-1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <ModalContainerDemo />
       </div>
     </div>

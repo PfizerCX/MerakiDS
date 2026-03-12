@@ -57,7 +57,9 @@
    -------------------------------------------------------------------------- */
 
 .mds-phone-input__country {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   flex-shrink: 0;
 }
 
@@ -110,6 +112,11 @@
   width: 24px;
   height: 24px;
   color: var(--color-on-background);
+  transition: transform var(--transition-normal);
+}
+
+.mds-phone-input__country[data-open] .mds-phone-input__country-chevron {
+  transform: rotate(180deg);
 }
 
 .mds-phone-input__error-icon {
@@ -123,17 +130,14 @@
 }
 
 /* --------------------------------------------------------------------------
-   Country code selector — dropdown panel (expanded)
+   Country code selector — dropdown panel (expanded, in-flow so layout grows)
    -------------------------------------------------------------------------- */
 
 .mds-phone-input__country-panel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;
   display: flex;
   flex-direction: column;
   min-width: 150px;
+  margin-top: var(--spacing-8);
   background: var(--color-surface);
   border: 1px solid var(--color-outline-variant);
   border-radius: var(--radius-2);

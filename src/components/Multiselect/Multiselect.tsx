@@ -1,6 +1,6 @@
 import { forwardRef, useCallback, useEffect, useId, useRef, useState } from 'react';
-import { ChevronDown } from '../../icons/ChevronDown';
-import { ChevronUp } from '../../icons/ChevronUp';
+import { ChevronDownWide } from '../../icons/ChevronDownWide';
+import { ChevronUpWide } from '../../icons/ChevronUpWide';
 import { Close } from '../../icons/Close';
 import { ErrorCircle } from '../../icons/ErrorCircle';
 import './Multiselect.css';
@@ -245,7 +245,7 @@ const Multiselect = forwardRef<HTMLDivElement, MultiselectProps>(
               </span>
             )}
             <span className="mds-multiselect__trigger-icon">
-              <ChevronDown size={24} />
+              <ChevronDownWide size={24} />
             </span>
             {error && (
               <span className="mds-multiselect__error-icon">
@@ -272,7 +272,7 @@ const Multiselect = forwardRef<HTMLDivElement, MultiselectProps>(
                 onClick={closeMenu}
                 aria-label="Close multiselect"
               >
-                <ChevronUp size={24} />
+                <ChevronUpWide size={24} />
               </button>
             </div>
             <ul id={listboxId} className="mds-multiselect__options" role="listbox" aria-multiselectable="true">

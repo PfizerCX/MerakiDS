@@ -14,6 +14,18 @@ const meta: Meta<typeof NotificationBanner> = {
       control: 'select',
       options: ['horizontal', 'vertical'],
     },
+    iconVariant: {
+      control: 'select',
+      options: [
+        'type',
+        'notification',
+        'notification-filled',
+        'notifications',
+        'notifications-on',
+        'notifications-off',
+      ],
+      description: 'Icon to show: "type" uses type-based icons (Alerts/Warning/CheckCircle), or pick a bell-style icon.',
+    },
     inverted: { control: 'boolean' },
     showIcon: { control: 'boolean' },
     showTitle: { control: 'boolean' },
@@ -23,6 +35,7 @@ const meta: Meta<typeof NotificationBanner> = {
   args: {
     type: 'informational',
     alignment: 'horizontal',
+    iconVariant: 'type',
     inverted: false,
     showIcon: true,
     showTitle: true,
@@ -97,6 +110,55 @@ export const AllTypesInverted: Story = {
       <NotificationBanner type="warning" inverted onClose={() => {}} onAction={() => {}} />
       <NotificationBanner type="error" inverted onClose={() => {}} onAction={() => {}} />
       <NotificationBanner type="success" inverted onClose={() => {}} onAction={() => {}} />
+    </div>
+  ),
+};
+
+export const IconVariants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 600 }}>
+      <NotificationBanner
+        type="informational"
+        iconVariant="type"
+        title="Type (default)"
+        onClose={() => {}}
+        onAction={() => {}}
+      />
+      <NotificationBanner
+        type="informational"
+        iconVariant="notification"
+        title="Notification (bell outline)"
+        onClose={() => {}}
+        onAction={() => {}}
+      />
+      <NotificationBanner
+        type="informational"
+        iconVariant="notification-filled"
+        title="Notification filled"
+        onClose={() => {}}
+        onAction={() => {}}
+      />
+      <NotificationBanner
+        type="informational"
+        iconVariant="notifications"
+        title="Notifications"
+        onClose={() => {}}
+        onAction={() => {}}
+      />
+      <NotificationBanner
+        type="informational"
+        iconVariant="notifications-on"
+        title="Notifications on"
+        onClose={() => {}}
+        onAction={() => {}}
+      />
+      <NotificationBanner
+        type="informational"
+        iconVariant="notifications-off"
+        title="Notifications off"
+        onClose={() => {}}
+        onAction={() => {}}
+      />
     </div>
   ),
 };

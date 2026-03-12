@@ -4,10 +4,22 @@ import { Alerts } from '../../icons/Alerts';
 import { Warning } from '../../icons/Warning';
 import { CheckCircle } from '../../icons/CheckCircle';
 import { Close } from '../../icons/Close';
+import { Notification as NotificationIcon } from '../../icons/Notification';
+import { NotificationFilled } from '../../icons/NotificationFilled';
+import { Notifications } from '../../icons/Notifications';
+import { NotificationsOn } from '../../icons/NotificationsOn';
+import { NotificationsOff } from '../../icons/NotificationsOff';
 import './Notification.css';
 
 export type NotificationType = 'informational' | 'warning' | 'error' | 'success';
 export type NotificationAlignment = 'horizontal' | 'vertical';
+export type NotificationIconVariant =
+  | 'type'
+  | 'notification'
+  | 'notification-filled'
+  | 'notifications'
+  | 'notifications-on'
+  | 'notifications-off';
 
 export interface NotificationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   type?: NotificationType;
@@ -17,6 +29,8 @@ export interface NotificationProps extends Omit<React.HTMLAttributes<HTMLDivElem
   showTitle?: boolean;
   showButton?: boolean;
   showClose?: boolean;
+  /** Override the type-based icon with a specific icon variant (e.g. bell icons). Use 'type' for default behavior. */
+  iconVariant?: NotificationIconVariant;
   title?: string;
   content?: string;
   actionLabel?: string;
@@ -36,6 +50,7 @@ const NotificationBanner = forwardRef<HTMLDivElement, NotificationProps>(
       showTitle = true,
       showButton = true,
       showClose = true,
+      iconVariant = 'type',
       title = 'This is a Notification',
       content = 'Lorem ipsum dolor sit amet. Qui optio dolores est animi deserunt non suscipit fuga. Et architecto eum dolorum praesentium ex et.',
       actionLabel = 'Button Label',
@@ -55,6 +70,22 @@ const NotificationBanner = forwardRef<HTMLDivElement, NotificationProps>(
         size: NOTIFICATION_ICON_SIZE,
         ...(inverted && { style: { color: 'var(--ref-color-white)' } }),
       };
+      if (iconVariant !== 'type') {
+        switch (iconVariant) {
+          case 'notification':
+            return <NotificationIcon {...iconProps} />;
+          case 'notification-filled':
+            return <NotificationFilled {...iconProps} />;
+          case 'notifications':
+            return <Notifications {...iconProps} />;
+          case 'notifications-on':
+            return <NotificationsOn {...iconProps} />;
+          case 'notifications-off':
+            return <NotificationsOff {...iconProps} />;
+          default:
+            break;
+        }
+      }
       switch (type) {
         case 'success':
           return <CheckCircle {...iconProps} />;

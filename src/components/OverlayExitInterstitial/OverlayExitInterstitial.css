@@ -17,6 +17,14 @@
   justify-content: center;
 }
 
+.mds-overlay-exit[data-inline] {
+  position: relative;
+  inset: auto;
+  z-index: auto;
+  min-height: 100vh;
+  width: 100%;
+}
+
 .mds-overlay-exit--scrim {
   background-color: var(--color-scrim);
 }

@@ -26,6 +26,8 @@ const meta: Meta<typeof PageBreakLegacy> = {
     headline: { control: 'text' },
     body: { control: 'text' },
     actionLabel: { control: 'text' },
+    attribution: { table: { disable: true } },
+    style: { table: { disable: true } },
   },
   args: {
     imageSrc: sampleImage,

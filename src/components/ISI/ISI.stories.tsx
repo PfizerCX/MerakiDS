@@ -19,6 +19,9 @@ const meta: Meta<typeof ISI> = {
       options: ['default', 'expanded', 'collapsed'],
       description: 'Initial display state',
     },
+    regulatoryLinks: { table: { disable: true } },
+    children: { table: { disable: true } },
+    aside: { table: { disable: true } },
   },
   args: {
     inset: false,
