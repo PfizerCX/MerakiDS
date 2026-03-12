@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import './ProgressCircular.css';
 
 export interface ProgressCircularProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -18,6 +18,60 @@ const SIZES = {
   sm: { dimension: 56, strokeWidth: 4, radius: 24, fontSize: 'button-s' },
   lg: { dimension: 96, strokeWidth: 6, radius: 41, fontSize: 'button-m' },
 } as const;
+
+/** One full cycle duration. Matches Flutter M3 CircularProgressIndicator (year2023: false) default feel. */
+const DURATION_MS = 2000;
+
+/** Ease-in-out curve for arc grow/shrink, similar to M3 motion. */
+function easeInOut(t: number): number {
+  return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+}
+
+const LOOP_HOLD = 0.03;
+const LOOP_BLEND = 0.04;
+
+const LOOP_STATE = (c: number): [number, number] => [c * 0.2, 0];
+
+/**
+ * Indeterminate arc: grow → trailing edge almost catches front → finish and reset.
+ * Reference: Flutter CircularProgressIndicator (second style, year2023: false) —
+ * gap between active/inactive, rounded cap, clockwise grow-then-shrink cycle.
+ */
+function indeterminateDash(circumference: number, progress: number): [number, number] {
+  if (progress < LOOP_HOLD || progress >= 1 - LOOP_HOLD) {
+    return LOOP_STATE(circumference);
+  }
+  const e = easeInOut(progress);
+  let dashLength: number;
+  let offsetFactor: number;
+  if (e < 0.4) {
+    const s = e / 0.4;
+    dashLength = 0.2 + (0.65 - 0.2) * s;
+    offsetFactor = 0.35 * s;
+  } else if (e < 0.7) {
+    const s = (e - 0.4) / 0.3;
+    dashLength = 0.65 + (0.88 - 0.65) * s;
+    offsetFactor = 0.35 + 0.35 * s;
+  } else {
+    const s = (e - 0.7) / 0.3;
+    dashLength = 0.88 + (0.2 - 0.88) * s;
+    offsetFactor = 0.7 + 0.3 * s;
+  }
+  let dash = circumference * dashLength;
+  let off = -circumference * offsetFactor;
+  if (progress >= 1 - LOOP_HOLD - LOOP_BLEND) {
+    const blend = (progress - (1 - LOOP_HOLD - LOOP_BLEND)) / LOOP_BLEND;
+    const [l0] = LOOP_STATE(circumference);
+    dash = dash + (l0 - dash) * blend;
+    off = off * (1 - blend);
+  } else if (progress < LOOP_HOLD + LOOP_BLEND) {
+    const blend = (progress - LOOP_HOLD) / LOOP_BLEND;
+    const [l0] = LOOP_STATE(circumference);
+    dash = l0 + (dash - l0) * blend;
+    off = off * blend;
+  }
+  return [dash, off];
+}
 
 const clamp = (v: number, min: number, max: number) =>
   Math.min(Math.max(v, min), max);
@@ -40,6 +94,35 @@ const ProgressCircular = forwardRef<HTMLDivElement, ProgressCircularProps>(
     const circumference = 2 * Math.PI * cfg.radius;
     const offset = circumference - (circumference * (complete ? 100 : pct)) / 100;
 
+    const [indeterminateDashState, setIndeterminateDashState] = useState<[number, number]>([
+      circumference * 0.2,
+      0,
+    ]);
+    const rafRef = useRef<number>(0);
+    const startRef = useRef<number>(0);
+
+    useEffect(() => {
+      if (!indeterminate) return;
+      const tick = (now: number) => {
+        if (!startRef.current) startRef.current = now;
+        let elapsed = now - startRef.current;
+        if (elapsed >= DURATION_MS) {
+          startRef.current = now - (elapsed % DURATION_MS);
+          elapsed = elapsed % DURATION_MS;
+        }
+        const progress = elapsed / DURATION_MS;
+        setIndeterminateDashState(indeterminateDash(circumference, progress));
+        rafRef.current = requestAnimationFrame(tick);
+      };
+      startRef.current = 0;
+      rafRef.current = requestAnimationFrame(tick);
+      return () => cancelAnimationFrame(rafRef.current);
+    }, [indeterminate, circumference]);
+
+    const indicatorDasharray =
+      indeterminate ? `${indeterminateDashState[0]} ${circumference}` : circumference;
+    const indicatorDashoffset = indeterminate ? indeterminateDashState[1] : offset;
+
     return (
       <div
         ref={ref}
@@ -51,11 +134,7 @@ const ProgressCircular = forwardRef<HTMLDivElement, ProgressCircularProps>(
         data-size={size}
         data-indeterminate={indeterminate || undefined}
         data-complete={complete || undefined}
-        style={
-          {
-            '--_dimension': `${cfg.dimension}px`,
-          } as React.CSSProperties
-        }
+        style={{ '--_dimension': `${cfg.dimension}px` } as React.CSSProperties}
         {...props}
       >
         <svg
@@ -77,8 +156,8 @@ const ProgressCircular = forwardRef<HTMLDivElement, ProgressCircularProps>(
             cy={cfg.dimension / 2}
             r={cfg.radius}
             strokeWidth={cfg.strokeWidth}
-            strokeDasharray={circumference}
-            strokeDashoffset={indeterminate ? circumference * 0.75 : offset}
+            strokeDasharray={indicatorDasharray}
+            strokeDashoffset={indicatorDashoffset}
           />
         </svg>
 

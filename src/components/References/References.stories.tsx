@@ -26,6 +26,7 @@ const meta: Meta<typeof References> = {
   tags: ['autodocs'],
   argTypes: {
     title: { control: 'text' },
+    items: { table: { disable: true } },
   },
   args: {
     title: 'References',

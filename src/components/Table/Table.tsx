@@ -395,18 +395,4 @@ const Table = forwardRef<HTMLDivElement, TableProps>(
 
 Table.displayName = 'Table';
 
-export interface TableColumn {
-  key: string;
-  header: string;
-  type?: 'text' | 'profile' | 'chip' | 'date';
-  showSortIcon?: boolean;
-  showInfoIcon?: boolean;
-  showDropdownIcon?: boolean;
-  width?: string | number;
-}
-
-export interface TableRow {
-  [key: string]: React.ReactNode;
-}
-
 export { Table, CellHead, TableCell };

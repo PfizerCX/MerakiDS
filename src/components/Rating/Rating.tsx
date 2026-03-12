@@ -112,11 +112,12 @@ const RatingStarScore = forwardRef<HTMLDivElement, RatingStarScoreProps>(
       const halfFilled = !filled && displayValue >= starValue - 0.5;
 
       const iconProps = { size: 32, 'aria-hidden': true as const };
+      const filledStyle = { color: 'var(--ref-color-yellow-50)' };
 
       const icon = filled ? (
-        <StarFilled {...iconProps} />
+        <StarFilled {...iconProps} style={filledStyle} />
       ) : halfFilled ? (
-        <StarHalf {...iconProps} />
+        <StarHalf {...iconProps} style={filledStyle} />
       ) : (
         <Star {...iconProps} />
       );

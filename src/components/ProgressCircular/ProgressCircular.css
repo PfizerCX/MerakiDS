@@ -90,32 +90,12 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Indeterminate Animation
+   Indeterminate — M3-style (ref: Flutter CircularProgressIndicator year2023: false).
+   JS-driven grow → catch-up → finish with seamless loop; rounded cap, gap on track.
    --------------------------------------------------------------------------- */
-
-.mds-progress-circular[data-indeterminate] .mds-progress-circular__svg {
-  animation: mds-progress-circular-rotate 1.4s linear infinite;
-}
 
 .mds-progress-circular[data-indeterminate] .mds-progress-circular__indicator {
   transition: none;
-  animation: mds-progress-circular-dash 1.4s ease-in-out infinite;
-}
-
-@keyframes mds-progress-circular-rotate {
-  100% {
-    transform: rotate(270deg);
-  }
-}
-
-@keyframes mds-progress-circular-dash {
-  0% {
-    stroke-dashoffset: var(--_circumference, 150);
-  }
-  50% {
-    stroke-dashoffset: calc(var(--_circumference, 150) * 0.25);
-  }
-  100% {
-    stroke-dashoffset: var(--_circumference, 150);
-  }
+  /* Rounded stroke cap matches M3 “second” style (gap between active and inactive). */
+  stroke-linecap: round;
 }

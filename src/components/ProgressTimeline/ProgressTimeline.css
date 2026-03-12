@@ -80,4 +80,7 @@
 .mds-progress-timeline__divider-line {
   height: 0;
   border-bottom: 2px solid var(--color-outline);
+  /* Extend line into step areas so it sits closer to the circles */
+  margin-left: -20px;
+  margin-right: -20px;
 }
